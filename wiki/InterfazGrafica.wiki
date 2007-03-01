@@ -8,4 +8,5 @@ La proporción entre el alto y el ancho de un tablero de pong proporcionado pued
 
 Se cumple que 3.5 barras (su ancho) es aproximadamente el ancho total del tablero. La altura de la barra puede ser arbitraria. Luego barra=ancho/3.5
 
+En el ancho de una barra pueden caber unas 4.5 bolas.
 
