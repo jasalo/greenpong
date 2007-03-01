@@ -1,0 +1,8 @@
+#summary Información sobre la interfaz gráfica del juego.
+#labels interfaz,swing,GUI
+
+= Medidas importantes =
+La proporción entre el alto y el ancho de un tablero de pong proporcionado puede ser 13/10. Es decir, el cociente alto/ancho es aprox. 1.3, en otros casos donde se manejaban tableros calculados a ojo se llego a una proporcion 11/10 (cociente 1.1) lo que nos deja asumir un tamaño para el tablero en general y podria hacer que el tablero se autoredimensione según una de las dos medidas.
+
+
+
