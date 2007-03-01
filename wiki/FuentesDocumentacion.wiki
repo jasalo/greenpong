@@ -18,6 +18,7 @@ LIBRO DE JAVA FALTA POR CITAR SEGUN NORMAS DE CITAS DE LA UNIVERSIDAD
   * [http://www.xnet.se/javaTest/jPong/jPong.html Tablero pong] Este Pong se corre como un applet en el navegador y se usó para obtener las proporciones para los tamaños de los elementos de la interfaz gráfica que se mencionan en el documento del tema.
 
   * [http://uguu.org/arc_pong.html Pong Source] Código de Pong que puede ser referencia de como implementar el juego.
+  * [http://patriot.net/~tvalesky/paddlegame.html Pong simplificado] juego de pong simplificado (1player) del que se puede estudiar la interfaz y la detección de colisiones y recepción de información del mouse.
 
 <pre>
 Utilizar esto para formatear:
