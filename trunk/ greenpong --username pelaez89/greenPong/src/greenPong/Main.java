@@ -1,7 +1,14 @@
+/**
+ * Clase principal, inicia la ejecución, se usa como una clase que no tiene otra
+ * funcionalidad adicional a correr el hilo principal.
+ */
 package greenPong;
-//import java.io.*;
-/*import logica.*; ejemplo para importar modulos de nuestro programa*/
 
+/**
+ * 
+ * @author ubuntu
+ *
+ */
 public class Main{
        
     public Main() {
