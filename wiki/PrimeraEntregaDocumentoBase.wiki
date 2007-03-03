@@ -2,7 +2,8 @@ EXPOANDES: Ingeniería de Sistemas y Computación – 2007-1
 
 Primera entrega: Definición del problema y formulación del proyecto
 Objetivos:
-1.	Identificar la situación que se quiere analizar, y para el cual se quiere presentar una solución
+
+1.	Identificar la situación que se quiere analizar, y para el cual se quiere presentar una solución<br>
 2.	Analizar la forma en la que la Ingeniería de Sistemas y Computación puede aportar a la solución
 3.	Caracterizar las propuestas de solución existentes y analizarlas.
 4.	Formular las características de la solución buscada.
