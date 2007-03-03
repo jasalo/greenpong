@@ -1,7 +1,8 @@
 EXPOANDES: Ingeniería de Sistemas y Computación – 2007-1
 
-*Primera entrega: Definición del problema y formulación del proyecto
-Objetivos:*
+*PIMERA ENTRGA: DEFINICIÓN DEL PROBLEMA Y FORMULACIÓN DEL PROYECTO*
+
+*Objetivos:*
 
 1.	Identificar la situación que se quiere analizar, y para el cual se quiere presentar una solución
 
