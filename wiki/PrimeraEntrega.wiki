@@ -14,7 +14,7 @@ Lo que pretendemos implementar como solución es conocido en el medio de la info
 ==Metodología==
 *TODO*
 
-//_Los grupos deben realizar una investigación de la situación actual de la situación seleccionada. Cuáles son sus componentes, cuáles sus relaciones._
+_"Los grupos deben realizar una investigación de la situación actual de la situación   seleccionada. Cuáles son sus componentes, cuáles sus relaciones._
 
 _De otra parte, se debe reportar las propuestas de solución que existen, sus principales características._
 
@@ -22,7 +22,7 @@ _Toda la información recopilada debe ser correctamente citada y expuesta en el 
 
 _Con qué disciplinas debe complementar la Ingeniería de Sistemas y Computación para generar una solución integral a la situación identificada._
 
-_Con base a los requerimientos identificados, se debe formular un conjunto de actividades (y resultados de cada actividad) que, conjuntamente, contribuyan a la construcción de la solución _
+_Con base a los requerimientos identificados, se debe formular un conjunto de actividades (y resultados de cada actividad) que, conjuntamente, contribuyan a la construcción de la solución "_
 
 
 ==Avances del proyecto==
