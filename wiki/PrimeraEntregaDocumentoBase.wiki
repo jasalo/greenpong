@@ -1,7 +1,7 @@
 EXPOANDES: Ingeniería de Sistemas y Computación – 2007-1
 
-*bold*Primera entrega: Definición del problema y formulación del proyecto
-Objetivos:*bold*
+*Primera entrega: Definición del problema y formulación del proyecto
+Objetivos:*
 
 1.	Identificar la situación que se quiere analizar, y para el cual se quiere presentar una solución
 
@@ -11,7 +11,8 @@ Objetivos:*bold*
 
 4.	Formular las características de la solución buscada.
 
-Metodología:
+
+*_Metodología:_*
 Los grupos deben realizar una investigación de la situación actual de la situación seleccionada. Cuáles son sus componentes, cuáles sus relaciones.
 
 De otra parte, se debe reportar las propuestas de solución que existen, sus principales características.
@@ -22,15 +23,28 @@ Con qué disciplinas debe complementar la Ingeniería de Sistemas y Computación
 
 Con base a los requerimientos identificados, se debe formular un conjunto de actividades (y resultados de cada actividad) que, conjuntamente, contribuyan a la construcción de la solución
 
-Criterios de evaluación:
+
+*_Criterios de evaluación:*_
+
 1.	Investigación
+
 •	La investigación debe incluir fuentes verificables y confiables
+
 •	Las fuentes deben incluir varios puntos de vista sobre el proyecto
+
 •	Las fuentes deben ser tanto internas como externas al proyecto
+
 2.	Caracterización del proyecto
+
 •	Claridad en la formulación del modelo sobre el que se basa la solución propuesta
+
 •	Claridad con respecto a las características de la solución buscada y su justificación
+
 •	Claridad con respecto a los aspectos que debe cubrir el proyecto que se está proponiendo
-3.	Forma del documento
+
+
+*_3.	Forma del documento*_
+
 •	Orden (índice, referencias bibliográficas)
+
 •	ORTOGRAFIA
