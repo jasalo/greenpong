@@ -6,10 +6,9 @@
 
 ==Objetivos==
 
-El equipo de trabajo de GreenPong pretende desarrollar una solución economica, eficiente y versatil para capturar las ordenes del usuario, usando como metodo para ello un sistema no convencional como sería una pelota de tennis con un mango (por cuestiones de manejabilidad y eficiencia del algoritmo). Es un proyecto que requiere un gran esfuerzo por parte de los integrantes del proyecto, conocimientos de programación medianamente basicos y una considerable disponibilidad de tiempo.
+El equipo de trabajo de GreenPong pretende desarrollar una solución económica, eficiente y versátil para capturar las ordenes del usuario, usando como método para ello un sistema no convencional como sería una pelota de tennis con un mango (por cuestiones de manejabilidad y eficiencia del algoritmo). Es un proyecto que requiere un gran esfuerzo por parte de los integrantes del proyecto, conocimientos de programación medianamente básicos y una considerable disponibilidad de tiempo.
 
-Lo que pretendemos implementar como solución es conocido en el medio de la informatica como visual tracking que consiste en (basicamente) ubicar en un espacio y tiempo determinados el movimiento del objeto de estudio (en nuestro caso pelota de tennis) usando como mediod e captura de datos una WebCam corriente.
+Lo que pretendemos implementar como solución es conocido en el medio de la informatica como visual tracking que consiste en (básicamente) ubicar en un espacio y tiempo determinados el movimiento del objeto de estudio (en nuestro caso pelota de tennis) usando como medio de captura de datos una WebCam corriente.
 
 
-*Metodología*
-
+==Metodología==
