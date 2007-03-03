@@ -12,3 +12,18 @@ Lo que pretendemos implementar como solución es conocido en el medio de la info
 
 
 ==Metodología==
+
+_Los grupos deben realizar una investigación de la situación actual de la situación seleccionada. Cuáles son sus componentes, cuáles sus relaciones.
+
+De otra parte, se debe reportar las propuestas de solución que existen, sus principales características.
+
+Toda la información recopilada debe ser correctamente citada y expuesta en el trabajo, sin ser transcrita, sino analizada para poder tomar alguna posición personal al respecto.
+
+Con qué disciplinas debe complementar la Ingeniería de Sistemas y Computación para generar una solución integral a la situación identificada.
+
+Con base a los requerimientos identificados, se debe formular un conjunto de actividades (y resultados de cada actividad) que, conjuntamente, contribuyan a la construcción de la solución _
+
+
+==Avances del proyecto==
+
+Nuestro equipo de trabajo se ha comprometido profundamente con *[ greenPong ]*, debido a nuestro afán por documentar el proyecto desde el comienzo hemos decidido crear una wiki y un repositorio de subversiones. El esqueleto del codigo ya esta desarrollado y cada uno de los integrantes se esta encargando de desarrollar un modulo especifico del mismo.
