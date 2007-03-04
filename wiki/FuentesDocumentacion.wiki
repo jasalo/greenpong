@@ -18,5 +18,7 @@
   * [http://uguu.org/arc_pong.html Pong Source] Código de Pong que puede ser referencia de como implementar el juego.
   * [http://patriot.net/~tvalesky/paddlegame.html Pong simplificado] juego de pong simplificado (1player) del que se puede estudiar la interfaz y la detección de colisiones y recepción de información del mouse.
   * [http://java.sun.com/products/java-media/jai/forDevelopers/jaifaq.html Java Advanced Imaging API] Documentación del API de procesamiento avanzado de imagenes de Sun para Java (Inglés)
-  * [http://www.planetacodigo.com/planeta/date/2004/02/ Tratamiento de imagenes con Java] Artículo acerca del procesamiento imagenes en Java (Español)
+  * [http://www.planetacodigo.com/planeta/date/2004/02/] Tratamiento de imagenes con Java] Artículo acerca del procesamiento imagenes en Java (Español)
   * [http://www.javahispano.org/codelibsbin.type.action?type=libsbin Libreria de código] Codigo en java documentado en español que puede incorporarse en una aplicación. Útil para la documentación de los integrantes del proyecto en el lenguaje de programación.
+
+  * [http://www.javagaming.org/forums/] Absolutamente todo, para resolver cualquier duda
