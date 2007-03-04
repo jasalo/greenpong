@@ -4,11 +4,20 @@
 *OJO:Antes de editar por favor revisen PrimeraEntregaDocumentoBase*
 
 
-==Objetivos==
+==Objetivos y razon de ser del proyecto==
 
-El equipo de trabajo de GreenPong pretende desarrollar una solución económica, eficiente y versátil para capturar las ordenes del usuario, usando como método para ello un sistema no convencional como sería una pelota de tennis con un mango (por cuestiones de manejabilidad y eficiencia del algoritmo). Es un proyecto que requiere un gran esfuerzo por parte de los integrantes del proyecto, conocimientos de programación medianamente básicos y una considerable disponibilidad de tiempo.
+El equipo de trabajo de GreenPong pretende hacer posible que se juegue un clon del videojuego PONG, que fue de los primeros de la historia (ver, PONG [en linea] <>), recibiendo las ordenes del usuario para mover la barra que le corresponde enel juego usando un sistema no convencional. Para este proyeto en específico el sistema no convencional se refiere a una pelota de tennis con un mango  cuya posición en el espacio es identificada por una camra conectada a un computador. La camara unida a un programa llamado VTS (visual tracknig system) genera constantemente información que representa la posición de la bola y que el juego Pong usa para mover la barra del usuario hasta que pierde. 
 
-Lo que pretendemos implementar como solución es conocido en el medio de la informatica como visual tracking que consiste en (básicamente) ubicar en un espacio y tiempo determinados el movimiento del objeto de estudio (en nuestro caso pelota de tennis) usando como medio de captura de datos una WebCam corriente.
+Es un proyecto que requiere un gran esfuerzo por parte de los integrantes del proyecto, conocimientos de programación medianamente básicos y una considerable disponibilidad de tiempo. La creación de greenPong (pong + VTS) es un intento por crear formas económicas y poco convencionales de interactividad. Existen dispositivos que hacen posible que los movimientos del usuario en el espacio real se reflejen en el espacio virtual, sin embargo, greenPong apela a la necesidad de conseguir dicha interactividad a bajo precio, así sea sólo de modo experimental y sin ninguna intención de hacerlo lucrativo por el momento. ¿Qué mejor manera de lograrlo que con una cámara y una bola de tennis?
+
+*Lo que pretendemos implementar como solución es conocido en el medio de la informatica como visual tracking que consiste en (básicamente) ubicar en un espacio y tiempo determinados el movimiento del objeto de estudio (en nuestro caso pelota de tennis) usando como medio de captura de datos una camara conectada al computador. * (Nosotros dijimos en el primero documento que esto era un plus del proyecto y que lo fundamental era tener pong fucinoando y jugable y que luego ibamos a avanzar, por eso no podemos poner en los objetivos esto) Si pacho esta de acuerdo lo borra o mira que seria necesario para no tener incongruencias con el primero documento que hicimos)*
+
+==Aproximación al problema desde la ingeniería de sistemas y computación==
+Sin duda los términos en los que hemos descrito el objetivo del documento dejan claro que hablamos de una solución a través de computadores. Necesitamos una camara que obtiene imágenes de la realidad de las que obtenemos información a través de la modificación de dichas imágenes y de la aplicación de algoritmos para identificar en que parte de la imágen se encuentra la bola de tennis. Luego ese programa, el VTS, entrega una seria de coordenadas al juego y ese mueve la barra y verifica si hubo o no contacto con la bola y gestiona el movimiento de todas las partes del juego. Estamos hablando de un programa que sigue un algoritmo y de otro programa que usa esa información para funcionar.
+
+Entonces, se requiere una camara, un VTS desarrollado en java, porque es el lenguaje al que más acceso tenemos todos por el momento y porque no todos tenemos los mismos conocimientos de programación por el momento. Para lograr esto usaremos linux pues permite manipular con mayor facilidad el acceso a la camara y existe mucha documentación online sobre el sistema operativo que puedee resultar util. Además, linux suele ser un sistema más rapido y personlizable, ésto permite lograr un resultado final más facilmente al haber menos restricciones. Por otro lado, linux permite la comunicación de procesos con facilidad y esto podria eventualmente ser necesario para la integración de la camara con el VTS y del VTS con Pong.
+
+Adicional, Java resulta ser un lenguaje adecuado porque su documentación es amplia, es sencillo para la creación de interfaces gráficas y es un sistema ampliamente utilizado para el desarrollo de juegos. Además es multiplataforma y recientemente es código abierto y libre. Este ultimo aspecto es fundamental para la filosofía de nuestro proyecto, pues GreenPong será una aplicación de código abierto y libre distribución siempre que se respete la autoría original y no se use con fines lucrativos.
 
 
 ==Metodología==
@@ -28,3 +37,6 @@ _Con base a los requerimientos identificados, se debe formular un conjunto de ac
 ==Avances del proyecto==
 
 Nuestro equipo de trabajo se ha comprometido profundamente con *[ greenPong ]*, debido a nuestro afán por documentar el proyecto desde el comienzo hemos decidido crear una wiki y un repositorio de subversiones. El esqueleto del codigo ya esta desarrollado y cada uno de los integrantes se esta encargando de desarrollar un modulo especifico del mismo.
+
+==Notas al equipo de trabajo (EXTRADOCUMENTO)==
+Borre la palabra versátil, no sé a que se refiere y Tibero seguramente va a hacer una pregunta de diccionario y capciosa en torno al tema, por eso mejor ahorrarse terminos que suenan muy ingeniericos pero que a algunos profesores no le agradan.
