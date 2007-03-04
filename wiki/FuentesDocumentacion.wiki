@@ -2,6 +2,7 @@
 #labels fuentes,libros,web,url,bibliografia
 
 = Libros consultados =
+  *[http://www.mindviewinc.com/downloads/TIJ-3rd-edition4.0.zip Thinking in Java] ECKEL, Bruce. 3rd edition. Libro completo y extenso con código fuente y gratuito de referencia para el lenguaje java.
 
 LIBRO DE JAVA FALTA POR CITAR SEGUN NORMAS DE CITAS DE LA UNIVERSIDAD
 
