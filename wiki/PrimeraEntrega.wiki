@@ -42,6 +42,18 @@ Un libro de referencia a Java completo y reconocido ha sido enviado a todos los 
 ==Listado de fuentes==
 Dado que resulta útil saber de que se trata cada fuente y que todas son fuentes en línea se ha mencionado aquí URL, título y temática del documento. Esta lista esta en constante actualización a través del wiki de GreenPong y puede consultarse online en <http://code.google.com/p/greenpong/wiki/FuentesDocumentacion>.
 
+  * <http://www.mindviewinc.com/downloads/TIJ-3rd-edition4.0.zip> Thinking in Java, ECKEL, Bruce. 3rd edition. Libro completo y extenso con código fuente y gratuito de referencia para el lenguaje java.
+  * <http://www.gamearchitect.net/Articles/GameObjects1.html> Game Object Structure, Documento sobre como debe ser la estructura de clases, habla de juegos en C++, pero resulta util para decidir crear clases Box, Ball y Bar como entidades separada que se comunican y no heredan de un objeto general,ej gameObject
+  * <http://www.jtech.ua.es/tutoriales/apuntes/sesion-ant-apuntes.htm> Automatización con Ant, Explica la utilización de Ant para generar un archivo build.xml que compila el código java, lo empaqueta y lo ejecuta. build.xml ya ha sido creado y hace parte del código fuente.
+  * <http://www.onjava.com/pub/a/onjava/excerpt/anttdg2_ch11/index.html?page=1> Integrating Ant with Eclipse, Explica como hacer parte de un proyecto de eclipse un build.xml para Ant y explica como ejecutar desde este IDE la construcción de la aplicacion. build.xml ya ha sido creado en el proyecto y funciona.
+  * <http://www.javacooperation.gmxhome.de/TutorialStartEng.html> The Java Game Development Tutorial.
+  * <http://www.xnet.se/javaTest/jPong/jPong.html> Tablero pong, Este Pong se corre como un applet en el navegador y se usó para obtener las proporciones para los tamaños de los elementos de la interfaz gráfica que se mencionan en el documento del tema.
+  * <http://uguu.org/arc_pong.html Pong Source] Código de Pong que puede ser referencia de como implementar el juego.
+  * <http://patriot.net/~tvalesky/paddlegame.html> Pong simplificado, juego de pong simplificado (1player) del que se puede estudiar la interfaz y la detección de colisiones y recepción de información del mouse.
+  * <http://java.sun.com/products/java-media/jai/forDevelopers/jaifaq.html> Java Advanced Imaging API, Documentación del API de procesamiento avanzado de imagenes de Sun para Java (Inglés)
+  * <http://www.planetacodigo.com/planeta/date/2004/02/ Tratamiento de imagenes con Java, Artículo acerca del procesamiento imagenes en Java (Español)
+  * <http://www.javahispano.org/codelibsbin.type.action?type=libsbin> Libreria de código, Codigo en java documentado en español que puede incorporarse en una aplicación. Útil para la documentación de los integrantes del proyecto en el lenguaje de programación.
+
 
 
 
