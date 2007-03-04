@@ -19,9 +19,33 @@ Entonces, se requiere una camara, un VTS desarrollado en java, porque es el leng
 
 Adicional, Java resulta ser un lenguaje adecuado porque su documentación es amplia, es sencillo para la creación de interfaces gráficas y es un sistema ampliamente utilizado para el desarrollo de juegos. Además es multiplataforma y recientemente es código abierto y libre. Este ultimo aspecto es fundamental para la filosofía de nuestro proyecto, pues GreenPong será una aplicación de código abierto y libre distribución siempre que se respete la autoría original y no se use con fines lucrativos.
 
+Analizando entonces otras posibles soluciones cabe mencionar que los lenguajes que requieran compilarse para cada sistema operativo en particular no están entre los posibles lenguajes a usar pues romperian con la posibilidad de que en el futuro esta forma experimental de interactividad pueda ser utilizada por otras personas. Además los lenguajes más conocidos de ese tipo resultan bastante más complejos que java y no hacen parte de los cursos de programación que se toman en primer semestre. Otras soluciones como C# utilizando la plataforma mono (el equivalente a .NET en código abierto), tienen la dificultad de ser más nuevos, y tener una sintaxis muy particular y requerir toda una plataforma para desarrollar en ellos y correr las aplicaciones resultantes que no esta tan utilizada como java, además mono no llega todavia  a la amplitud de .NET y no está entre los planes ni la filosofía de éste proyecto utilizar un lenguaje propiedad de una compañia sin compromiso con el desarrollo de software más accesiqueble y con más enfoque social por mero logro de la comunicación entre los hombres.
 
-==Metodología==
-*TODO*
+==Conocimiento necesarios de otras áreas del conocimiento==
+Para que este proyecto salga adelante se requiere pensar las formas en que matematicamente se debe gestionar la información de los dos programas del proyecto para hacerlo de la mejor forma posible, logrando simplifcar código y la utilización de recursos de la máquina en que se corran. Conceptos de geometria analítica pueden resultar útiles para gestionar la posición de los objetos del juego en el tablero y para sacar de dichas posiciones información, por ejemplo: Cuando un usuario pierde o cuando golpea la bola.
+
+Los conocimientos de diseño sobre el manejo de la imágen, los efectos de aplicar un algoritmo sobre ella y la forma en que se puede llegar a cierto tipo de imágen a partir de otra serán necesarios para el VTS. Sin dichos conceptos no se puede saber como aprovechar de la mejor forma utilidades como Java Advanced Imaging API o las librerias desarrolladas por terceros para manipulación de imágenes en aplicaciones Java.
+
+==Actividades pensadas para desarrollar el proyecto==
+**TODO**
+
+==Avances del proyecto==
+
+Nuestro equipo de trabajo se ha comprometido profundamente con *[ greenPong ]*. Debido a nuestro afán por documentar el proyecto, hemos decidido crear desde el comienzo un wiki y un repositorio de subversiones para almacenar nuestro código fuente. Ambos pueden verse desde internet ingresando en <http://code.google.com/p/greenpong>. Como puede verse la documentación y el código están hospedados en una herramienta web de google diseñada para facilitar el desarrollo de proyectos de código abierto.
+
+Sobre como desarrollar el juego (que es la primer fase del proyecto y que está próxima a concluir según el calendario propuesto en la entrega preliminar) se han realizado ciertas decisiones sobre el modelo de clases en Java. Se han creado clases para las barras y la bola y un contener, una clase gestiona la entrada y la salida y se comunica con otra llamada Brain. Esa separación, que puede parecer exagerada, nos ha parecido adecuada pues está pensada para la futura integración con el VTS en la segunda fase de GreenPong. Para el desarrollo del cerebro del programa también se han consultado otros clones de pong disponibles gratuitamente online. Dichas fuentes están mencionadas en el listado de fuentes al final de este documento. 
+
+Como entorno de desarrollo se está utilizando eclipse 3.1 con un plugin para acceder a repositorio de subversiones permitiendo desarrollar a los integrantes del grupo por partes el código desde distintas ubicaciones geográficas. Eclipse corre sobre ubuntu 6.06 Desktop version por lo que se explicaba previamente respecto a linux como sistema base del proyecto. 
+
+Un libro de referencia a Java completo y reconocido ha sido enviado a todos los integrantes del proyecto para que puedan informarse sobre la creación de GUIs (interfaces gráficas de usuario) en este lenguaje de modo que puedan leer y justificar las lineas de código que se van agregando al respositorio de subversiones. Se trata del libro Thinking in Java de Bruce Eckel. Tambiénd icho libro está referenciado al final del documento.
+
+==Listado de fuentes==
+Dado que resulta útil saber de que se trata cada fuente y que todas son fuentes en línea se ha mencionado aquí URL, título y temática del documento. Esta lista esta en constante actualización a través del wiki de GreenPong y puede consultarse online en <http://code.google.com/p/greenpong/wiki/FuentesDocumentacion>.
+
+
+
+
+==Metodología (para saber de que se trata cada parte)(EXTRADOCUMENTO)==
 
 _"Los grupos deben realizar una investigación de la situación actual de la situación   seleccionada. Cuáles son sus componentes, cuáles sus relaciones._
 
@@ -33,10 +57,6 @@ _Con qué disciplinas debe complementar la Ingeniería de Sistemas y Computació
 
 _Con base a los requerimientos identificados, se debe formular un conjunto de actividades (y resultados de cada actividad) que, conjuntamente, contribuyan a la construcción de la solución "_
 
-
-==Avances del proyecto==
-
-Nuestro equipo de trabajo se ha comprometido profundamente con *[ greenPong ]*, debido a nuestro afán por documentar el proyecto desde el comienzo hemos decidido crear una wiki y un repositorio de subversiones. El esqueleto del codigo ya esta desarrollado y cada uno de los integrantes se esta encargando de desarrollar un modulo especifico del mismo.
 
 ==Notas al equipo de trabajo (EXTRADOCUMENTO)==
 Borre la palabra versátil, no sé a que se refiere y Tibero seguramente va a hacer una pregunta de diccionario y capciosa en torno al tema, por eso mejor ahorrarse terminos que suenan muy ingeniericos pero que a algunos profesores no le agradan.
