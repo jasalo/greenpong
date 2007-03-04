@@ -4,9 +4,6 @@
 = Libros consultados =
   *[http://www.mindviewinc.com/downloads/TIJ-3rd-edition4.0.zip Thinking in Java] ECKEL, Bruce. 3rd edition. Libro completo y extenso con código fuente y gratuito de referencia para el lenguaje java.
 
-LIBRO DE JAVA FALTA POR CITAR SEGUN NORMAS DE CITAS DE LA UNIVERSIDAD
-
-
 = Webs consultadas =
   * [http://www.gamearchitect.net/Articles/GameObjects1.html Game Object Structure] Documento sobre como debe ser la estructura de clases, habla de juegos en C++, pero resulta util para decidir crear clases Box, Ball y Bar como entidades separada que se comunican y no heredan de un objeto general,ej gameObject
 
