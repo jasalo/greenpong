@@ -26,6 +26,8 @@ LIBRO DE JAVA FALTA POR CITAR SEGUN NORMAS DE CITAS DE LA UNIVERSIDAD
 
 *[http://www.planetacodigo.com/planeta/date/2004/02/] Artículo acerca del procesamiento imagenes en Java (Español)
 
+*[http://www.javahispano.org/codelibsbin.type.action?type=libsbin] Codigo en java documentado en español.
+
 <pre>
 Utilizar esto para formatear:
   * *Negrita* or _cursiva_
