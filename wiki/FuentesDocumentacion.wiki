@@ -20,6 +20,12 @@ LIBRO DE JAVA FALTA POR CITAR SEGUN NORMAS DE CITAS DE LA UNIVERSIDAD
   * [http://uguu.org/arc_pong.html Pong Source] Código de Pong que puede ser referencia de como implementar el juego.
   * [http://patriot.net/~tvalesky/paddlegame.html Pong simplificado] juego de pong simplificado (1player) del que se puede estudiar la interfaz y la detección de colisiones y recepción de información del mouse.
 
+==Nuevas:==
+
+*[http://java.sun.com/products/java-media/jai/forDevelopers/jaifaq.html] Documentación del API de procesamiento avanzado de imagenes de Suna para Java (Inglés)
+
+*[http://www.planetacodigo.com/planeta/date/2004/02/] Artículo acerca del procesamiento imagenes en Java (Español)
+
 <pre>
 Utilizar esto para formatear:
   * *Negrita* or _cursiva_
