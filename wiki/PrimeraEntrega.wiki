@@ -4,7 +4,7 @@
 *OJO:Antes de editar por favor revisen PrimeraEntregaDocumentoBase*
 
 
-==Objetivos y razon de ser del proyecto==
+==Objetivos y razón de ser del proyecto==
 
 El equipo de trabajo de *[ greenPong ]* pretende hacer posible que se juegue un clon del videojuego Pong, que fue de los primeros de la historia (ver, Pong[en linea] <>), recibiendo las órdenes del usuario para mover la barra que le corresponde en el juego usando un sistema no convencional. Para este proyeto en específico el sistema no convencional se refiere a una pelota de tennis con un mango cuya posición en el espacio es identificada por una cámara conectada a un computador. La cámara unida a un programa llamado VTS (visual tracknig system) genera constantemente información que representa la posición de la bola y que el juego Pong usa para mover la barra del usuario hasta que pierde. 
 
@@ -12,7 +12,7 @@ Es un proyecto que requiere un gran esfuerzo por parte de los integrantes del pr
 
 *Lo que pretendemos implementar como solución es conocido en el medio de la informática como *Visual Tracking, que consiste en, básicamente, ubicar en un espacio y tiempo determinados el movimiento del objeto de estudio (en nuestro caso pelota de tennis) usando como medio de captura de datos una cámara conectada al computador, con la particularidad de que en este caso además del patrón de movimiento se sigue un patrón de color, en este caso el de la pelota de tennis.*
 
-==Aproximación al problema desde la ingeniería de sistemas y computación==
+==Aproximación al problema desde la Ingeniería de Sistemas y Computación==
 Sin duda los términos en los que hemos descrito el objetivo del documento dejan claro que hablamos de una solución a través de computadores. Necesitamos una cámara que obtiene imágenes de la realidad de las cuales obtenemos información a través de la modificación de dichas imágenes y de la aplicación de algoritmos para identificar en que parte de la imágen se encuentra la bola de tennis. Luego ese programa, el VTS, entrega una serie de coordenadas al juego, de manera que éste mueve la barra y verifica si hubo o no contacto con la bola, gestionando el movimiento de todas las partes del juego. Estaríamos hablando entonces, de un programa que sigue un algoritmo arrojando datos a manera de resultados, implementados en otro programa que usa esa información para que *[ greenPong ]* pueda ser jugado.
 
 Entonces, se requiere una cámara, un VTS desarrollado en java, porque es el lenguaje al que más acceso tenemos todos en el momento, es de código abierto y multiplataformas, lo cual supone una futura gran acogida en cuanto a la aplicabilidad del proyecto. Para lograr esto usaremos el sistema operativo de libre distribución Linux Ubuntu,  pues permite manipular con mayor facilidad el acceso a los puertos, es decir la cámara, y existe mucha documentación en línea sobre el sistema operativo que puede resultar útil. Además, Ubuntu suele ser un sistema más eficiente y personalizable, ésto permite lograr un resultado final más fácil al haber menos restricciones. Por otro lado, Ubuntu permite la comunicación de procesos (hilos o threads) con facilidad y esto podría eventualmente ser necesario para la integración de la camara con el VTS y del VTS con Pong.
@@ -33,8 +33,6 @@ La actividad central sobre la cual gira el proyecto en esta primera fase es la i
 Las actividades posteriores son básicamente la creación del código del Pong y disposición de la cámara para unificarlos en el juego, además del diseño de algoritmos y cálculos que se emplearán para simular el movimiento de la pelota, el rebote, y demás elementos dinámicos necesarios.
 
 Por lo tanto en la primera fase se profundizará e indagará acerca de la implementación de librerías para procesamiento y manipulación de imágenes en Java, útil tanto como para la creación del Pong, como para el VTS que se desarrollará posteriormente. Se planea usar la librería _*swing*_ ofrecida por Java, pues es la más completa y útil para nuestro caso particular. La distribución de los elementos, a la hora de desarrollar el código de Pong, en el modelo del mundo como clases, paquetes, métodos y demás, estarán disponibles en el repositorio de subversiones, en la página web del proyecto.
-
-
 
 ==Avances del proyecto==
 
@@ -60,9 +58,6 @@ Dado que resulta útil saber de que se trata cada fuente y que todas son fuentes
   * <http://java.sun.com/products/java-media/jai/forDevelopers/jaifaq.html> Java Advanced Imaging API, Documentación del API de procesamiento avanzado de imagenes de Sun para Java (Inglés)
   * <http://www.planetacodigo.com/planeta/date/2004/02/> Tratamiento de imagenes con Java, Artículo acerca del procesamiento imagenes en Java (Español)
   * <http://www.javahispano.org/codelibsbin.type.action?type=libsbin> Libreria de código, Código en java documentado en español que puede incorporarse en una aplicación. Útil para la documentación de los integrantes del proyecto en el lenguaje de programación.
-
-
-
 
 ==Metodología (para saber de qué se trata cada parte)(EXTRADOCUMENTO)==
 
