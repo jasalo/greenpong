@@ -4,6 +4,10 @@
 = Libros consultados =
   * [http://www.mindviewinc.com/downloads/TIJ-3rd-edition4.0.zip Thinking in Java] ECKEL, Bruce. 3rd edition. Libro completo y extenso con código fuente y gratuito de referencia para el lenguaje java.
 
+  * Data Structures & Algorithms in Java. GOODRICH, Michael T. & TAMASSIA, Roberto. 4th Edition.  Libro bastante completo de Programacion en Java. *Disponible en la biblioteca de los Andes*
+
+  * The Linux Bible, The GNU Testament. 3rd Edition. Compilado por Yggdrasil Computing Incorporated, con derechos individuales de cada sección (remitirse al libro para mas información) *Disponible en la biblioteca de los Andes URGE ENCONTRAR VERSIÓN MÁS RECIENTE*
+
 = Webs consultadas =
   * [http://www.gamearchitect.net/Articles/GameObjects1.html Game Object Structure] Documento sobre como debe ser la estructura de clases, habla de juegos en C++, pero resulta util para decidir crear clases Box, Ball y Bar como entidades separada que se comunican y no heredan de un objeto general,ej gameObject
 
