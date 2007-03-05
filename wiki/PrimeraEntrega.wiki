@@ -10,7 +10,7 @@ El equipo de trabajo de GreenPong pretende hacer posible que se juegue un clon d
 
 Es un proyecto que requiere un gran esfuerzo por parte de los integrantes del proyecto, conocimientos de programación medianamente avanzados y una considerable disponibilidad de tiempo. La creación de greenPong (Pong + VTS) es un intento por crear formas económicas y poco convencionales de interactividad. Existen dispositivos que hacen posible que los movimientos del usuario en el espacio real se reflejen en el espacio virtual, sin embargo, greenPong apela a la necesidad de conseguir dicha interactividad a bajo precio, así sea sólo de modo experimental y sin ninguna intención de hacerlo lucrativo por el momento. ¿Qué mejor manera de lograrlo que con una cámara y una bola de tennis?
 
-*Lo que pretendemos implementar como solución es conocido en el medio de la informática como "visual tracking", que consiste en, básicamente, ubicar en un espacio y tiempo determinados el movimiento del objeto de estudio (en nuestro caso pelota de tennis) usando como medio de captura de datos una cámara conectada al computador, con la particularidad de que en este caso además del patrón de movimiento se sigue un patrón de color, en este caso el de la pelota de tennis.*
+*Lo que pretendemos implementar como solución es conocido en el medio de la informática como *Visual Tracking, que consiste en, básicamente, ubicar en un espacio y tiempo determinados el movimiento del objeto de estudio (en nuestro caso pelota de tennis) usando como medio de captura de datos una cámara conectada al computador, con la particularidad de que en este caso además del patrón de movimiento se sigue un patrón de color, en este caso el de la pelota de tennis.*
 
 ==Aproximación al problema desde la ingeniería de sistemas y computación==
 Sin duda los términos en los que hemos descrito el objetivo del documento dejan claro que hablamos de una solución a través de computadores. Necesitamos una cámara que obtiene imágenes de la realidad de las cuales obtenemos información a través de la modificación de dichas imágenes y de la aplicación de algoritmos para identificar en que parte de la imágen se encuentra la bola de tennis. Luego ese programa, el VTS, entrega una serie de coordenadas al juego, de manera que éste mueve la barra y verifica si hubo o no contacto con la bola, gestionando el movimiento de todas las partes del juego. Estaríamos hablando entonces, de un programa que sigue un algoritmo arrojando datos a manera de resultados, implementados en otro programa que usa esa información para que greenPong pueda ser jugado.
@@ -28,11 +28,13 @@ Los conocimientos de diseño sobre el manejo de la imagen, los efectos de aplica
 
 ==Actividades pensadas para desarrollar el proyecto==
 
-La actividad central sobre la cual gira el proyecto en esta primera fase es la investigación y documentación sobre los recursos de Java y el código necesario para implementar Pong inicialmente, y para entender la disposicion del sistema de VTS que se integraría con los otros elementos.
+La actividad central sobre la cual gira el proyecto en esta primera fase es la investigación y documentación sobre los recursos de Java y el código necesario para desarrollar Pong inicialmente, y para entender la disposicion del sistema de VTS que se integraría con los otros elementos a futuro.
 
-Las actividades posteriores son basicamente la creación del código del Pong y disposición de la cámara para unificarlo con el juego, además del diseño de algoritmos y cálculos que se emplearán para simular el movimiento de la pelota, el rebote, y demás elementos dinámicos necesarios.
+Las actividades posteriores son básicamente la creación del código del Pong y disposición de la cámara para unificarlos en el juego, además del diseño de algoritmos y cálculos que se emplearán para simular el movimiento de la pelota, el rebote, y demás elementos dinámicos necesarios.
 
-*TODO, completar esto...*
+Por lo tanto en la primera fase se profundizará e indagará acerca de la implementación de librerías para procesamiento y manipulación de imágenes en Java, útil tanto como para la creación del Pong, como para el VTS que se desarrollará posteriormente. Se planea usar la librería _*swing*_ ofrecida por Java, pues es la más completa y útil para nuestro caso particular. La distribución de los elementos, a la hora de desarrollar el código de Pong, en el modelo del mundo como clases, paquetes, métodos y demás, estarán disponibles en el repositorio de subversiones, en la página web del proyecto.
+
+
 
 ==Avances del proyecto==
 
