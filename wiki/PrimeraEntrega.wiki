@@ -58,6 +58,7 @@ Dado que resulta útil saber de que se trata cada fuente y que todas son fuentes
   * <http://java.sun.com/products/java-media/jai/forDevelopers/jaifaq.html> Java Advanced Imaging API, Documentación del API de procesamiento avanzado de imagenes de Sun para Java (Inglés)
   * <http://www.planetacodigo.com/planeta/date/2004/02/> Tratamiento de imagenes con Java, Artículo acerca del procesamiento imagenes en Java (Español)
   * <http://www.javahispano.org/codelibsbin.type.action?type=libsbin> Libreria de código, Código en java documentado en español que puede incorporarse en una aplicación. Útil para la documentación de los integrantes del proyecto en el lenguaje de programación.
+  * <http://www.cat.csiro.au/cmst/staff/jmr/thesis/> Tesis : " Attentive Visual Tracking and Trajectory Estimation for Dynamic Scene Segmentation".
 
 ==Metodología (para saber de qué se trata cada parte)(EXTRADOCUMENTO)==
 
