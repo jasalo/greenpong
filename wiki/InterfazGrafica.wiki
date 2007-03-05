@@ -11,3 +11,5 @@ Se cumple que 3.5 barras (su ancho) es aproximadamente el ancho total del tabler
 En el ancho de una barra pueden caber unas 4.5 bolas. Como dato curioso, en el ejemplo mostrado anteriormente, la velocidad de la bola aumenta si choca contra una pared, y se mantiene constante si tan solo choca contra las barras.
 
 Se creo un archivo png con las dos barras y la bola y se indican las medidas, se espera opinion sobre si estas son las medidaes adecuadas para el diseño. Ver archivo en Downloads.
+
+Dato mencionado por JP: "La velocidad de la bola se incrementa cada vez q rebota en la pared"
