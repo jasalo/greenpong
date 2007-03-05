@@ -27,7 +27,12 @@ Para que este proyecto salga adelante se requiere pensar las formas en que matem
 Los conocimientos de diseño sobre el manejo de la imágen, los efectos de aplicar un algoritmo sobre ella y la forma en que se puede llegar a cierto tipo de imágen a partir de otra serán necesarios para el VTS. Sin dichos conceptos no se puede saber como aprovechar de la mejor forma utilidades como Java Advanced Imaging API o las librerias desarrolladas por terceros para manipulación de imágenes en aplicaciones Java.
 
 ==Actividades pensadas para desarrollar el proyecto==
-**TODO**
+
+La actividad central sobre la cual gira el proyecto en esta primera fase es la investigación y documentación sobre los recursos de Java y el código necesario para implementar el juego de PONG inicialmente, y para entender la disposicion del sistema de VTS que se integraria con los otros elementos.
+
+Las actividades posteriores son basicamente la creacion del código del PONG y disposicion de la camara para unificarlo con el juego, además del diseño de algoritmos y cálculos que se emplearan para simular el movimiento de la pelota, el rebote, y demás elementos dinámicos necesarios.
+
+**TODO, completar esto...**
 
 ==Avances del proyecto==
 
