@@ -12,4 +12,7 @@ En el ancho de una barra pueden caber unas 4.5 bolas. Como dato curioso, en el e
 
 Se creo un archivo png con las dos barras y la bola y se indican las medidas, se espera opinion sobre si estas son las medidaes adecuadas para el diseño. Ver archivo en Downloads.
 
+==Física==
+
+
 Dato mencionado por JP: "La velocidad de la bola se incrementa cada vez q rebota en la pared"
