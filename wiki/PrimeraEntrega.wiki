@@ -71,6 +71,8 @@ Dado que resulta útil saber de que se trata cada fuente y que todas son fuentes
 
   * http://www.cat.csiro.au/cmst/staff/jmr/thesis/ Tesis : " Attentive Visual Tracking and Trajectory Estimation for Dynamic Scene Segmentation".
 
+  * http://www.javagaming.org/forums/ Foros de progrmaciòn en java con una comunidad muy amigable, para resolver cualquier duda. 
+
 
 ==Metodología (para saber de qué se trata cada parte)(EXTRADOCUMENTO)==
 
