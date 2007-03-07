@@ -31,4 +31,4 @@
 
   * [http://www.javagaming.org/forums/] Absolutamente todo, para resolver cualquier duda.
 
-  *http://www.cat.csiro.au/cmst/staff/jmr/thesis/ Tesis : " Attentive Visual Tracking and Trajectory Estimation for Dynamic Scene Segmentation".
+  *  http://www.cat.csiro.au/cmst/staff/jmr/thesis/ Tesis : " Attentive Visual Tracking and Trajectory Estimation for Dynamic Scene Segmentation".
