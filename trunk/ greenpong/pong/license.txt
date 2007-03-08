@@ -1,7 +1,0 @@
-This software is free software, I don't care what you do with it,
-including redistribution with modifications and using it in commercial
-applications.  Acknowledgment of its origin is appreciated but not
-required.
-
-This software comes with no express or implied warranty.  If anything
-breaks, it's your fault.
