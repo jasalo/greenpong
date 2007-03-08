@@ -1,0 +1,10 @@
+Configuracion para Ant en Linux
+
+En linux se debe agregar la siguiente linea al archivo .bashrc del home
+puede correrse el siguiente comando para realizar lo anterior:
+echo export JAVA_HOME="/usr/lib/j2sdk1.5-sun/" >> ~/.bashrc
+Una vez hecho esto se debe reiniciar el etorno gràfico y no se requiere repetir el proceso en adelante.
+
+Configuracion para Ant en Windows
+Se debe saber en que sitio esta la carpeta del SDK y dando click derecho MI PC
+Definir  la variable de entorno JAVA_HOME y darle la ruta al SDK.
