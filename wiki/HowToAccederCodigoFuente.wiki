@@ -18,5 +18,8 @@ Terminado, tiene usted el plugin subclipse instalado en su IDE.
 = Accediendo al código fuente =
 Las siguientes son las instrucciones para poder obtener el codigo fuente desarrollado hasta el momento. Elija New -> Other (ctrl + N). Seleccione en SVN checkout project from SVN. Elija create a new repository location si es la primera vez que accede al cogio fuenteo o elija el existente. 
 Use como url esta: https://greenpong.googlecode.com/svn/trunk/
-Recuerde no dejar espacios antes ni despues
+Recuerde no dejar espacios antes ni despues. Seleccione la carpeta greenpong que contiene todo el codigo fuente y los archivos README y los archivos de referencia.
+
 Use como usuario su user de gmail y como clave la que sale al ingresar a la pagina http://code.google.com/hosting/settings *ESTA CLAVE ES SOLO PARA ADMINISTRADORES NO LA DE A CONOCER*
+
+Seleccione checkout as a project new project in the workspace y llameno greenpong (Ojo con las mayusculas). Siga el asistente y le quedara el proyecto en local. Para subir el codigo que acaba de editar o para obtener cualquier informacion remota click derecho sobre el proyecto y use las opciones del menu edit ojo con los cuidados realizados porq se realizan en el hosting de google.
