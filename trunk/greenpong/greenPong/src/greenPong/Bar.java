@@ -8,6 +8,12 @@ package greenPong;
  * @author ubuntu
  *
  */
-public class Bar {
+public class Bar extends pongGameObject{
+	
+public static final String urlBar = "../../img/<IMAGEN BARRA>";
+	
+	Bar(){
+		init(urlBar);
+	}
 
 }

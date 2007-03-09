@@ -10,6 +10,12 @@ package greenPong;
  * @author ubuntu
  *
  */
-public class Ball {
+public class Ball extends pongGameObject{
+	
+	public static final String urlBall = "../../img/<IMAGEN BOLA>";
+	
+	Ball(){
+		init(urlBall);
+	}
 
 }
