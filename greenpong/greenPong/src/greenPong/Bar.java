@@ -3,7 +3,7 @@
  * 
  */
 package greenPong;
-
+import java.io.*;
 /**
  * @author ubuntu
  *
@@ -15,7 +15,12 @@ public class Bar extends pongGameObject{
 	public static final int ALTO =34;
 	
 	Bar(){
-		init(URLBAR);
+		//Bloque necesario porque hay lectura de archivos, ergo posible error
+		try{
+			init(URLBAR);
+		}catch(IOException  e){
+			System.err.println(URLBAR + ": No es una imagen utilizable para Bar");			
+		}
 		java.awt.Dimension dimension = new java.awt.Dimension();
 		dimension.setSize(ANCHO, ALTO);
 		setMinimumSize(dimension);

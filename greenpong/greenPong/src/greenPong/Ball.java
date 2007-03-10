@@ -5,8 +5,8 @@
  * 
  */
 package greenPong;
-
-import java.awt.geom.Dimension2D;
+import java.io.*;
+//import java.awt.geom.Dimension2D;
 
 /**
  * @author ubuntu
@@ -19,7 +19,12 @@ public class Ball extends pongGameObject{
 	public static final int ALTO = 28;
 		
 	Ball(){
-		init(URLBALL);
+		//Bloque necesario porque hay lectura de archivos, ergo posible error
+		try{
+			init(URLBALL);
+		}catch(IOException  e){
+			System.err.println(URLBALL + ": No es una imagen utilizable para Ball");			
+		}
 		java.awt.Dimension dimension = new java.awt.Dimension();
 		dimension.setSize(ANCHO, ALTO);
 		setMinimumSize(dimension);
