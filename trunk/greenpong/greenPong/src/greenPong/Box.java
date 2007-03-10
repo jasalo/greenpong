@@ -3,7 +3,8 @@
  * Brain constantemente.
  */
 package greenPong;
-
+import javax.swing.*;
+import java.awt.*;
 /**
  * fUNCION SIN METODOS POR AHORA.
  *
@@ -27,6 +28,10 @@ public class Box extends javax.swing.JFrame {
         setTitle("[greenPong]");
         setResizable(false);
         setSize(ANCHO,ALTO); //Numeros tomados del estudio de proporciones
+        getContentPane().add(userBar, BorderLayout.NORTH);
+        getContentPane().add(gameBall, BorderLayout.CENTER);
+        getContentPane().add(computerBar, BorderLayout.SOUTH);
+		pack();
         /**
          * Falta por definir el layout, las posiciones de los objs.
          * 
