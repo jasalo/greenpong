@@ -7,20 +7,18 @@ package greenPong;
 /**
  * 
  * @author ubuntu
- *
+ * 
  */
-public class Main{
-       
-    public Main() {
-	
-    }
-    
+public class Main {
 
-    public static void main(String[] args) {
-    	Box caja = new Box();
-    	System.out.println("El programa ha sido corrido");
+	public Main() {
 
-	
-    }
-    
+	}
+
+	public static void main(String[] args) {
+		GameWindow caja = new GameWindow(args);
+		System.out.println("El programa ha sido corrido");
+
+	}
+
 }
