@@ -6,16 +6,25 @@
  */
 package greenPong;
 
+import java.awt.geom.Dimension2D;
+
 /**
  * @author ubuntu
  *
  */
 public class Ball extends pongGameObject{
 	
-	public static final String urlBall = "../../img/<IMAGEN BOLA>";
-	
+	public static final String URLBALL = "../../img/<IMAGEN BOLA>";
+	public static final int ANCHO = 28;
+	public static final int ALTO = 28;
+		
 	Ball(){
-		init(urlBall);
+		init(URLBALL);
+		java.awt.Dimension dimension = new java.awt.Dimension();
+		dimension.setSize(ANCHO, ALTO);
+		setMinimumSize(dimension);
+		setPreferredSize(dimension);
+		setMaximumSize(dimension);
 	}
 
 }

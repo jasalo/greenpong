@@ -10,10 +10,17 @@ package greenPong;
  */
 public class Bar extends pongGameObject{
 	
-public static final String urlBar = "../../img/<IMAGEN BARRA>";
+	public static final String URLBAR = "../../img/<IMAGEN BARRA>";
+	public static final int ANCHO =127;
+	public static final int ALTO =34;
 	
 	Bar(){
-		init(urlBar);
+		init(URLBAR);
+		java.awt.Dimension dimension = new java.awt.Dimension();
+		dimension.setSize(ANCHO, ALTO);
+		setMinimumSize(dimension);
+		setPreferredSize(dimension);
+		setMaximumSize(dimension);
 	}
 
 }
