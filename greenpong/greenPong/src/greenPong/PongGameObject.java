@@ -43,11 +43,6 @@ public class PongGameObject extends javax.swing.JLabel {
 	}
 	
 
-	public void moveTo(int x, int y){
-		this.setBounds(x, y, x+ANCHO, y+ALTO);
-		contenedor.repaint();
-	}
-	
 	public void init() throws IOException {
 		/**
 		 * Codigo tomado de:
@@ -81,5 +76,22 @@ public class PongGameObject extends javax.swing.JLabel {
 		*/
 		setIcon(icon);
 		setBorder(null);
+	}
+	
+	public void centerInX(){
+		int y = (int)getLocation().getY(); //posicion actual en y
+		int x = (int)((contenedor.getWidth() - getWidth() )/2);
+		setLocation(x,y);
+	}
+	
+	public void centerInY(){
+		int x = (int)getLocation().getX(); //posicion actual en y
+		int y = (int)((contenedor.getHeight() - getHeight() )/2);
+		setLocation(x,y);
+	}
+	
+	public void center(){
+		centerInY();
+		centerInX();
 	}
 } //Fin clase
