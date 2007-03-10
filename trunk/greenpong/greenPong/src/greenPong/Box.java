@@ -44,7 +44,7 @@ public class Box extends javax.swing.JPanel {
 		 * 
 		 */
 		//Ubica las barras verticalmente a la posicion en la q quedaran
-		userBar.setLocation(10, 509);
+		userBar.setLocation(10, getHeight() - 71);
 		computerBar.setLocation(10,10);
 		
 		gameBall.setLocation(200,200);
