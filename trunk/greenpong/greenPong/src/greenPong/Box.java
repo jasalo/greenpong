@@ -32,29 +32,43 @@ public class Box extends javax.swing.JPanel {
 		computerBar = new Bar(args[0], this);
 		gameBall = new Ball(args[1], this);
 		setSize(ANCHO, ALTO); // Numeros tomados del estudio de proporciones
-		
+
 		this.setLayout(null);
-		
-		/*contenedor.getContentPane().*/add(userBar, BorderLayout.NORTH);
-		/*contenedor.getContentPane().*/add(gameBall, BorderLayout.CENTER);
-		/*contenedor.getContentPane().*/add(computerBar, BorderLayout.SOUTH);
+
+		/* contenedor.getContentPane(). */add(userBar, BorderLayout.NORTH);
+		/* contenedor.getContentPane(). */add(gameBall, BorderLayout.CENTER);
+		/* contenedor.getContentPane(). */add(computerBar, BorderLayout.SOUTH);
 		setBackground(java.awt.Color.RED);
 		/**
 		 * Falta por definir el layout, las posiciones iniciales de los objs.
 		 * 
 		 */
-		//Ubica las barras verticalmente a la posicion en la q quedaran
-		userBar.setLocation(10, getHeight() - 71);
-		computerBar.setLocation(10,10);
-		
-		gameBall.setLocation(200,200);
-		//gameBall.getLocation().get
-		info("Box: " + this.getWidth() + ":" + this.getHeight());
-		
+		ajustarComponentes();
 
 	}
-	
-	public void info(String abc){
+
+	public void ajustarComponentes() {
+		// Ubica las barras verticalmente a la posicion en la q quedaran
+		userBar.setFinalYPosition(getHeight() - 71);
+		userBar.setLocation(10, userBar.getFinalYPosition());
+		info("Userbar Y final position:" + userBar.getFinalYPosition());
+		userBar.centerInX();
+		userBar.moveRight(20);
+
+		computerBar.setFinalYPosition(10);
+		computerBar.setLocation(10, computerBar.getFinalYPosition());
+		info("Computerbar Y final position:" + computerBar.getFinalYPosition());
+		computerBar.centerInX();
+		computerBar.moveLeft(20);
+
+		gameBall.setLocation(200, 200);
+		gameBall.center();
+		// gameBall.getLocation().get
+		info("Box: " + this.getWidth() + ":" + this.getHeight());
+
+	}
+
+	public void info(String abc) {
 		System.out.println(abc);
 	}
 
