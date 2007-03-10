@@ -17,6 +17,7 @@ public class Main{
     
 
     public static void main(String[] args) {
+    	Box caja = new Box();
     	System.out.println("El programa ha sido corrido");
 
 	
