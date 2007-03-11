@@ -9,6 +9,10 @@ import java.io.*;
 import javax.swing.*;
 
 /**
+ * IMPORTANTE: Todo control esta ubicado en cartesiano por ez?quina inf izq
+ */
+
+/**
  * Esta clase es el generico de una bola o de una barra. Permite incluir la
  * funcionalidad para obtener su posicion y asiganrle una imagen. Simplifica
  * enormemente las clases bar y ball.
@@ -93,5 +97,18 @@ public class PongGameObject extends javax.swing.JLabel {
 	public void center(){
 		centerInY();
 		centerInX();
+	}
+	
+	public int getCartesianX(){
+		return (int)getLocation().getX();
+	}
+	
+	public int getCartesianY(){
+		return (contenedor.getHeight() - (int)this.getLocation().getY());
+	}
+	
+	public void setX(int x){
+		int y = (int)getLocation().getY();
+		setLocation(x, y);
 	}
 } //Fin clase

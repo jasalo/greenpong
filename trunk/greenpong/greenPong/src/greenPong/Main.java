@@ -10,14 +10,18 @@ package greenPong;
  * 
  */
 public class Main {
+	
+	//Cantidad de milisegundos entre cada calculo matematico de los cerebros
+	public static final int brainTime = 100;
 
 	public Main() {
 
 	}
 
 	public static void main(String[] args) {
-		GameWindow caja = new GameWindow(args);
-		System.out.println("El programa ha sido corrido");
+		Brain appBrain = new Brain(args);
+		appBrain.start();
+		System.out.println("greenPong iniciado");
 
 	}
 
