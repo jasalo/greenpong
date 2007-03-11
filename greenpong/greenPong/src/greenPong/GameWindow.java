@@ -13,12 +13,14 @@ import java.awt.Dimension;
  * 
  */
 public class GameWindow extends javax.swing.JFrame {
-
+	Box windowBox;
+	
 	GameWindow(String[] args) {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setTitle("[greenPong]");
 		setResizable(false);
-		getContentPane().add(new Box(args, this), BorderLayout.CENTER);
+		windowBox = new Box(args, this);
+		getContentPane().add(windowBox, BorderLayout.CENTER);
 		
 		//
 		//getContentPane().add(new javax.swing.JButton("Yo Estorbo!!"), BorderLayout.SOUTH);
