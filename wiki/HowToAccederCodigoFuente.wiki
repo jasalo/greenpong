@@ -33,7 +33,7 @@ Las siguientes son las instrucciones para poder obtener el codigo fuente desarro
 
 3.*Si es la primera vez que accede al codigo fuente* elija create a new repository location, en caso contrario elija "Use a existing repository location".
 
-4.Use como url esta: _*https://greenpong.googlecode.com/svn/trunk/greenpong/_ Verifique  no haber dejado espacios antes ni despues*. Seleccione la carpeta greenpong que contiene todo el codigo fuente, los archivos README y los archivos de referencia.
+4.Use como url esta: _*https://greenpong.googlecode.com/svn/trunk/greenpong/ _ Verifique  no haber dejado espacios antes ni despues*. Seleccione la carpeta greenpong que contiene todo el codigo fuente, los archivos README y los archivos de referencia.
 
 5.Use como usuario su user de gmail y como clave la que sale al ingresar a la pagina http://code.google.com/hosting/settings *ESTA CLAVE ES SOLO PARA ADMINISTRADORES NO LA DE A CONOCER*
 
