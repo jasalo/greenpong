@@ -22,6 +22,8 @@ public class Brain extends Thread {
 		userBar = contenedor.userBar;
 		computerBar = contenedor.computerBar;
 		gameBall = contenedor.gameBall;
+		InputManager entrada = new InputManager(userBar, contenedor.nivel); //Se entrega la barra que se controlara
+		contenedor.addKeyListener(entrada);
 	}
 	
 	public void run() {
