@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
 
 /**
  * fUNCION SIN METODOS POR AHORA.
@@ -24,6 +25,7 @@ public class Box extends javax.swing.JPanel {
 
 	// La bola del juego, no se llama ball para evitar errorer al escribir
 	Ball gameBall;
+	GameLevel nivel;
 
 	Box(String[] args, javax.swing.JFrame contenedor) {
 		// Args: Util para recibir por consola las imagenes del juego
@@ -43,8 +45,9 @@ public class Box extends javax.swing.JPanel {
 		 * Falta por definir el layout, las posiciones iniciales de los objs.
 		 * 
 		 */
-		ajustarComponentes();
-
+		ajustarComponentes();	
+		
+		
 	}
 
 	public void ajustarComponentes() {
