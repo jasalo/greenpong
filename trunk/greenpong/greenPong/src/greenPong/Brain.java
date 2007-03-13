@@ -5,6 +5,8 @@
  */
 package greenPong;
 
+import java.awt.event.MouseEvent;
+
 /**
  * @author ubuntu
  *
@@ -23,28 +25,29 @@ public class Brain extends Thread {
 		computerBar = contenedor.computerBar;
 		gameBall = contenedor.gameBall;
 		InputManager entrada = new InputManager(userBar, contenedor.nivel); //Se entrega la barra que se controlara
-		contenedor.addKeyListener(entrada);
+		System.out.println("Agregando listener");
+		contenedor.addMouseMotionListener(entrada);
 	}
 	
 	public void run() {
-		int count=0;
 		userBar.setLocation(0, userBar.getFinalYPosition());
+		
 		computerBar.setX(0);
 		userBar.setX(contenedor.getWidth()-150);
 		//BUCLE INFINITO
-		while (count < 440){
+		while (1==1){
 			try{
 				sleep(Main.brainTime);
 			}catch(InterruptedException e){}
 			/**
 			 * Codigo a correr cada vez q se cumple el tiempo
 			 */
-			System.out.println("Entrando al ciclo " + count);
+			/*System.out.println("Entrando al ciclo " + count);
 			userBar.moveLeft(1);
 			computerBar.moveRight(1);
-			count++;
+			count++;*/
 		}
-		System.exit(1);
+		
 	}
 	
 	/**Este metodo evalua normas del juego o cosas que se tienen que cumplir

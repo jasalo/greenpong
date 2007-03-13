@@ -4,6 +4,10 @@
  */
 package greenPong;
 
+import java.awt.AWTException;
+
+
+
 /**
  * 
  * @author ubuntu
@@ -19,6 +23,8 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+		
+		
 		Brain appBrain = new Brain(args);
 		appBrain.start();
 		System.out.println("greenPong iniciado");
