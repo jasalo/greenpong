@@ -33,7 +33,7 @@ public class Brain extends Thread {
 		userBar.setLocation(0, userBar.getFinalYPosition());
 		
 		computerBar.setX(0);
-		userBar.setX(contenedor.getWidth()-150);
+		userBar.setX(300);
 		//BUCLE INFINITO
 		while (1==1){
 			try{
