@@ -30,24 +30,23 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 		System.out.println("Se movio el mouse");
 		int x1 = e.getX();
 		int y1 = e.getY();
-		if(userBar.getX() > 300)
+		e.translatePoint(0,0);
+		if(e.getX() > 364)
 		{
 			userBar.setX(300);
-		} else if(userBar.getX() < 10)
+		}
+		else if(e.getX() < 74)
 		{
 			userBar.setX(10);
-		} else if(userBar.getX() <= 300)
+		}
+		else if(e.getX() <= 364 && e.getX() >= 74)
 		{
 			userBar.setX(x1-64);
-		}
-		else if(userBar.getX() >= 10)
-		{
-			userBar.setX(x1-63);
 		}
 		
 		px = x1;
 		py = y1;
-		e.translatePoint(0,0);
+		
 		
 		
 	}
