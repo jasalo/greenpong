@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
  */
 public class InputManager implements java.awt.event.MouseMotionListener{
 	Bar userBar;
+	Box contenedor;
 	GameLevel nivel;
 	int px, py; //Posicion previa en x y y.
 
@@ -29,11 +30,21 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 		System.out.println("Se movio el mouse");
 		int x1 = e.getX();
 		int y1 = e.getY();
-		if(px-x1>0){
-			userBar.moveLeft(3);
-		}else{
-			userBar.moveRight(3);
+		if(userBar.getX() > 300)
+		{
+			userBar.setX(300);
+		} else if(userBar.getX() < 10)
+		{
+			userBar.setX(10);
+		} else if(userBar.getX() <= 300)
+		{
+			userBar.setX(x1-64);
 		}
+		else if(userBar.getX() >= 10)
+		{
+			userBar.setX(x1-63);
+		}
+		
 		px = x1;
 		py = y1;
 		e.translatePoint(0,0);
@@ -44,8 +55,8 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 	InputManager(Bar bar, GameLevel nNivel){
 		userBar = bar;
 		nivel = nNivel;
-		px= 0;
-		py =0;
+		px=0;
+		py=0;
 	}
 	
 	
