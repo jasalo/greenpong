@@ -12,7 +12,7 @@ public class Bar extends PongGameObject {
 
 	public static final int ALTO = 34;
 	private int finalYPosition;
-	InfoWindow info;
+	
 
 	public Bar(String urlImage, Box ncontenedor) {
 		super(urlImage, ncontenedor);
