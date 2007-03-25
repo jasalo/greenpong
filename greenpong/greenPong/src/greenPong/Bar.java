@@ -22,6 +22,7 @@ public class Bar extends PongGameObject {
 		setPreferredSize(dim.getSize());
 		setSize( this.getPreferredSize());
 		finalYPosition = contenedor.getHeight() - 71 ;//NPI PQ, PERO ES ASI
+		centerInX();
 	}
 	
 	public void setFinalYPosition(int y){
@@ -47,6 +48,19 @@ public class Bar extends PongGameObject {
 	}
 	
 	public void center(){
-//		Evita que se pueda centrar una barra verticalmente;
+		// Evita que se pueda centrar una barra verticalmente;
+	}
+	
+	public int getKc(){
+		int kc = getCartesianY() - ALTO;
+		System.out.println("kc=" + kc);
+		return kc;
+		
+	}
+	
+	public int getKu(){
+		int ku = getCartesianY();
+		System.out.println("ku=" + this.getLocation().getX());
+		return ku - 100;
 	}
 }

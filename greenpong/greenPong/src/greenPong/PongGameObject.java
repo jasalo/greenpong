@@ -9,7 +9,7 @@ import java.io.*;
 import javax.swing.*;
 
 /**
- * IMPORTANTE: Todo control esta ubicado en cartesiano por ez?quina inf izq
+ * IMPORTANTE: Todo control esta ubicado en cartesiano por esquina inf izq
  */
 
 /**
@@ -104,11 +104,28 @@ public class PongGameObject extends javax.swing.JLabel {
 	}
 	
 	public int getCartesianY(){
-		return (contenedor.getHeight() - (int)this.getLocation().getY());
+		System.out.println(contenedor.getHeight() + "-" + (int)this.getLocation().getY() );
+		int r = contenedor.getHeight() - (int)this.getLocation().getY();
+		System.out.println("Voy a retornar pa cartesiano: " + r);
+		return r;
 	}
 	
 	public void setX(int x){
 		int y = (int)getLocation().getY();
 		setLocation(x, y);
+	}
+	
+
+	
+	// Métodos extremos
+	
+	public int rightExtreme(){
+		int rE = getCartesianX() + ANCHO;
+		return rE;
+	}
+	
+	public int leftExtreme(){
+		int lE = getCartesianX();
+		return lE;
 	}
 } //Fin clase

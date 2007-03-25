@@ -33,13 +33,13 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 		e.translatePoint(0,0);
 		if(e.getX() > 364)
 		{
-			userBar.setX(300);
+			userBar.setX(contenedor.ANCHO-userBar.ANCHO-10);
 		}
 		else if(e.getX() < 74)
 		{
 			userBar.setX(10);
 		}
-		else if(e.getX() <= 364 && e.getX() >= 74)
+		else if(e.getX() <= 309 && e.getX() >= 74)
 		{
 			userBar.setX(x1-64);
 		}
