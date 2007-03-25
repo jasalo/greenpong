@@ -13,8 +13,8 @@ import javax.swing.*;
  *
  */
 public class InfoWindow extends javax.swing.JFrame {
-		
-		JTextArea caja;
+		private boolean pause=false;
+		private JTextArea caja;
 		
 		public InfoWindow(String titulo){
 			setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -32,6 +32,12 @@ public class InfoWindow extends javax.swing.JFrame {
 		}
 		
 		public void info(String texto){
-			caja.setText(caja.getText() + "\n" + texto);
+			if(pause==false){
+				caja.setText(texto + "\n" + caja.getText());
+			}
+		}
+		
+		public void pause(){
+			pause = true;
 		}
 }

@@ -40,6 +40,7 @@ public class Brain extends Thread {
 	public void run() {
 		userBar.setLocation(0, userBar.getFinalYPosition());
 		computerBar.centerInX();
+		computerBar.setX(10);
 		userBar.centerInX();
 		while (1 == 1) {
 			try {
@@ -58,7 +59,7 @@ public class Brain extends Thread {
 				evaluarNormas();
 			}
 			XXX = 1;
-			gameBall.moveDown(1);
+			gameBall.moveUp(12);
 			System.out.println("Va para arriba? " + vaPaArriba());
 
 			System.out.println("---------------------");
@@ -75,7 +76,7 @@ public class Brain extends Thread {
 
 		if (vaPaArriba()) {
 
-			if (gameBall.getCartesianY() >= computerBar.getKc()) {
+			if (gameBall.getCartesianY() >= kc()) {
 
 				int cl = computerBar.leftExtreme();
 				int cr = computerBar.rightExtreme();
@@ -142,11 +143,28 @@ public class Brain extends Thread {
 
 	public void perdio() {
 		info.info("PERDIO");
+		info.pause();
+		userBar.info.pause();
+		gameBall.info.pause();
 
 	}
 
 	public void gano() {
 
+	}
+	
+	public int kc(){
+		//Retorna en cartesiano
+		int kc = Box.ALTO - ((int)computerBar.getLocation().getY() + Bar.ALTO);
+		info.info("kc=" + kc);
+		return kc;
+	}
+	
+	public int ku(){
+		//Retorna en cartesiano
+		int ku = Box.ALTO - ((int)userBar.getLocation().getY());
+		info.info("ku=" + ku);
+		return ku;
 	}
 
 }
