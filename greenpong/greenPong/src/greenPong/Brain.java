@@ -29,6 +29,7 @@ public class Brain extends Thread {
 		userBar = contenedor.userBar;
 		computerBar = contenedor.computerBar;
 		gameBall = contenedor.gameBall;
+		computerBar.info.setVisible(false);
 		InputManager entrada = new InputManager(userBar, contenedor.nivel); 
 		System.out.println("Agregando listener");
 		contenedor.addMouseMotionListener(entrada);
@@ -94,7 +95,7 @@ public class Brain extends Thread {
 		}
 
 		if (!vaPaArriba()) {
-			if (gameBall.getCartesianY() - gameBall.ALTO <= computerBar.getKu()) {
+			if (gameBall.getCartesianY() - Ball.ALTO <= computerBar.getKu()) {
 				int ul = userBar.leftExtreme();
 				int ur = userBar.rightExtreme();
 				int bl = gameBall.leftExtreme();
