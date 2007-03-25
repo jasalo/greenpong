@@ -21,9 +21,11 @@ public class Brain extends Thread {
 	final static int ABAJO = -1;
 	int XXX = 0; 
 	int direccion;
+	InfoWindow info;
 
 	public Brain(String[] args) {
 		super();
+		info = new InfoWindow("Brain");
 		GameWindow caja = new GameWindow(args);
 		contenedor = caja.windowBox;
 		userBar = contenedor.userBar;
@@ -139,7 +141,7 @@ public class Brain extends Thread {
 	}
 
 	public void perdio() {
-		System.out.println("MUCHO AMOTRO! PERDIO");
+		info.info("PERDIO");
 
 	}
 

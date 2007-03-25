@@ -60,5 +60,19 @@ public class Ball extends PongGameObject {
 		int k = getCartesianY() + (int)(ALTO/2);
 		return k;
 	}
+	
+// Métodos extremos
+	
+	public int rightExtreme(){
+		int rE = getCartesianX() + ANCHO;
+		info.info("rExt: " + rE);
+		return rE;
+	}
+	
+	public int leftExtreme(){
+		int lE = getCartesianX();
+		info.info("lExt: " + lE);
+		return lE;
+	}
 
 }

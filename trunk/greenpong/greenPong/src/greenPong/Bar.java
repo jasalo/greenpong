@@ -75,4 +75,18 @@ public class Bar extends PongGameObject {
 		}
 	}
 	
+// Métodos extremos
+	
+	public int rightExtreme(){
+		int rE = getCartesianX() + ANCHO;
+		info.info("rExt: " + rE);
+		return rE;
+	}
+	
+	public int leftExtreme(){
+		int lE = getCartesianX();
+		info.info("lExt: " + lE);
+		return lE;
+	}
+	
 }
