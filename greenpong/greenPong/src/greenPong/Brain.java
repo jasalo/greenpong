@@ -36,9 +36,8 @@ public class Brain extends Thread {
 
 	public void run() {
 		userBar.setLocation(0, userBar.getFinalYPosition());
-		computerBar.setX(0);
-		userBar.setX(300);
-		boolean contact = false;
+		computerBar.centerInX();
+		userBar.centerInX();
 		while (1 == 1) {
 			try {
 				sleep(Main.brainTime);
