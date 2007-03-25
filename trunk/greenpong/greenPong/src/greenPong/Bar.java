@@ -67,8 +67,9 @@ public class Bar extends PongGameObject {
 	}
 	
 	public void setX(int x){
-		info.info("Solimov: "+ x);
-		if(x>=10 && x<(Box.ANCHO-10)){
+		int der = Box.ANCHO - 15 - ANCHO; //5px de descuadre, por eso 15 y no 10
+		info.info("Solimov: "+ x + " [10"+ der + "]"  );
+		if(x>=10 && x<=der){
 			int y = (int)getLocation().getY();
 			setLocation(x, y);
 		}

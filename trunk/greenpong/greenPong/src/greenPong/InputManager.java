@@ -33,8 +33,8 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 		mouseInfo.info("("+x1+","+y1+")");
 
 		if(x1 > 0 && x1 < Box.ANCHO){
-			mouseInfo.info("R");
-			userBar.setX(x1 -(Bar.ANCHO/2));
+			mouseInfo.info("Mouse dentro de la ventana");
+			userBar.setX(x1);
 		}
 		/*
 		if(x1 - px <0 && x1 == 0)
