@@ -28,22 +28,17 @@ public class PongGameObject extends javax.swing.JLabel {
 	public PongGameObject(String urlImage, Box ncontenedor){
 		url = urlImage;
 		contenedor = ncontenedor; 
-		//Permite redibujar al contenedor para cambiar la posicion del control en pantalla
 		try{
 			init();
 		} catch (IOException e){
 			//Mensaje de error.
 		}
-		//dimensionar();
 	}
 	
 
 	public void dimensionar(){
 		java.awt.Dimension dimension = new java.awt.Dimension();
 		dimension.setSize(ANCHO, ALTO);
-		//setMinimumSize(dimension);
-		//setPreferredSize(dimension);
-		//setMaximumSize(dimension);
 	}
 	
 
@@ -54,15 +49,12 @@ public class PongGameObject extends javax.swing.JLabel {
 		 * de si constituye violacion de Author rights leer:
 		 * http://www.sun.com/termsofuse.jsp#g2_12 (numero 10.4)
 		 */
-		//Gestion del eror en la URL
 		if (url.equals("")){
 			System.err.println("URL de imagen errada " + url);
 			System.exit(-1);
 		}
-		// Read
 		File file = new File(url);
 		BufferedImage input = ImageIO.read(file);
-		// Convert (Aplica sharpness filter??)
 		Kernel sharpKernel = new Kernel(3, 3, new float[] {
 		          0.0f, -1.0f,  0.0f,
 		          -1.0f,  5.0f, -1.0f,
@@ -73,7 +65,6 @@ public class PongGameObject extends javax.swing.JLabel {
 		int height = input.getHeight();
 		BufferedImage output = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		convolveOp.filter(input, output);
-		// Make screen
 		Icon icon = new ImageIcon(output);
 		/**
 		* Fin del codigo de Sun
