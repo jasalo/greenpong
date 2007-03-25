@@ -97,6 +97,7 @@ public class PongGameObject extends javax.swing.JLabel {
 	
 	public int getCartesianY(){
 		int r = Box.ALTO - (int)getLocation().getY();
+		info.info("cartY: " + r);
 		return r;
 	}
 	
