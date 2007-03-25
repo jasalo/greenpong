@@ -12,9 +12,11 @@ public class Bar extends PongGameObject {
 
 	public static final int ALTO = 34;
 	private int finalYPosition;
+	InfoWindow info;
 
 	public Bar(String urlImage, Box ncontenedor) {
 		super(urlImage, ncontenedor);
+		info = new InfoWindow("Barra");
 		url = urlImage;
 		contenedor = ncontenedor;
 		Dimension dim = new Dimension();
@@ -63,4 +65,13 @@ public class Bar extends PongGameObject {
 		System.out.println("ku=" + this.getLocation().getX());
 		return ku - 100;
 	}
+	
+	public void setX(int x){
+		info.info("Solimov: "+ x);
+		if(x>=10 && x<(Box.ANCHO-10)){
+			int y = (int)getLocation().getY();
+			setLocation(x, y);
+		}
+	}
+	
 }
