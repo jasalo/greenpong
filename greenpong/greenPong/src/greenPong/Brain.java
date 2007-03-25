@@ -61,7 +61,7 @@ public class Brain extends Thread {
 			}
 			XXX = 1;
 			if(perdio == false){
-			gameBall.moveDown(12);}
+			gameBall.moveUp(12);}
 			System.out.println("Va para arriba? " + vaPaArriba());
 
 			System.out.println("---------------------");
@@ -165,7 +165,7 @@ public class Brain extends Thread {
 	
 	public int ku(){
 		//Retorna en cartesiano
-		int ku = Box.ALTO - ((int)userBar.getLocation().getY());
+		int ku = contenedor.getHeight() - ((int)userBar.getLocation().getY());
 		if(!vaPaArriba()){info.info("ku=" + ku);}
 		return ku;
 	}
