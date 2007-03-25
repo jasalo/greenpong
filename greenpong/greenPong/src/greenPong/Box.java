@@ -63,7 +63,7 @@ public class Box extends javax.swing.JPanel {
 
 	public void ajustarComponentes() {
 		// Ubica las barras verticalmente a la posicion en la q quedaran
-		userBar.setFinalYPosition(getHeight() - 71);
+		userBar.setFinalYPosition(ALTO-71);
 		userBar.setLocation(10, userBar.getFinalYPosition());
 		info("Userbar Y final position:" + userBar.getFinalYPosition());
 		userBar.centerInX();
