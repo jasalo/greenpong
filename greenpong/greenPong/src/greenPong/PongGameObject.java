@@ -24,6 +24,7 @@ public class PongGameObject extends javax.swing.JLabel {
 	public static final int ALTO = 50;
 	public Box contenedor;
 	public String url;
+	InfoWindow info;
 	
 	public PongGameObject(String urlImage, Box ncontenedor){
 		url = urlImage;
@@ -110,11 +111,13 @@ public class PongGameObject extends javax.swing.JLabel {
 	
 	public int rightExtreme(){
 		int rE = getCartesianX() + ANCHO;
+		info.info("rExt: " + rE);
 		return rE;
 	}
 	
 	public int leftExtreme(){
 		int lE = getCartesianX();
+		info.info("lExt: " + lE);
 		return lE;
 	}
 } //Fin clase
