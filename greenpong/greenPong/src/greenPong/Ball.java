@@ -17,6 +17,7 @@ public class Ball extends PongGameObject {
 	public Ball(String urlImage, Box ncontenedor) {
 		super(urlImage, ncontenedor);
 		url = urlImage;
+		info = new InfoWindow("Bola");
 		contenedor = ncontenedor;
 		Dimension dim = new Dimension();
 		dim.setSize(ANCHO, ALTO);
