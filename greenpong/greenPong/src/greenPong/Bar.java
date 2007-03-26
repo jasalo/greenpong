@@ -54,7 +54,6 @@ public class Bar extends PongGameObject {
 	public int getKc(){
 		int kc = Box.ALTO - this.getLocation().y - 25 - ALTO;
 		return kc;
-		
 	}
 	
 	public void setX(int x){
