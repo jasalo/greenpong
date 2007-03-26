@@ -39,19 +39,21 @@ public class Brain extends Thread {
 	public Brain(String[] args) {
 		super();
 		info = new InfoWindow("Brain");
+		info.setVisible(true);
 		GameWindow caja = new GameWindow(args);
 		contenedor = caja.windowBox;
 		userBar = contenedor.userBar;
 		computerBar = contenedor.computerBar;
 		gameBall = contenedor.gameBall;
-		computerBar.info.setVisible(false);
-		userBar.info.setVisible(false);
-		gameBall.info.setVisible(false);
 		InputManager entrada = new InputManager(userBar, contenedor.nivel);
 		entrada.mouseInfo.setVisible(false);
 		System.out.println("Agregando listener");
 		contenedor.addMouseMotionListener(entrada);
 		direccion = ABAJO;
+		int infox = (int)contenedor.getLocation().getX()+ Box.ANCHO + 20;
+		int infoy = (int)contenedor.getLocation().getY();
+		info.setLocation(infox, infoy);
+		info.setSize(400,500);
 
 	}
 
