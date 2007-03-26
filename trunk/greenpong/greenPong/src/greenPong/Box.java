@@ -40,7 +40,7 @@ public class Box extends javax.swing.JPanel {
 		add(userBar, BorderLayout.NORTH);
 		add(gameBall, BorderLayout.CENTER);
 		add(computerBar, BorderLayout.SOUTH);
-		setBackground(java.awt.Color.RED);
+		setBackground(java.awt.Color.WHITE);
 		ajustarComponentes();	
 		Robot robot;
 		try {
