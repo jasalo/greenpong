@@ -26,7 +26,7 @@ public class InfoWindow extends javax.swing.JFrame {
 			JScrollPane abc = new JScrollPane(caja , JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 			abc.setAutoscrolls(true);
 			getContentPane().add(abc, BorderLayout.CENTER);
-			setVisible(true); 
+			setVisible(false); 
 			
 			
 		}
