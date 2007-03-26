@@ -14,15 +14,27 @@ import java.awt.event.MouseEvent;
 public class Brain extends Thread {
 
 	Box contenedor;
+
 	Bar userBar, computerBar;
+
 	Ball gameBall;
+
 	public int previousBallY = 0;
-	final static int ARRIBA = 1;
-	final static int ABAJO = -1;
-	int XXX = 0; 
-	int direccion;
+
+	final static boolean ARRIBA = true;
+
+	final static boolean ABAJO = false;
+
+	int XXX = 0;
+
+	boolean direccion;
+
 	InfoWindow info;
+
 	boolean perdio = false;
+
+	int velocidad = 10; // Pixeles del movimiento de la comptuerBar y la bola
+						// por run
 
 	public Brain(String[] args) {
 		super();
@@ -33,38 +45,45 @@ public class Brain extends Thread {
 		computerBar = contenedor.computerBar;
 		gameBall = contenedor.gameBall;
 		computerBar.info.setVisible(false);
-		InputManager entrada = new InputManager(userBar, contenedor.nivel); 
+		userBar.info.setVisible(false);
+		gameBall.info.setVisible(false);
+		InputManager entrada = new InputManager(userBar, contenedor.nivel);
+		entrada.mouseInfo.setVisible(false);
 		System.out.println("Agregando listener");
 		contenedor.addMouseMotionListener(entrada);
+		direccion = ABAJO;
+
 	}
 
 	public void run() {
 		userBar.setLocation(0, userBar.getFinalYPosition());
 		computerBar.centerInX();
-		computerBar.setX(10);
+		// computerBar.setX(10);
 		userBar.centerInX();
 		while (1 == 1) {
 			try {
 				sleep(Main.brainTime);
-			} catch (InterruptedException e) {			}
+			} catch (InterruptedException e) {}
+			
 			if (gameBall.getCartesianY() - previousBallY > 0) {
 				direccion = ARRIBA;
 			} else {
 				direccion = ABAJO;
 			}
-			System.out.println("Delta:"
-					+ (gameBall.getCartesianY() - previousBallY) + " = "
-					+ gameBall.getCartesianY() + "-" + previousBallY);
-			previousBallY = gameBall.getCartesianY();
 			if (XXX != 0) {
+				moverBola();
 				evaluarNormas();
+				previousBallY = gameBall.getCartesianY();
+			}else{ //Solo corre una vez
+				System.out.println("Primer ejecucion");
+				direccion = ABAJO;
+				previousBallY = gameBall.getCartesianY();
+				moverBola();
+				XXX = 1;
+				
 			}
-			XXX = 1;
-			if(perdio == false){
-			gameBall.moveUp(12);}
-			System.out.println("Va para arriba? " + vaPaArriba());
+			
 
-			System.out.println("---------------------");
 		}
 
 	}
@@ -77,7 +96,7 @@ public class Brain extends Thread {
 	public void evaluarNormas() {
 
 		if (vaPaArriba()) {
-
+			info.info("Se entro en el ciclo donde la borra vaPaArriba");
 			if (gameBall.getCartesianY() >= kc()) {
 
 				int cl = computerBar.leftExtreme();
@@ -86,9 +105,13 @@ public class Brain extends Thread {
 				int br = gameBall.rightExtreme();
 
 				if (bl >= cl && bl <= cr) {
-
+					rebotar();
+					info.info("Moviendo bola");
+					moverBola();
 				} else if (br >= cl && br <= cr) {
-
+					rebotar();
+					info.info("Moviendo bola");
+					moverBola();
 				} else {
 					perdio();
 				}
@@ -97,21 +120,25 @@ public class Brain extends Thread {
 		}
 
 		if (!vaPaArriba()) {
-			int cartBolaInf = gameBall.getCartesianY() - Ball.ALTO; 
-			info.info("CartBolaInf:" + (gameBall.getCartesianY() - Ball.ALTO));
-			info.info("Es cartBol < ku? " + (cartBolaInf < ku()));
-			if (cartBolaInf <= ku()) {
+			info.info("Se entro en el ciclo donde la borra vaPaAbajo");
+			double bolaInf = gameBall.getLocation().getY()
+					+ gameBall.getHeight();
+			if (bolaInf >= userBar.getLocation().getY()) {
 				int ul = userBar.leftExtreme();
 				int ur = userBar.rightExtreme();
 				int bl = gameBall.leftExtreme();
 				int br = gameBall.rightExtreme();
 				if (bl >= ul && bl <= ur) {
-
+					rebotar();
+					info.info("Moviendo bola");
+					moverBola();
 				} else if (br >= ul && br <= ur) {
-
+					rebotar();
+					info.info("Moviendo bola");
+					moverBola();
 				} else {
 					perdio();
-					
+
 				}
 
 			}
@@ -119,11 +146,14 @@ public class Brain extends Thread {
 
 	}
 
-	public boolean huboColision() {
-		return true;
-	}
-
 	public void moverBola() {
+		if (direccion = ARRIBA) {
+			info.info("movio paArriba");
+			gameBall.moveUp(velocidad);
+		} else {
+			info.info("Movio paAbajo");
+			gameBall.moveDown(velocidad);
+		}
 
 	}
 
@@ -140,6 +170,12 @@ public class Brain extends Thread {
 	}
 
 	public void rebotar() {
+		info.info("La bola reboto. Iba para " + direccion);
+		if (direccion == ARRIBA) {
+			direccion = ABAJO;
+		} else {
+			direccion = ARRIBA;
+		}
 
 	}
 
@@ -155,18 +191,22 @@ public class Brain extends Thread {
 	public void gano() {
 
 	}
-	
-	public int kc(){
-		//Retorna en cartesiano
-		int kc = Box.ALTO - ((int)computerBar.getLocation().getY() + Bar.ALTO);
-		if(vaPaArriba()){info.info("kc=" + kc);}
+
+	public int kc() {
+		// Retorna en cartesiano
+		int kc = Box.ALTO - ((int) computerBar.getLocation().getY() + Bar.ALTO);
+		if (vaPaArriba()) {
+			info.info("kc=" + kc);
+		}
 		return kc;
 	}
-	
-	public int ku(){
-		//Retorna en cartesiano
-		int ku = contenedor.getHeight() - ((int)userBar.getLocation().getY());
-		if(!vaPaArriba()){info.info("ku=" + ku);}
+
+	public int ku() {
+		// Retorna en cartesiano
+		int ku = contenedor.getHeight() - ((int) userBar.getLocation().getY());
+		if (!vaPaArriba()) {
+			info.info("ku=" + ku);
+		}
 		return ku;
 	}
 
