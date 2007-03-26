@@ -24,7 +24,7 @@ public class GameWindow extends javax.swing.JFrame {
 		
 		//
 		//getContentPane().add(new javax.swing.JButton("Yo Estorbo!!"), BorderLayout.SOUTH);
-		setBackground(Color.BLUE);
+		//setBackground(Color.BLUE);
 		//
 		setSize(Box.ANCHO, Box.ALTO);
 		
