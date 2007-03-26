@@ -15,17 +15,22 @@ public class Main {
 
 	// Cantidad de milisegundos entre cada calculo matematico de los cerebros
 	public static final int brainTime = 100;
+	private Brain appBrain;
+	public String[] args;
 
-	public Main() {
-
+	public Main(String[] args1) {
+		args = args1;
+		appBrain = new Brain(args);
+		appBrain.start();
+		System.out.println("greenPong iniciado");
 	}
 
 	public static void main(String[] args) {
-
-		Brain appBrain = new Brain(args);
-		appBrain.start();
-		System.out.println("greenPong iniciado");
-
+		Main app = new Main(args);
+	}
+	
+	public void reiniciar(){
+		appBrain = new Brain(args);
 	}
 
 }
