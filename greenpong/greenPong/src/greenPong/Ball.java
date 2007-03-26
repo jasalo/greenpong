@@ -26,27 +26,23 @@ public class Ball extends PongGameObject {
 	}
 	
 	public void moveRight(int pixels){
-		double nx = this.getLocation().getX() + pixels;
-		setLocation((int)nx, (int)this.getLocation().getY());
+		setLocation(this.getLocation().x+pixels, this.getLocation().y);
 	}
 	
 	public void moveLeft(int pixels){
-		double nx = this.getLocation().getX() - pixels; 
-		setLocation((int)nx, (int)this.getLocation().getY());
+		setLocation(this.getLocation().x-pixels, this.getLocation().y);
 	}
 	
 	public void moveDown(int pixels){
-		double ny = this.getLocation().getY() + pixels;
-		setLocation((int)this.getLocation().getX(), (int)ny);
+		setLocation(this.getLocation().x, this.getLocation().y+pixels);
 	}
 	
 	public void moveUp(int pixels){
-		double ny = this.getLocation().getY() - pixels; 
-		setLocation((int)this.getLocation().getX(), (int)ny);
+		setLocation(this.getLocation().x, this.getLocation().y-pixels);
 	}
 	
 	public int locateInY(){
-		return (int)(this.getLocation().getY());
+		return this.getLocation().y;
 	}
 	
 	// Métodos para conocer el centro (h,k)
@@ -73,6 +69,17 @@ public class Ball extends PongGameObject {
 		int lE = getCartesianX();
 		info.info("lExt: " + lE);
 		return lE;
+	}
+	
+// Métodos parecidos a los de la clase PongGameObject
+	
+	public int getBallX(){
+		return this.getLocation().x;
+	}
+	
+	public int getTopY(){
+		int r = Box.ALTO - this.getLocation().y - 25; // 25 Es el desfase vertical raro al dibujar la ventana
+		return r;
 	}
 
 }
