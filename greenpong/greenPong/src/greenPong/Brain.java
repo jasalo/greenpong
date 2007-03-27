@@ -16,10 +16,6 @@ public class Brain extends Thread {
 	Bar userBar, computerBar;
 
 	Ball gameBall;
-
-	public int previousBallY = 0;
-	
-	public int previousBallX = 0;
 	
 	// Constantes y atributos pa movimiento vertical
 
@@ -37,11 +33,11 @@ public class Brain extends Thread {
 	
 	boolean movHorizontal = DERECHA;
 	
-	// Atributo pa la primera ejecución
+	// Otros
 	
 	int XXX = 0;
 	
-	// InfoWindow info;
+	int der = Box.ANCHO - 15;
 
 	boolean perdio = false;
 
@@ -50,8 +46,6 @@ public class Brain extends Thread {
 
 	public Brain(String[] args) {
 		super();
-		//info = new InfoWindow("Brain");
-		//info.setVisible(true);
 		GameWindow caja = new GameWindow(args);
 		contenedor = caja.windowBox;
 		userBar = contenedor.userBar;
@@ -62,11 +56,6 @@ public class Brain extends Thread {
 		contenedor.addMouseMotionListener(entrada);
 		direccion = ABAJO;
 		movHorizontal = DERECHA;
-		//int infox = contenedor.getLocation().x+ Box.ANCHO + 20;
-		//int infoy = contenedor.getLocation().y;
-		//info.setLocation(infox, infoy);
-		//info.setSize(400,500);
-
 	}
 
 	public void run() {
@@ -78,22 +67,15 @@ public class Brain extends Thread {
 				sleep(Main.brainTime);
 			} catch (InterruptedException e) {}
 			
-			if (XXX > 0) {
+			if (XXX!=0) {
 				evaluarNormas();
 				moverBola();
-				previousBallY = gameBall.getTopY();
-				previousBallX = gameBall.getBallX();
 			}
-			else //Solo corre una vez
+			else
 			{
-				System.out.println("Primer ejecucion donde la bola va pa: " + direccion);
-				previousBallY = gameBall.getTopY();
-				previousBallX = gameBall.getBallX();
 				moverBola();
 				XXX = 1;
 			}
-			
-
 		}
 
 	}
@@ -106,27 +88,19 @@ public class Brain extends Thread {
 		
 		// EVALUAR MOVIMIENTO HORIZONTAL
 		
-		int der = Box.ANCHO - 15; //5px de descuadre, por eso - 15 y no - 10
-		
-		if (movHorizontal==DERECHA) {
-			if(gameBall.rightExtreme()==der){
-				reboteHorizontal();
-			}
+		if (movHorizontal && gameBall.rightExtreme()==der){
+			reboteHorizontal();
 		}
 		
-		int izq = 10;
-		
-		if (movHorizontal==IZQUIERDA) {
-			if(gameBall.leftExtreme()==izq){
-				reboteHorizontal();
-			}
+		if (!movHorizontal && gameBall.leftExtreme()==10){
+			reboteHorizontal();
 		}
 		
 		// EVALUAR MOVIMIENTO VERTICAL
 		
 		int bolaInf = Box.ALTO - gameBall.getLocation().y - Ball.ALTO - 25; // - 25 pa corregir el desfase raro
 	
-		if (direccion==ARRIBA) {
+		if (direccion) {
 			
 			if (gameBall.getTopY() == computerBar.getKc()) {
 				
@@ -147,7 +121,7 @@ public class Brain extends Thread {
 			}
 		}
 		
-		if (direccion==ABAJO) {
+		if (!direccion) {
 					
 			if ( bolaInf == userBar.getBarY() ) {
 			
@@ -169,13 +143,13 @@ public class Brain extends Thread {
 	}
 
 	public void moverBola() {
-		if (direccion==ARRIBA) {
+		if (direccion) {
 			gameBall.moveUp(velocidad);
 		} else {
 			gameBall.moveDown(velocidad);
 		}
 		
-		if (movHorizontal==DERECHA) {
+		if (movHorizontal) {
 			gameBall.moveRight(velocidad);
 		} else {
 			gameBall.moveLeft(velocidad);
@@ -190,7 +164,7 @@ public class Brain extends Thread {
 		
 		if (direccion) {
 			direccion = ABAJO;
-		} else if (!direccion){
+		} else {
 			direccion = ARRIBA;
 		}
 		
@@ -198,9 +172,9 @@ public class Brain extends Thread {
 	
 	public void reboteHorizontal() {
 		
-		if (movHorizontal==DERECHA) {
+		if (movHorizontal) {
 			movHorizontal = IZQUIERDA;
-		} else if (movHorizontal==IZQUIERDA){
+		} else {
 			movHorizontal = DERECHA;
 		}
 		
