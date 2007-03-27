@@ -29,8 +29,6 @@ public class Main {
 		Main app = new Main(args);
 	}
 	
-	public void reiniciar(){
-		appBrain = new Brain(args);
-	}
+	
 
 }
