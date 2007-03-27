@@ -48,7 +48,7 @@ public class Ball extends PongGameObject {
 	// Métodos para conocer el centro (h,k)
 	
 	public int getH(){
-		int h = getCartesianX() + (int)(ANCHO/2);
+		int h = this.getLocation().x + (int)(ANCHO/2);
 		return h;
 	}
 	
