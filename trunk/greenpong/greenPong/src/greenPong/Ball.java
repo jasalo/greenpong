@@ -17,7 +17,6 @@ public class Ball extends PongGameObject {
 	public Ball(String urlImage, Box ncontenedor) {
 		super(urlImage, ncontenedor);
 		url = urlImage;
-		info = new InfoWindow("Bola");
 		contenedor = ncontenedor;
 		Dimension dim = new Dimension();
 		dim.setSize(ANCHO, ALTO);
@@ -61,13 +60,11 @@ public class Ball extends PongGameObject {
 	
 	public int rightExtreme(){
 		int rE = getCartesianX() + ANCHO;
-		info.info("rExt: " + rE);
 		return rE;
 	}
 	
 	public int leftExtreme(){
 		int lE = getCartesianX();
-		info.info("lExt: " + lE);
 		return lE;
 	}
 	
