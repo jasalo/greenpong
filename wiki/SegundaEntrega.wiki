@@ -8,7 +8,7 @@ Como podran notar practicamente todo lo que debemos escribir aca ya esta hecho, 
 
 == Etapas del desarrollo del proyecto ==
 
-Ya es bien conocido que nuestro proyecto *[ greenPong ]* se divide en tres fases:
+Ya es bien conocido que nuestro proyecto *[ greenPong ]* se divide en tres fases (Los porcentajes hacen referencia a lo que hemos desarrollado en cada una de las etapas, si una etapa esta completada su porcentaje será como es logico del 100%):
 
 1.Creación del Pong. (90%)^1^.
 
