@@ -16,7 +16,6 @@ public class Bar extends PongGameObject {
 
 	public Bar(String urlImage, Box ncontenedor) {
 		super(urlImage, ncontenedor);
-		info = new InfoWindow("Barra");
 		url = urlImage;
 		contenedor = ncontenedor;
 		Dimension dim = new Dimension();
@@ -68,13 +67,11 @@ public class Bar extends PongGameObject {
 	
 	public int rightExtreme(){
 		int rE = getCartesianX() + ANCHO;
-		info.info("rExt: " + rE);
 		return rE;
 	}
 	
 	public int leftExtreme(){
 		int lE = getCartesianX();
-		info.info("lExt: " + lE);
 		return lE;
 	}
 	
