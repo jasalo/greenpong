@@ -70,6 +70,7 @@ public class Brain extends Thread {
 			if (XXX!=0) {
 				evaluarNormas();
 				moverBola();
+				moverBarraPC();
 			}
 			else
 			{
@@ -98,8 +99,6 @@ public class Brain extends Thread {
 		
 		// EVALUAR MOVIMIENTO VERTICAL
 		
-		int bolaInf = Box.ALTO - gameBall.getLocation().y - Ball.ALTO - 25; // - 25 pa corregir el desfase raro
-	
 		if (direccion) {
 			
 			if (gameBall.getTopY() == computerBar.getKc()) {
@@ -122,6 +121,8 @@ public class Brain extends Thread {
 		}
 		
 		if (!direccion) {
+			
+			int bolaInf = Box.ALTO - gameBall.getLocation().y - Ball.ALTO - 25; // - 25 pa corregir el desfase raro
 					
 			if ( bolaInf == userBar.getBarY() ) {
 			
@@ -157,7 +158,13 @@ public class Brain extends Thread {
 	}
 
 	public void moverBarraPC() {
-
+		if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=(Box.ANCHO - 15) && direccion){
+			if(movHorizontal && computerBar.rightExtreme()<(Box.ANCHO - 15)) {
+				computerBar.moveRight(velocidad);
+			} else if(!movHorizontal && computerBar.leftExtreme()>10) {
+				computerBar.moveLeft(velocidad);
+			}
+		}
 	}
 
 	public void rebotar() {
@@ -183,17 +190,12 @@ public class Brain extends Thread {
 	public void perdioSubiendo() {
 		perdio = true;
 		System.out.println("PERDIO SUBIENDO");
-		userBar.info.pause();
-		gameBall.info.pause();
 
 	}
 	
 	public void perdioBajando() {
 		perdio = true;
 		System.out.println("PERDIO BAJANDO");
-		userBar.info.pause();
-		gameBall.info.pause();
-
 	}
 
 	public void gano() {
