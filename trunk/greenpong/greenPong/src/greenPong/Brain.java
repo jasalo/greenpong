@@ -38,31 +38,26 @@ public class Brain extends Thread {
 	int XXX = 0;
 	
 	int der = Box.ANCHO - 15;
-
+	GameWindow cj; //Caja cone ljuego
 	boolean perdio = false;
-
+	
+	String[] args;
 	int velocidad = 1; // Pixeles del movimiento de la computerBar y la bola, por run
 						//Si no es 1 da errores en los cálculos y no rebota la bola
 
-	public Brain(String[] args) {
+	public Brain(String[] args1) {
 		super();
-		GameWindow caja = new GameWindow(args);
-		contenedor = caja.windowBox;
-		userBar = contenedor.userBar;
-		computerBar = contenedor.computerBar;
-		gameBall = contenedor.gameBall;
-		InputManager entrada = new InputManager(userBar, contenedor.nivel);
-		System.out.println("Agregando listener");
-		contenedor.addMouseMotionListener(entrada);
-		direccion = ABAJO;
-		movHorizontal = DERECHA;
+		args = args1;
+		
+		
+		iniciarValores();
 	}
 
 	public void run() {
 		userBar.setLocation(0, userBar.getFinalYPosition());
 		computerBar.setLocation(50, 10);
 		userBar.centerInX();
-		while (1 == 1) {
+		while (perdio == false) {
 			try {
 				sleep(Main.brainTime);
 			} catch (InterruptedException e) {}
@@ -195,11 +190,37 @@ public class Brain extends Thread {
 	
 	public void perdioBajando() {
 		perdio = true;
-		System.out.println("PERDIO BAJANDO");
+		Dialogo abc = new Dialogo("Perdiste, se iniciará un nuevo juego", "fin");
+		iniciarValores();
+		
+		
+		
+		
+		
 	}
 
 	public void gano() {
 
 	}
+	
+	
+
+	public void iniciarValores(){
+		perdio = false;
+		cj = new GameWindow(args);
+		
+		contenedor = cj.windowBox;
+		userBar = contenedor.userBar;
+		computerBar = contenedor.computerBar;
+		gameBall = contenedor.gameBall;
+		InputManager entrada = new InputManager(userBar, contenedor.nivel);
+		System.out.println("Agregando listener");
+		contenedor.addMouseMotionListener(entrada);
+		direccion = ABAJO;
+		movHorizontal = DERECHA;
+		
+	}
+	
+	
 
 }
