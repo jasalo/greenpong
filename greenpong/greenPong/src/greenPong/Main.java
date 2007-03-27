@@ -14,7 +14,7 @@ import java.awt.AWTException;
 public class Main {
 
 	// Cantidad de milisegundos entre cada calculo matematico de los cerebros
-	public static final int brainTime = 3;
+	public static final int brainTime = 1;
 	private Brain appBrain;
 	public String[] args;
 
