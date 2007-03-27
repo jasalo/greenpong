@@ -11,7 +11,9 @@ Como podran notar practicamente todo lo que debemos escribir aca ya esta hecho, 
 Ya es bien conocido que nuestro proyecto *[ greenPong ]* se divide en tres fases:
 
 1.Creación del Pong. (90%)^1^.
+
 2.Desarrollo del VTS (Visual Tracking System)  (5%).
+
 3.Marketing (5%).
 
 Si desea ver el avance en cada una de las etapas puede visitar nuestro blog del proyecto en la ubicación temporal http://greenpong.blogspot.com/ , en el encontrara la información mas reciente de nuestro proyecto, con la ultima versión desarrollada de [ greenPong ].
@@ -19,7 +21,9 @@ Si desea ver el avance en cada una de las etapas puede visitar nuestro blog del 
 *CITAR LA PARTE DE LA PRIMERA ENTREGA Q SE DEDICA A ESTO*
 
 -------_Notas al pie_----
+
 ^1^porcentajes estimados.
+
 -------------------------
 
 ==Responsabilidades puntuales de cada uno de los integrantes==
