@@ -36,3 +36,7 @@
   * [http://www.javareference.com/jrexamples/viewexample.jsp?id=76 Using mediatracker to pre-load images] Documento muy util para la precarga de png para acelerar aplicaciones que usan imágenes.
 
   * [http://java.sun.com/developer/JDCTechTips/2004/tt0217.html LOADING AND SAVING IMAGES WITH THE IMAGE I/O LIBRARY] Guia con el codigo para mostrar imagens en png.
+
+==Python==
+
+http://www.pythonware.com/library/pil/handbook/index.htm Uso de python para procesar imagenes, incluye metodos para incluir el tratamiento de videos :).
