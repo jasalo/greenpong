@@ -6,8 +6,10 @@
 
   * Data Structures & Algorithms in Java. GOODRICH, Michael T. & TAMASSIA, Roberto. 4th Edition.  Libro bastante completo de Programacion en Java. *Disponible en la biblioteca de los Andes*
 
-  * The Linux Bible, The GNU Testament. 3rd Edition. Compilado por Yggdrasil Computing Incorporated, con derechos individuales de cada sección (remitirse al libro para mas información) *Disponible en la biblioteca de los Andes URGE ENCONTRAR VERSIÓN MÁS RECIENTE*
+  * The Linux Bible, The GNU Testament. 3rd Edition. Compilado por Yggdrasil Computing Incorporated, con derechos individuales de cada sección (remitirse al libro para mas información) *Disponible en la biblioteca de los Andes*
 
+  * Data Structures & Problem Solving using Java. ALLEN, Mark. 3rd Edition. *Disponible en la biblioteca de los Andes*
+  
 = Webs consultadas =
   * [http://www.gamearchitect.net/Articles/GameObjects1.html Game Object Structure] Documento sobre como debe ser la estructura de clases, habla de juegos en C++, pero resulta util para decidir crear clases Box, Ball y Bar como entidades separada que se comunican y no heredan de un objeto general,ej gameObject
 
@@ -39,4 +41,10 @@
 
 ==Python==
 
-http://www.pythonware.com/library/pil/handbook/index.htm Uso de python para procesar imagenes, incluye metodos para incluir el tratamiento de videos :).
+  * http://www.pythonware.com/library/pil/handbook/index.htm Uso de python para procesar imagenes, incluye metodos para incluir el tratamiento de videos :).
+
+  *  http://gumuz.looze.net/wordpress/index.php/archives/2005/06/06/python-webcam-fun-motion-detection/
+Detección de movimiento en python.
+
+  *  http://videocapture.sourceforge.net/ Captura de video desde python.
+
