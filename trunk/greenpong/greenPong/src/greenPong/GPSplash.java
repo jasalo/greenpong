@@ -19,6 +19,7 @@ public class GPSplash extends JFrame {
 		System.out.println("Fin");
 		setTitle("Loading [greenPong]...");
 		centerFrame(this);
+		imagen = new javax.swing.JLabel("Aqui va la img");
 		getContentPane().add(imagen, BorderLayout.CENTER);
 		setVisible(true);
 	}
