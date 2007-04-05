@@ -21,7 +21,9 @@ public class Main {
 	public Main(String[] args1) {
 		args = args1;
 		appBrain = new Brain(args);
-		appBrain.start();
+		GPSplash splash = new GPSplash(appBrain, args1[2]);
+		splash.start();
+		//appBrain.start();
 		System.out.println("greenPong iniciado");
 	}
 
