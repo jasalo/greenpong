@@ -66,7 +66,7 @@ public class PongGameObject extends javax.swing.JLabel {
 		int height = input.getHeight();
 		BufferedImage output = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		convolveOp.filter(input, output);
-		Icon icon = new ImageIcon(output);
+		Icon icon = new ImageIcon(input);
 		/**
 		* Fin del codigo de Sun
 		*/
