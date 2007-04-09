@@ -75,8 +75,13 @@ public class Ball extends PongGameObject {
 	}
 	
 	public int getTopY(){
-		int r = Box.ALTO - this.getLocation().y - 25; // 25 Es el desfase vertical raro al dibujar la ventana
-		return r;
+		int top = Box.ALTO - this.getLocation().y - 25; // 25 Es el desfase vertical raro al dibujar la ventana
+		return top;
+	}
+	
+	public int getBottomY(){
+		int bottom = Box.ALTO - this.getLocation().y - Ball.ALTO - 25; // - 25 pa corregir el desfase raro
+		return bottom;
 	}
 
 }
