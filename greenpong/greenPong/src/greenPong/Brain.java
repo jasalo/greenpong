@@ -57,7 +57,6 @@ public class Brain extends Thread {
 
 	public void run() {
 		userBar.setLocation(0, userBar.getFinalYPosition());
-		computerBar.setLocation(250, 10);
 		userBar.centerInX();
 		while (perdio == false) {
 			try {
@@ -226,7 +225,7 @@ public class Brain extends Thread {
 	}
 		
 	public void moverBarraPC() {
-		if(gameBall.getLocation().y>=(int)(Box.ALTO/3) && direccion) {
+		if(gameBall.getLocation().y>=(int)(Box.ALTO/3)) {
 			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=der){
 				if(movHorizontal && computerBar.rightExtreme()<der) {
 					if(gameBall.rightExtreme()<=(int)(computerBar.leftExtreme()-Bar.ANCHO) && (computerBar.rightExtreme()+1)<der) {
@@ -242,7 +241,7 @@ public class Brain extends Thread {
 					}
 				}
 			}
-		} else if (gameBall.getLocation().y<(int)(Box.ALTO/3) && direccion){
+		} else if (gameBall.getLocation().y<(int)(Box.ALTO/3)){
 			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<der){
 				if(gameBall.rightExtreme()>=(int)(computerBar.leftExtreme()-Bar.ANCHO) && movHorizontal && (computerBar.leftExtreme()-1)>10 && gameBall.rightExtreme()<=computerBar.getCenterInX()) {
 					computerBar.moveLeft(2*velocidad);					
