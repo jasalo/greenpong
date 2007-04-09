@@ -63,7 +63,7 @@ public class Bar extends PongGameObject {
 		}
 	}
 	
-// Métodos extremos
+	// Métodos extremos y centro
 	
 	public int rightExtreme(){
 		int rE = getCartesianX() + ANCHO;
@@ -73,6 +73,11 @@ public class Bar extends PongGameObject {
 	public int leftExtreme(){
 		int lE = getCartesianX();
 		return lE;
+	}
+	
+	public int getCenterInX(){
+		int h = getCartesianX() + ANCHO/2;
+		return h;
 	}
 	
 	// Métodos parecidos a los de la clase PongGameObject
