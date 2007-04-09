@@ -68,7 +68,6 @@ public class Brain extends Thread {
 				evaluarNormas();
 				moverBola(angulo);
 				moverBarraPC();
-				System.out.println("IZQ: " + computerBar.leftExtreme() + " | DER: " + computerBar.rightExtreme() + " LIM-D: " + der);
 			}
 			else
 			{
