@@ -68,6 +68,7 @@ public class Brain extends Thread {
 				evaluarNormas();
 				moverBola(angulo);
 				moverBarraPC();
+				System.out.println("IZQ: " + computerBar.leftExtreme() + " | DER: " + computerBar.rightExtreme() + " LIM-D: " + der);
 			}
 			else
 			{
@@ -229,13 +230,13 @@ public class Brain extends Thread {
 		if(gameBall.getLocation().y>=(int)(Box.ALTO/3) && direccion) {
 			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=der){
 				if(movHorizontal && computerBar.rightExtreme()<der) {
-					if(gameBall.rightExtreme()<=(int)(computerBar.leftExtreme()-Bar.ANCHO) && (computerBar.rightExtreme()+1)!=der) {
+					if(gameBall.rightExtreme()<=(int)(computerBar.leftExtreme()-Bar.ANCHO) && (computerBar.rightExtreme()+1)<der) {
 						computerBar.moveRight(2*velocidad);
 					} else {
 						computerBar.moveRight(velocidad);
 					}
 				} else if(!movHorizontal && computerBar.leftExtreme()>10) {
-					if(gameBall.leftExtreme()>=(int)(computerBar.rightExtreme()+Bar.ANCHO) && (computerBar.leftExtreme()-1)!=10) {
+					if(gameBall.leftExtreme()>=(int)(computerBar.rightExtreme()+Bar.ANCHO) && (computerBar.leftExtreme()-1)>10) {
 						computerBar.moveLeft(2*velocidad);
 					} else {
 						computerBar.moveLeft(velocidad);
@@ -243,14 +244,14 @@ public class Brain extends Thread {
 				}
 			}
 		} else if (gameBall.getLocation().y<(int)(Box.ALTO/3) && direccion){
-			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=der){
-				if(gameBall.rightExtreme()>=(int)(computerBar.leftExtreme()-Bar.ANCHO) && movHorizontal && (computerBar.leftExtreme()+1)!=10 && gameBall.rightExtreme()<=computerBar.getCenterInX()) {
+			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<der){
+				if(gameBall.rightExtreme()>=(int)(computerBar.leftExtreme()-Bar.ANCHO) && movHorizontal && (computerBar.leftExtreme()-1)>10 && gameBall.rightExtreme()<=computerBar.getCenterInX()) {
 					computerBar.moveLeft(2*velocidad);					
-				} else if(gameBall.leftExtreme()<=(int)(computerBar.rightExtreme()+Bar.ANCHO) && !movHorizontal && (computerBar.rightExtreme()+1)!=der && gameBall.leftExtreme()>=computerBar.getCenterInX()) {
+				} else if(gameBall.leftExtreme()<=(int)(computerBar.rightExtreme()+Bar.ANCHO) && !movHorizontal && (computerBar.rightExtreme()+1)<der && gameBall.leftExtreme()>=computerBar.getCenterInX()) {
 					computerBar.moveRight(2*velocidad);
-				} else if(movHorizontal) {
+				} else if(movHorizontal && (computerBar.rightExtreme()+1)<der) {
 					computerBar.moveRight(velocidad);
-				} else if(!movHorizontal) {
+				} else if(!movHorizontal && (computerBar.leftExtreme()-1)>10) {
 					computerBar.moveLeft(velocidad);
 				}
 			}
