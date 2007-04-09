@@ -31,7 +31,11 @@ public class Brain extends Thread {
 
 	final static boolean IZQUIERDA = false;
 	
-	boolean movHorizontal = DERECHA;
+	boolean movHorizontal = IZQUIERDA;
+	
+	// Atributos para el angulo de movimiento de la bola
+	
+	int angulo = 45;
 	
 	// Otros
 	
@@ -48,14 +52,12 @@ public class Brain extends Thread {
 	public Brain(String[] args1) {
 		super();
 		args = args1;
-		
-		
 		iniciarValores();
 	}
 
 	public void run() {
 		userBar.setLocation(0, userBar.getFinalYPosition());
-		computerBar.setLocation(50, 10);
+		computerBar.setLocation(250, 10);
 		userBar.centerInX();
 		while (perdio == false) {
 			try {
@@ -64,12 +66,15 @@ public class Brain extends Thread {
 			
 			if (XXX!=0) {
 				evaluarNormas();
-				moverBola();
+				moverBola(angulo);
 				moverBarraPC();
 			}
 			else
 			{
-				moverBola();
+				try {
+					sleep(3000);
+				} catch (InterruptedException e) {}
+				moverBola(angulo);
 				XXX = 1;
 			}
 		}
@@ -94,19 +99,28 @@ public class Brain extends Thread {
 		
 		// EVALUAR MOVIMIENTO VERTICAL
 		
+		int bl = gameBall.leftExtreme();
+		int br = gameBall.rightExtreme();
+		int bc = gameBall.getH();
+		
 		if (direccion) {
 			
 			if (gameBall.getTopY() == computerBar.getKc()) {
 				
 				int cl = computerBar.leftExtreme();
 				int cr = computerBar.rightExtreme();
-				int bl = gameBall.leftExtreme();
-				int br = gameBall.rightExtreme();
+				int cc = computerBar.getCenterInX();
 
-				if (bl >= cl && bl <= cr) {
-					rebotar();
-				} else if (br >= cl && br <= cr) {
-					rebotar();
+				if ((bl >= cl && bl <= cr) || (br >= cl && br <= cr)) {
+					rebound();
+					if( (bl>(int)(1.5*(cl-Ball.ANCHO)) && br<(int)(1.5*(cl+Ball.ANCHO))) || (bl>(int)(1.5*(cr-Ball.ANCHO)) && br<(int)(1.5*(cr+Ball.ANCHO))) ) {
+						angulo = 26;
+					} else if( bc>=(cc-Ball.ANCHO) && bc<=(cc+Ball.ANCHO)){
+						angulo = 64;
+					}
+					else {
+						angulo = 45;
+					}
 				}
 			}
 			else if (gameBall.getTopY() > computerBar.getKc())
@@ -116,53 +130,134 @@ public class Brain extends Thread {
 		}
 		
 		if (!direccion) {
-			
-			int bolaInf = Box.ALTO - gameBall.getLocation().y - Ball.ALTO - 25; // - 25 pa corregir el desfase raro
 					
-			if ( bolaInf == userBar.getBarY() ) {
+			if ( gameBall.getBottomY() == userBar.getBarY() ) {
 			
 				int ul = userBar.leftExtreme();
 				int ur = userBar.rightExtreme();
-				int bl = gameBall.leftExtreme();
-				int br = gameBall.rightExtreme();
-				if (bl >= ul && bl <= ur ) {
-					rebotar();
-				} else if (br >= ul && br <= ur) {
-					rebotar();
+				int uc = userBar.getCenterInX();
+				
+				if ((bl >= ul && bl <= ur ) || (br >= ul && br <= ur)) {
+					rebound();
+					if( (bl>(ul-Ball.ANCHO) && br<(ul+Ball.ANCHO)) || (bl>(ur-Ball.ANCHO) && br<(ur+Ball.ANCHO)) ) {
+						angulo = 26;
+					} else if( bc>=(uc-Ball.ANCHO) && bc<=(uc+Ball.ANCHO)){
+						angulo = 64;
+					}
+					else {
+						angulo = 45;
+					}
 				}	
 			}
-			else if ( bolaInf < userBar.getBarY() )
+			else if ( gameBall.getBottomY() < userBar.getBarY() )
 			{
 				perdioBajando();
 			}
 		}
 	}
-
-	public void moverBola() {
-		if (direccion) {
-			gameBall.moveUp(velocidad);
-		} else {
-			gameBall.moveDown(velocidad);
-		}
-		
-		if (movHorizontal) {
-			gameBall.moveRight(velocidad);
-		} else {
-			gameBall.moveLeft(velocidad);
-		}
-	}
-
-	public void moverBarraPC() {
-		if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=(Box.ANCHO - 15) && direccion){
-			if(movHorizontal && computerBar.rightExtreme()<(Box.ANCHO - 15)) {
-				computerBar.moveRight(velocidad);
-			} else if(!movHorizontal && computerBar.leftExtreme()>10) {
-				computerBar.moveLeft(velocidad);
+	
+	/**
+	 * Metodo que maneja el movimiento de la bola, ingresado uno de los 3 angulos disponibles
+	 * @param angulo Angulo que puede ser 26, 45 o 64 para manejar el rebote de la bola
+	 */
+	
+	public void moverBola(int angulo)
+	{
+		// PA ANGULO DE "26"
+		if (angulo==26) {
+			if (direccion) {
+				gameBall.moveUp(velocidad);
+			} else if (!direccion){
+				gameBall.moveDown(velocidad);
+			}
+			
+			if (movHorizontal) {				
+				if((gameBall.rightExtreme()+1)<der) {
+					gameBall.moveRight(velocidad);
+					gameBall.moveRight(velocidad);
+				} else {
+					gameBall.moveRight(velocidad);
+				}
+			} else if (!movHorizontal) {
+				if((gameBall.leftExtreme()-1)>10) {
+					gameBall.moveLeft(velocidad);
+					gameBall.moveLeft(velocidad);
+				} else {
+					gameBall.moveLeft(velocidad);
+				}
+			}
+		} else
+		// PA ANGULO DE "64"
+		if (angulo==64) {
+			if (direccion) {
+				gameBall.moveUp(velocidad);
+			} else if (!direccion){
+				gameBall.moveDown(velocidad);
+			}
+			
+			if( (gameBall.getTopY()+1)<=computerBar.getKc() && (gameBall.getBottomY()-1)>=userBar.getBarY() ) {
+				if (direccion) {
+					gameBall.moveUp(velocidad);
+				} else {
+					gameBall.moveDown(velocidad);
+				}
+			}
+			if (movHorizontal) {
+				gameBall.moveRight(velocidad);
+			} else {
+				gameBall.moveLeft(velocidad);
+			}
+		} else
+		// PA ANGULO DE 45
+		if(angulo==45) {
+			
+			if (direccion) {
+				gameBall.moveUp(velocidad);
+			} else if (!direccion){
+				gameBall.moveDown(velocidad);
+			}
+			
+			if (movHorizontal) {
+				gameBall.moveRight(velocidad);
+			} else {
+				gameBall.moveLeft(velocidad);
 			}
 		}
 	}
-
-	public void rebotar() {
+		
+	public void moverBarraPC() {
+		if(gameBall.getLocation().y>=(int)(Box.ALTO/3) && direccion) {
+			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=der){
+				if(movHorizontal && computerBar.rightExtreme()<der) {
+					if(gameBall.rightExtreme()<=(int)(computerBar.leftExtreme()-Bar.ANCHO) && (computerBar.rightExtreme()+1)!=der) {
+						computerBar.moveRight(2*velocidad);
+					} else {
+						computerBar.moveRight(velocidad);
+					}
+				} else if(!movHorizontal && computerBar.leftExtreme()>10) {
+					if(gameBall.leftExtreme()>=(int)(computerBar.rightExtreme()+Bar.ANCHO) && (computerBar.leftExtreme()-1)!=10) {
+						computerBar.moveLeft(2*velocidad);
+					} else {
+						computerBar.moveLeft(velocidad);
+					}
+				}
+			}
+		} else if (gameBall.getLocation().y<(int)(Box.ALTO/3) && direccion){
+			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=der){
+				if(gameBall.rightExtreme()>=(int)(computerBar.leftExtreme()-Bar.ANCHO) && movHorizontal && (computerBar.leftExtreme()+1)!=10 && gameBall.rightExtreme()<=computerBar.getCenterInX()) {
+					computerBar.moveLeft(2*velocidad);					
+				} else if(gameBall.leftExtreme()<=(int)(computerBar.rightExtreme()+Bar.ANCHO) && !movHorizontal && (computerBar.rightExtreme()+1)!=der && gameBall.leftExtreme()>=computerBar.getCenterInX()) {
+					computerBar.moveRight(2*velocidad);
+				} else if(movHorizontal) {
+					computerBar.moveRight(velocidad);
+				} else if(!movHorizontal) {
+					computerBar.moveLeft(velocidad);
+				}
+			}
+		}
+	}
+	
+	public void rebound() {
 		
 		if (direccion) {
 			direccion = ABAJO;
@@ -184,19 +279,14 @@ public class Brain extends Thread {
 
 	public void perdioSubiendo() {
 		perdio = true;
-		System.out.println("PERDIO SUBIENDO");
-
+		new Dialogo("¡Ganaste! Se iniciará un nuevo juego", "¡Ganaste!");
+		iniciarValores();
 	}
 	
 	public void perdioBajando() {
 		perdio = true;
-		Dialogo abc = new Dialogo("Perdiste, se iniciará un nuevo juego", "fin");
+		new Dialogo("Perdiste, se iniciará un nuevo juego", "¡Perdiste!");
 		iniciarValores();
-		
-		
-		
-		
-		
 	}
 
 	public void gano() {
@@ -208,7 +298,6 @@ public class Brain extends Thread {
 	public void iniciarValores(){
 		perdio = false;
 		cj = new GameWindow(args);
-		
 		contenedor = cj.windowBox;
 		userBar = contenedor.userBar;
 		computerBar = contenedor.computerBar;
@@ -217,7 +306,9 @@ public class Brain extends Thread {
 		System.out.println("Agregando listener");
 		contenedor.addMouseMotionListener(entrada);
 		direccion = ABAJO;
-		movHorizontal = DERECHA;
+		movHorizontal = IZQUIERDA;
+		XXX = 0;
+		angulo = 45;
 		
 	}
 	
