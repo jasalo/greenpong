@@ -33,9 +33,11 @@ public class Brain extends Thread {
 	
 	boolean movHorizontal = IZQUIERDA;
 	
-	// Atributos para el angulo de movimiento de la bola
+	// Atributos para el movimiento de la bola
 	
 	int angulo = 45;
+
+	int tempo = 0;
 	
 	// Otros
 	
@@ -164,49 +166,83 @@ public class Brain extends Thread {
 	{
 		// PA ANGULO DE "26"
 		if (angulo==26) {
-			if (direccion) {
-				gameBall.moveUp(velocidad);
-			} else if (!direccion){
-				gameBall.moveDown(velocidad);
-			}
-			
-			if (movHorizontal) {				
-				if((gameBall.rightExtreme()+1)<der) {
-					gameBall.moveRight(velocidad);
-					gameBall.moveRight(velocidad);
-				} else {
-					gameBall.moveRight(velocidad);
-				}
-			} else if (!movHorizontal) {
-				if((gameBall.leftExtreme()-1)>10) {
-					gameBall.moveLeft(velocidad);
-					gameBall.moveLeft(velocidad);
-				} else {
-					gameBall.moveLeft(velocidad);
-				}
-			}
-		} else
-		// PA ANGULO DE "64"
-		if (angulo==64) {
-			if (direccion) {
-				gameBall.moveUp(velocidad);
-			} else if (!direccion){
-				gameBall.moveDown(velocidad);
-			}
-			
-			if( (gameBall.getTopY()+1)<=computerBar.getKc() && (gameBall.getBottomY()-1)>=userBar.getBarY() ) {
+			if (tempo%2!=0) {
+				
 				if (direccion) {
 					gameBall.moveUp(velocidad);
-				} else {
+				} else if (!direccion){
 					gameBall.moveDown(velocidad);
 				}
-			}
-			if (movHorizontal) {
-				gameBall.moveRight(velocidad);
+			
+				if (movHorizontal) {				
+					if((gameBall.rightExtreme()+1)<der) {
+						gameBall.moveRight(velocidad);
+						gameBall.moveRight(velocidad);
+					} else {
+						gameBall.moveRight(velocidad);
+					}
+				} else if (!movHorizontal) {
+					if((gameBall.leftExtreme()-1)>10) {
+						gameBall.moveLeft(velocidad);
+						gameBall.moveLeft(velocidad);
+					} else {
+						gameBall.moveLeft(velocidad);
+					}
+				}
+				
 			} else {
-				gameBall.moveLeft(velocidad);
+				
+				if (movHorizontal) {				
+					if((gameBall.rightExtreme()+1)<der) {
+						gameBall.moveRight(velocidad);
+					}
+				} else if (!movHorizontal) {
+					if((gameBall.leftExtreme()-1)>10) {
+						gameBall.moveLeft(velocidad);
+					}
+				}
+				
 			}
+			tempo++;
 		} else
+		
+		// PA ANGULO DE "64"
+		if (angulo==64) {
+			if (tempo%2!=0) {
+				
+				if (direccion) {
+					gameBall.moveUp(velocidad);
+				} else if (!direccion){
+					gameBall.moveDown(velocidad);
+				}
+			
+				if( (gameBall.getTopY()+1)<=computerBar.getKc() && (gameBall.getBottomY()-1)>=userBar.getBarY() ) {
+					if (direccion) {
+						gameBall.moveUp(velocidad);
+					} else {
+						gameBall.moveDown(velocidad);
+					}
+				}
+				if (movHorizontal) {
+					gameBall.moveRight(velocidad);
+				} else {
+					gameBall.moveLeft(velocidad);
+				}
+				
+			} else {
+				
+				if( (gameBall.getTopY()+1)<=computerBar.getKc() && (gameBall.getBottomY()-1)>=userBar.getBarY() ) {
+					if (direccion) {
+						gameBall.moveUp(velocidad);
+					} else {
+						gameBall.moveDown(velocidad);
+					}
+				}
+				
+			}
+			tempo++;
+		} else
+			
 		// PA ANGULO DE 45
 		if(angulo==45) {
 			
@@ -278,13 +314,13 @@ public class Brain extends Thread {
 
 	public void perdioSubiendo() {
 		perdio = true;
-		new Dialogo("¡Ganaste! Se iniciará un nuevo juego", "¡Ganaste!");
+		new Dialogo("Ganaste, se iniciara un nuevo juego", "Ganaste");
 		iniciarValores();
 	}
 	
 	public void perdioBajando() {
 		perdio = true;
-		new Dialogo("Perdiste, se iniciará un nuevo juego", "¡Perdiste!");
+		new Dialogo("Perdiste, se iniciara un nuevo juego", "Perdiste");
 		iniciarValores();
 	}
 
@@ -302,7 +338,7 @@ public class Brain extends Thread {
 		computerBar = contenedor.computerBar;
 		gameBall = contenedor.gameBall;
 		InputManager entrada = new InputManager(userBar, contenedor.nivel);
-		System.out.println("Agregando listener");
+		//System.out.println("Agregando listener");
 		contenedor.addMouseMotionListener(entrada);
 		direccion = ABAJO;
 		movHorizontal = IZQUIERDA;
