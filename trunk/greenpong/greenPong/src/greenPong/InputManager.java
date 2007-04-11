@@ -7,6 +7,8 @@ package greenPong;
 
 import java.awt.event.MouseEvent;
 
+import tempo.GameLevel;
+
 
 
 /**
@@ -19,6 +21,9 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 	Box contenedor;
 	GameLevel nivel;
 	int px, py; //Posicion previa en x y y.
+	int x1;
+	int y1;
+	int lastXInRange=0;
 	
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -26,12 +31,25 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 	}
 
 	public void mouseMoved(MouseEvent e) {
-		int x1 = e.getX();
-		int y1 = e.getY();
-		e.translatePoint(0,0);
-
-		if(x1 > 0 && x1 < Box.ANCHO){
+		x1 = e.getX();
+		y1 = e.getY();
+		//e.translatePoint(0,0);
+		
+		//System.out.println(x1);
+		
+		//moveMouse(x1,(int)Box.ALTO/2 );
+		
+		/*if(x1>Box.ANCHO-25-Bar.ANCHO) {
+			moveMouse(Box.ANCHO-25-Bar.ANCHO,(int)Box.ALTO/2 );
+		} else if(x1<10 && x1>=0) {
+			moveMouse(10,(int)Box.ALTO/2 );
+		}*/
+		
+		if(isInBoardSpace(x1)){
 			userBar.setX(x1);
+			lastXInRange = x1;
+		}else{
+			moveMouse(lastXInRange,(int)Box.ALTO/2 );
 		}
 		
 		px = x1;
@@ -39,6 +57,15 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 		
 		
 		
+		
+	}
+	
+	private boolean isInBoardSpace(int xyz){
+		if(xyz > 0 && xyz < Box.ANCHO){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	InputManager(Bar bar, GameLevel nNivel){
@@ -46,9 +73,10 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 		nivel = nNivel;
 		px=0;
 		py=0;
+		
 	}
 	
-	/*public static void moveMouse(int x, int y){
+	public static void moveMouse(int x, int y){
 		java.awt.Robot robot;
 		try {
 			robot = new java.awt.Robot();
@@ -57,7 +85,7 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}*/
+	}
 	
 	
 

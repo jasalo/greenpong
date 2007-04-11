@@ -73,7 +73,7 @@ public class Brain extends Thread {
 			else
 			{
 				try {
-					sleep(3000);
+					sleep(1000);
 				} catch (InterruptedException e) {}
 				moverBola(angulo);
 				XXX = 1;
@@ -314,18 +314,14 @@ public class Brain extends Thread {
 
 	public void perdioSubiendo() {
 		perdio = true;
-		new Dialogo("Ganaste, se iniciara un nuevo juego", "Ganaste");
-		iniciarValores();
+		//javax.swing.JOptionPane.showMessageDialog(contenedor, "Ganaste, se iniciara un nuevo juego", "Ganaste", javax.swing.JOptionPane.ERROR_MESSAGE);
+		restart();
 	}
 	
 	public void perdioBajando() {
 		perdio = true;
-		new Dialogo("Perdiste, se iniciara un nuevo juego", "Perdiste");
-		iniciarValores();
-	}
-
-	public void gano() {
-
+		//javax.swing.JOptionPane.showMessageDialog(contenedor, "Perdiste, se iniciara un nuevo juego", "Perdiste", javax.swing.JOptionPane.ERROR_MESSAGE);
+		restart();
 	}
 	
 	
@@ -338,12 +334,35 @@ public class Brain extends Thread {
 		computerBar = contenedor.computerBar;
 		gameBall = contenedor.gameBall;
 		InputManager entrada = new InputManager(userBar, contenedor.nivel);
-		//System.out.println("Agregando listener");
 		contenedor.addMouseMotionListener(entrada);
 		direccion = ABAJO;
 		movHorizontal = IZQUIERDA;
 		XXX = 0;
-		angulo = 45;
+		
+		
+	}
+	
+	public void restart(){
+		System.out.println("Se va a parar");
+		this.interrupt() ;
+		//this.stop();
+		System.out.println("Se va a centrar");
+		gameBall.center();
+		computerBar.centerInX();
+		userBar.centerInX();
+		perdio = false;
+		direccion = ABAJO;
+		movHorizontal = IZQUIERDA;
+		XXX = 0;
+		System.out.println("Voy a resumir");
+		this.resume();
+
+		//run();
+		//this.start();
+		/*evaluarNormas();
+		moverBola(angulo);
+		moverBarraPC();*/
+		
 		
 	}
 	

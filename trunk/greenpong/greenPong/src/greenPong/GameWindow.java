@@ -22,13 +22,11 @@ public class GameWindow extends javax.swing.JFrame {
 		windowBox = new Box(args, this);
 		getContentPane().add(windowBox, BorderLayout.CENTER);
 		
-		//
-		//getContentPane().add(new javax.swing.JButton("Yo Estorbo!!"), BorderLayout.SOUTH);
 		//setBackground(Color.BLUE);
 		//
 		setSize(Box.ANCHO, Box.ALTO);
 		
-		setVisible(true); // INICIA EL JUEGO!!
+		setVisible(true); 
 	}
 
 }
