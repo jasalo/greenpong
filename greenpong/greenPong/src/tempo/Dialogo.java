@@ -1,4 +1,4 @@
-package greenPong;
+package tempo;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;

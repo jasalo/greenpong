@@ -6,8 +6,10 @@ package greenPong;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+
+import tempo.GameLevel;
+
 import java.awt.*;
-import java.awt.Robot;
 
 /**
  * fUNCION SIN METODOS POR AHORA.

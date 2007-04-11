@@ -1,7 +1,7 @@
 /**
  * 
  */
-package greenPong;
+package tempo;
 
 /**
  * @author ubuntu

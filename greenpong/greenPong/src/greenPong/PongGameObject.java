@@ -8,6 +8,8 @@ import javax.imageio.*;
 import java.io.*;
 import javax.swing.*;
 
+import tempo.InfoWindow;
+
 /**
  * IMPORTANTE: Todo control esta ubicado en cartesiano por esquina sup izq
  */
@@ -97,7 +99,6 @@ public class PongGameObject extends javax.swing.JLabel {
 	
 	public int getCartesianY(){
 		int r = Box.ALTO - (int)getLocation().getY();
-		info.info("cartY: " + r);
 		return r;
 	}
 	
@@ -106,7 +107,4 @@ public class PongGameObject extends javax.swing.JLabel {
 		setLocation(x, y);
 	}
 	
-
-	
-	
-} //Fin clase
+}

@@ -70,14 +70,16 @@ public class GPSplash extends Thread {
 			} catch (InterruptedException e) {}
 			contador++;
 			System.out.println(contador);
-			if(contador == 5){
+			if(contador == 1){
 				splash.setVisible(false);
 				app.cj.setVisible(true);
+				
 			}
 			
-			if(contador == 6){
+			if(contador == 2){
 				
 				app.start();
+				this.stop();
 			}
 			
 		}
