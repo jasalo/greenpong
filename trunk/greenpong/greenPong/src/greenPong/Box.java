@@ -54,7 +54,7 @@ public class Box extends javax.swing.JPanel {
 			centro.setSize( ((dim.width-w)/2), ((dim.height-h)/2));
 			//Se ubica ventana y mouse al centro;
 			setLocation((int)centro.getWidth(), (int)centro.getHeight() );
-			robot.mouseMove((int)centro.getWidth(), (int)centro.getHeight() );
+			robot.mouseMove((int)(ANCHO/2), (int)(ALTO/2) );
 		} catch (AWTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,20 +67,20 @@ public class Box extends javax.swing.JPanel {
 		// Ubica las barras verticalmente a la posicion en la q quedaran
 		userBar.setFinalYPosition(ALTO-71);
 		userBar.setLocation(10, userBar.getFinalYPosition());
-		info("Userbar Y final position:" + userBar.getFinalYPosition());
+		//info("Userbar Y final position:" + userBar.getFinalYPosition());
 		userBar.centerInX();
 		userBar.moveRight(20);
 
 		computerBar.setFinalYPosition(10);
 		computerBar.setLocation(10, computerBar.getFinalYPosition());
-		info("Computerbar Y final position:" + computerBar.getFinalYPosition());
+		//info("Computerbar Y final position:" + computerBar.getFinalYPosition());
 		computerBar.centerInX();
 		computerBar.moveLeft(20);
 
 		gameBall.setLocation(200, 200);
 		gameBall.center();
 		// gameBall.getLocation().get
-		info("Box: " + this.getWidth() + ":" + this.getHeight());
+		//info("Box: " + this.getWidth() + ":" + this.getHeight());
 
 	}
 

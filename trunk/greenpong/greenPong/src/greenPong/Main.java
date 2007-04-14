@@ -29,7 +29,7 @@ public class Main {
 		GPSplash splash = new GPSplash(appBrain, args1[2]);
 		splash.start();
 		//appBrain.start();
-		System.out.println("greenPong iniciado");
+		//System.out.println("greenPong iniciado");
 		//OCULTAR MOUSE PRUEBA
 		java.awt.Robot robot;
 		java.awt.Image cursorImage = java.awt.Toolkit.getDefaultToolkit().getImage(args[3]);
