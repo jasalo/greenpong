@@ -73,7 +73,7 @@ public class Brain extends Thread {
 			else
 			{
 				try {
-					sleep(1000);
+					sleep(1500);
 				} catch (InterruptedException e) {}
 				moverBola(angulo);
 				XXX = 1;
@@ -297,10 +297,21 @@ public class Brain extends Thread {
 			}
 		} else if (gameBall.getLocation().y<(computerBar.getKc() + Bar.ALTO)){
 			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=der){
-				if (movHorizontal && gameBall.rightExtreme()<computerBar.leftExtreme())
-					computerBar.moveLeft(velocidad);
-				if (!movHorizontal && gameBall.leftExtreme()>computerBar.rightExtreme())
-					computerBar.moveRight(velocidad);
+				int bl = gameBall.leftExtreme();
+				int br = gameBall.rightExtreme();
+				int cl = computerBar.leftExtreme();
+				int cr = computerBar.rightExtreme();
+				if ( bl >= cl && br <= cr ) {
+					if (movHorizontal && cr<(der-1))
+						computerBar.moveRight(2*velocidad);
+					if (!movHorizontal && cl>11)
+						computerBar.moveLeft(2*velocidad);
+				} else {
+					if (movHorizontal && gameBall.leftExtreme()<computerBar.leftExtreme())
+						computerBar.moveLeft(2*velocidad);
+					if (!movHorizontal && gameBall.rightExtreme()>computerBar.rightExtreme())
+						computerBar.moveRight(2*velocidad);
+				}
 			}
 		}
 	}
@@ -357,7 +368,6 @@ public class Brain extends Thread {
 	
 	public void restart(){
 		this.interrupt() ;
-		//this.stop();
 		gameBall.center();
 		computerBar.centerInX();
 		userBar.centerInX();
@@ -366,15 +376,7 @@ public class Brain extends Thread {
 		movHorizontal = IZQUIERDA;
 		XXX = 0;
 		this.resume();
-
-		//run();
-		//this.start();
-		/*evaluarNormas();
-		moverBola(angulo);
-		moverBarraPC();*/
-		
-		
-	}
+}
 	
 	
 
