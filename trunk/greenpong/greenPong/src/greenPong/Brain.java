@@ -337,12 +337,14 @@ public class Brain extends Thread {
 	}
 
 	public void perdioSubiendo() {
+		cj.lifeUp();
 		perdio = true;
 		javax.swing.JOptionPane.showMessageDialog(contenedor, "Ganaste, se iniciara un nuevo juego", "Ganaste", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 		restart();
 	}
 	
 	public void perdioBajando() {
+		cj.lifeDown();
 		perdio = true;
 		javax.swing.JOptionPane.showMessageDialog(contenedor, "Perdiste, se iniciara un nuevo juego", "Perdiste", javax.swing.JOptionPane.ERROR_MESSAGE);
 		restart();
