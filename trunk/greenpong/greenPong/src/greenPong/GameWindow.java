@@ -45,6 +45,7 @@ public class GameWindow extends javax.swing.JFrame {
 		
 		setBackground(Color.WHITE);
 		
+		
 		//windowBox.setBackground(java.awt.Color.GRAY);
 		//pan.setBorder();
 		
@@ -67,10 +68,14 @@ public class GameWindow extends javax.swing.JFrame {
 		puntajeFrame.add(vidas);
 		puntajeFrame.add(new JLabel("  "));
 		puntajeFrame.add(puntaje);
-		puntajeFrame.add(new JLabel("pts."));
+		JLabel pts = new JLabel("pts.");
+		pts.setFont(new Font("Arial", Font.BOLD, 19));
+		puntajeFrame.add(pts);
 		/*TEMPORAL*/
-		vidas.setText("58");
+		vidas.setText("x58");
 		puntaje.setText("54874");
+		vidas.setFont(new Font("Arial", Font.BOLD, 22));
+		puntaje.setFont(new Font("Arial", Font.BOLD, 22));
 		
 		
 		
