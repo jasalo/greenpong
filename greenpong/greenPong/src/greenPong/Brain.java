@@ -302,10 +302,10 @@ public class Brain extends Thread {
 				int cl = computerBar.leftExtreme();
 				int cr = computerBar.rightExtreme();
 				if ( bl >= cl && br <= cr ) {
-					if (movHorizontal && cr<(der-1))
-						computerBar.moveRight(2*velocidad);
-					if (!movHorizontal && cl>11)
-						computerBar.moveLeft(2*velocidad);
+					if (movHorizontal && cr<der)
+						computerBar.moveRight(velocidad);
+					if (!movHorizontal && cl>10)
+						computerBar.moveLeft(velocidad);
 				} else {
 					if (movHorizontal && gameBall.leftExtreme()<computerBar.leftExtreme())
 						computerBar.moveLeft(2*velocidad);
