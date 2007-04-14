@@ -36,23 +36,13 @@ public class GameWindow extends javax.swing.JFrame {
 		puntajeFrame = new JPanel();
 		puntaje = new JLabel();
 		vidas = new JLabel();
-		//windowBox.setBorder(new LineBorder(Color.BLACK));
 		setLayout(new BorderLayout());
 		getContentPane().add(windowBox, BorderLayout.CENTER);
 		crearPuntajeFrame();
 		getContentPane().add(puntajeFrame, BorderLayout.SOUTH);
-		//TransparentBackground bg = new TransparentBackground();
-		
 		setBackground(Color.WHITE);
-		
-		
-		//windowBox.setBackground(java.awt.Color.GRAY);
-		//pan.setBorder();
-		
-		//setSize(Box.ANCHO, Box.ALTO+puntajeFrame.getHeight());
 		windowBox.setPreferredSize(new java.awt.Dimension(Box.ANCHO, Box.ALTO));
 		pack();
-		//windowBox.setLocation(15,15);
 		setVisible(true); 
 	}
 	
@@ -77,9 +67,6 @@ public class GameWindow extends javax.swing.JFrame {
 		puntaje.setText("54874");
 		vidas.setFont(new Font("Arial", Font.BOLD, 22));
 		puntaje.setFont(new Font("Arial", Font.BOLD, 22));
-		
-		
-		
 	}
 	
 	
@@ -117,6 +104,37 @@ public class GameWindow extends javax.swing.JFrame {
 		} catch (IOException e) {
 			
 		}
+	}
+	
+	/** METODOS PARA CONTROLAR LAS VIDAS Y EL PUNTAJE **/
+	
+	public void lifeUp(){
+		String vidasActuales = vidas.getText();
+		//LA siguiente linea toma las vidas como enteor porque se agrega
+		//una x Siempre para las vidas.
+		vidasActuales = (String)vidasActuales.subSequence(1, vidasActuales.length());
+		
+		int numeroVidas = Integer.parseInt(vidasActuales);
+		numeroVidas++;
+		vidas.setText("x" + numeroVidas);
+	}
+	
+	public void lifeDown(){
+		String vidasActuales = vidas.getText();
+		//LA siguiente linea toma las vidas como enteor porque se agrega
+		//una x Siempre para las vidas.
+		vidasActuales = (String)vidasActuales.subSequence(1, vidasActuales.length());
+		
+		int numeroVidas = Integer.parseInt(vidasActuales);
+		numeroVidas--;
+		vidas.setText("x" + numeroVidas);
+	}
+	
+	public void increaseScore(int increasement){
+		int puntajeActual = Integer.parseInt(puntaje.getText());
+		puntajeActual += increasement;
+		puntaje.setText(""+puntajeActual);
+		
 	}
 
 }

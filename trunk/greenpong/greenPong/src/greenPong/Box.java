@@ -27,8 +27,10 @@ public class Box extends javax.swing.JPanel {
 	Ball gameBall;
 	GameLevel nivel;
 	Dimension centro; //centro de la pantalla
+	//GameWindow gWindow;
 
 	Box(String[] args, javax.swing.JFrame contenedor) {
+		//gWindow = (GameWindow)contenedor;
 		// Args: Util para recibir por consola las imagenes del juego
 		// Se asigna memoria a los controles
 		centro = new Dimension();
