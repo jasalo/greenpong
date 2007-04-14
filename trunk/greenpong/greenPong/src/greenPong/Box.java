@@ -59,6 +59,7 @@ public class Box extends javax.swing.JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		setBackground(Color.WHITE);
 		
 		
 	}

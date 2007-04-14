@@ -61,6 +61,7 @@ public class GameWindow extends javax.swing.JFrame {
 	 *
 	 */
 	private void crearPuntajeFrame(){
+		puntajeFrame.setBackground(Color.WHITE);
 		puntajeFrame.setLayout(new FlowLayout());
 		JLabel imgBola = new JLabel();
 		setLabelIcon(imgBola, args[1]);
