@@ -115,7 +115,10 @@ public class Brain extends Thread {
 				if ((bl >= cl && bl <= cr) || (br >= cl && br <= cr)) {
 					rebound();
 					if( (bl>(int)(1.5*(cl-Ball.ANCHO)) && br<(int)(1.5*(cl+Ball.ANCHO))) || (bl>(int)(1.5*(cr-Ball.ANCHO)) && br<(int)(1.5*(cr+Ball.ANCHO))) ) {
-						angulo = 26;
+						if(angulo==64)
+							angulo = 45;
+						else
+							angulo = 26;
 					} else if( bc>=(cc-Ball.ANCHO) && bc<=(cc+Ball.ANCHO)){
 						angulo = 64;
 					}
@@ -141,7 +144,10 @@ public class Brain extends Thread {
 				if ((bl >= ul && bl <= ur ) || (br >= ul && br <= ur)) {
 					rebound();
 					if( (bl>(ul-Ball.ANCHO) && br<(ul+Ball.ANCHO)) || (bl>(ur-Ball.ANCHO) && br<(ur+Ball.ANCHO)) ) {
-						angulo = 26;
+						if(angulo==64)
+							angulo = 45;
+						else
+							angulo = 26;
 					} else if( bc>=(uc-Ball.ANCHO) && bc<=(uc+Ball.ANCHO)){
 						angulo = 64;
 					}
@@ -277,7 +283,7 @@ public class Brain extends Thread {
 					}
 				}
 			}
-		} else if (gameBall.getLocation().y<(int)(Box.ALTO/3)){
+		} else if ( (gameBall.getLocation().y<(int)(Box.ALTO/3)) && (gameBall.getLocation().y>(computerBar.getKc() + Bar.ALTO)) ){
 			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<der){
 				if(gameBall.rightExtreme()>=(int)(computerBar.leftExtreme()-Bar.ANCHO) && movHorizontal && (computerBar.leftExtreme()-1)>10 && gameBall.rightExtreme()<=computerBar.getCenterInX()) {
 					computerBar.moveLeft(2*velocidad);					
@@ -288,6 +294,13 @@ public class Brain extends Thread {
 				} else if(!movHorizontal && (computerBar.leftExtreme()-1)>10) {
 					computerBar.moveLeft(velocidad);
 				}
+			}
+		} else if (gameBall.getLocation().y<(computerBar.getKc() + Bar.ALTO)){
+			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=der){
+				if (movHorizontal && gameBall.rightExtreme()<computerBar.leftExtreme())
+					computerBar.moveLeft(velocidad);
+				if (!movHorizontal && gameBall.leftExtreme()>computerBar.rightExtreme())
+					computerBar.moveRight(velocidad);
 			}
 		}
 	}
@@ -314,13 +327,13 @@ public class Brain extends Thread {
 
 	public void perdioSubiendo() {
 		perdio = true;
-		//javax.swing.JOptionPane.showMessageDialog(contenedor, "Ganaste, se iniciara un nuevo juego", "Ganaste", javax.swing.JOptionPane.ERROR_MESSAGE);
+		javax.swing.JOptionPane.showMessageDialog(contenedor, "Ganaste, se iniciara un nuevo juego", "Ganaste", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 		restart();
 	}
 	
 	public void perdioBajando() {
 		perdio = true;
-		//javax.swing.JOptionPane.showMessageDialog(contenedor, "Perdiste, se iniciara un nuevo juego", "Perdiste", javax.swing.JOptionPane.ERROR_MESSAGE);
+		javax.swing.JOptionPane.showMessageDialog(contenedor, "Perdiste, se iniciara un nuevo juego", "Perdiste", javax.swing.JOptionPane.ERROR_MESSAGE);
 		restart();
 	}
 	
@@ -343,10 +356,8 @@ public class Brain extends Thread {
 	}
 	
 	public void restart(){
-		System.out.println("Se va a parar");
 		this.interrupt() ;
 		//this.stop();
-		System.out.println("Se va a centrar");
 		gameBall.center();
 		computerBar.centerInX();
 		userBar.centerInX();
@@ -354,7 +365,6 @@ public class Brain extends Thread {
 		direccion = ABAJO;
 		movHorizontal = IZQUIERDA;
 		XXX = 0;
-		System.out.println("Voy a resumir");
 		this.resume();
 
 		//run();

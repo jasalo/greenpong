@@ -66,18 +66,12 @@ public class GPSplash extends Thread {
 		while(1==1){
 			try {
 		
-				sleep(1000);
+				sleep(3000);
 			} catch (InterruptedException e) {}
-			contador++;
-			System.out.println(contador);
-			if(contador == 1){
+			contador++;			
+			if(contador == 2){
 				splash.setVisible(false);
 				app.cj.setVisible(true);
-				
-			}
-			
-			if(contador == 2){
-				
 				app.start();
 				this.stop();
 			}
