@@ -13,7 +13,7 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
 
-import javax.swing.border.LineBorder;
+
 
 /**
  * @author ubuntu
@@ -21,10 +21,10 @@ import javax.swing.border.LineBorder;
  */
 public class GameWindow extends javax.swing.JFrame {
 	Box windowBox;
-	JPanel puntajeFrame;
-	JLabel puntaje, vidas;
-	public static int ANCHO=528 ;
-	public static int ALTO= 687;
+	JPanel scorePanel;
+	JLabel score, lives;
+	public static int WIDTH=528 ;
+	public static int HEIGHT= 687;
 	String[] args;
 	
 	GameWindow(String[] args1) {
@@ -33,15 +33,15 @@ public class GameWindow extends javax.swing.JFrame {
 		setTitle("[greenPong]");
 		setResizable(false);
 		windowBox = new Box(args, this);
-		puntajeFrame = new JPanel();
-		puntaje = new JLabel();
-		vidas = new JLabel();
+		scorePanel = new JPanel();
+		score = new JLabel();
+		lives = new JLabel();
 		setLayout(new BorderLayout());
 		getContentPane().add(windowBox, BorderLayout.CENTER);
-		crearPuntajeFrame();
-		getContentPane().add(puntajeFrame, BorderLayout.SOUTH);
+		createScoreFrame();
+		getContentPane().add(scorePanel, BorderLayout.SOUTH);
 		setBackground(Color.WHITE);
-		windowBox.setPreferredSize(new java.awt.Dimension(Box.ANCHO, Box.ALTO));
+		windowBox.setPreferredSize(new java.awt.Dimension(Box.WIDTH, Box.HEIGHT));
 		pack();
 		setVisible(true); 
 	}
@@ -50,23 +50,23 @@ public class GameWindow extends javax.swing.JFrame {
 	 * Crea el frame del puntaje con todos su detalles
 	 *
 	 */
-	private void crearPuntajeFrame(){
-		puntajeFrame.setBackground(Color.WHITE);
-		puntajeFrame.setLayout(new FlowLayout());
+	private void createScoreFrame(){
+		scorePanel.setBackground(Color.WHITE);
+		scorePanel.setLayout(new FlowLayout());
 		JLabel imgBola = new JLabel();
 		setLabelIcon(imgBola, args[1]);
-		puntajeFrame.add(imgBola);
-		puntajeFrame.add(vidas);
-		puntajeFrame.add(new JLabel("  "));
-		puntajeFrame.add(puntaje);
+		scorePanel.add(imgBola);
+		scorePanel.add(lives);
+		scorePanel.add(new JLabel("  "));
+		scorePanel.add(score);
 		JLabel pts = new JLabel("pts.");
 		pts.setFont(new Font("Arial", Font.BOLD, 19));
-		puntajeFrame.add(pts);
+		scorePanel.add(pts);
 		/*TEMPORAL*/
-		vidas.setText("x58");
-		puntaje.setText("54874");
-		vidas.setFont(new Font("Arial", Font.BOLD, 22));
-		puntaje.setFont(new Font("Arial", Font.BOLD, 22));
+		lives.setText("x58");
+		score.setText("54874");
+		lives.setFont(new Font("Arial", Font.BOLD, 22));
+		score.setFont(new Font("Arial", Font.BOLD, 22));
 	}
 	
 	
@@ -109,31 +109,31 @@ public class GameWindow extends javax.swing.JFrame {
 	/** METODOS PARA CONTROLAR LAS VIDAS Y EL PUNTAJE **/
 	
 	public void lifeUp(){
-		String vidasActuales = vidas.getText();
+		String vidasActuales = lives.getText();
 		//LA siguiente linea toma las vidas como enteor porque se agrega
 		//una x Siempre para las vidas.
 		vidasActuales = (String)vidasActuales.subSequence(1, vidasActuales.length());
 		
 		int numeroVidas = Integer.parseInt(vidasActuales);
 		numeroVidas++;
-		vidas.setText("x" + numeroVidas);
+		lives.setText("x" + numeroVidas);
 	}
 	
 	public void lifeDown(){
-		String vidasActuales = vidas.getText();
+		String vidasActuales = lives.getText();
 		//LA siguiente linea toma las vidas como enteor porque se agrega
 		//una x Siempre para las vidas.
 		vidasActuales = (String)vidasActuales.subSequence(1, vidasActuales.length());
 		
 		int numeroVidas = Integer.parseInt(vidasActuales);
 		numeroVidas--;
-		vidas.setText("x" + numeroVidas);
+		lives.setText("x" + numeroVidas);
 	}
 	
 	public void increaseScore(int increasement){
-		int puntajeActual = Integer.parseInt(puntaje.getText());
+		int puntajeActual = Integer.parseInt(score.getText());
 		puntajeActual += increasement;
-		puntaje.setText(""+puntajeActual);
+		score.setText(""+puntajeActual);
 		
 	}
 

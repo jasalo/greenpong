@@ -7,7 +7,7 @@ package greenPong;
 
 import java.awt.event.MouseEvent;
 
-import tempo.GameLevel;
+
 
 
 
@@ -18,9 +18,8 @@ import tempo.GameLevel;
  */
 public class InputManager implements java.awt.event.MouseMotionListener{
 	Bar userBar;
-	Box contenedor;
-	GameLevel nivel;
-	int px, py; //Posicion previa en x y y.
+	Box container;
+	int previousX, previousY; //Posicion previa en x y y.
 	int x1;
 	int y1;
 	int lastXInRange=0;
@@ -49,11 +48,11 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 			userBar.setX(x1);
 			lastXInRange = x1;
 		}else{
-			moveMouse(lastXInRange,(int)Box.ALTO/2 );
+			moveMouse(lastXInRange,(int)Box.HEIGHT/2 );
 		}
 		
-		px = x1;
-		py = y1;
+		previousX = x1;
+		previousY = y1;
 		
 		
 		
@@ -61,18 +60,18 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 	}
 	
 	private boolean isInBoardSpace(int xyz){
-		if(xyz > 0 && xyz < Box.ANCHO){
+		if(xyz > 0 && xyz < Box.WIDTH){
 			return true;
 		}else{
 			return false;
 		}
 	}
 	
-	InputManager(Bar bar, GameLevel nNivel){
+	InputManager(Bar bar){
 		userBar = bar;
-		nivel = nNivel;
-		px=0;
-		py=0;
+		
+		previousX=0;
+		previousY=0;
 		
 	}
 	

@@ -4,11 +4,11 @@
  */
 package greenPong;
 
-import java.awt.AWTException;
+//import java.awt.AWTException;
 import java.awt.Cursor;
-import java.awt.Toolkit;
+//import java.awt.Toolkit;
 
-import javax.accessibility.AccessibleComponent;
+//import javax.accessibility.AccessibleComponent;
 import javax.accessibility.AccessibleExtendedComponent;
 
 /**
@@ -33,11 +33,11 @@ public class Main {
 		//appBrain.start();
 		//System.out.println("greenPong iniciado");
 		//OCULTAR MOUSE PRUEBA
-		java.awt.Robot robot;
+		//java.awt.Robot robot;
 		java.awt.Image cursorImage = java.awt.Toolkit.getDefaultToolkit().getImage(args[3]);
 		Cursor blankCursor = java.awt.Toolkit.getDefaultToolkit().createCustomCursor(cursorImage, new java.awt.Point( 0, 0), "" );
-		AccessibleExtendedComponent abc;
-		appBrain.contenedor.setCursor(blankCursor);
+		//AccessibleExtendedComponent abc;
+		appBrain.container.setCursor(blankCursor);
 		
 	}
 

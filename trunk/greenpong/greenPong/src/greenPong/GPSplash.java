@@ -2,13 +2,13 @@ package greenPong;
 
 import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
-import java.awt.image.ConvolveOp;
-import java.awt.image.Kernel;
+/*import java.awt.image.ConvolveOp;
+import java.awt.image.Kernel;*/
 import java.io.File;
 import java.io.IOException;
-import java.awt.image.*;
+/*import java.awt.image.*;
 import javax.imageio.*;
-import java.io.*;
+import java.io.*;*/
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -17,9 +17,9 @@ import javax.swing.JFrame;
 
 public class GPSplash extends Thread {
 
-	javax.swing.JLabel imagen;
+	javax.swing.JLabel image;
 	javax.swing.JFrame splash;
-	private int tiempo =0;
+	//private int time =0;
 	Brain app;
 	
 	/*public static void main(String[] args) {
@@ -35,8 +35,8 @@ public class GPSplash extends Thread {
 		splash.setUndecorated(true);
 		splash.setTitle("Loading [greenPong]...");
 		
-		imagen = new javax.swing.JLabel("Aqui va la img que se tiene que ver con el splash");
-		splash.getContentPane().add(imagen, BorderLayout.CENTER);
+		image = new javax.swing.JLabel("Aqui va la img que se tiene que ver con el splash");
+		splash.getContentPane().add(image, BorderLayout.CENTER);
 		//Carga imagen
 		try{
 			
@@ -47,7 +47,7 @@ public class GPSplash extends Thread {
 		int height = input.getHeight();
 		Icon icon = new ImageIcon(input);
 		splash.setSize(width, height);
-		imagen.setIcon(icon);
+		image.setIcon(icon);
 		} catch (IOException e){
 			//Mensaje de error.
 		}
@@ -62,7 +62,7 @@ public class GPSplash extends Thread {
 	
 	public void run() {
 		int contador = 0;
-		app.cj.setVisible(false);
+		app.gameWindow.setVisible(false);
 		while(1==1){
 			try {
 		
@@ -71,7 +71,7 @@ public class GPSplash extends Thread {
 			contador++;			
 			if(contador == 2){
 				splash.setVisible(false);
-				app.cj.setVisible(true);
+				app.gameWindow.setVisible(true);
 				app.start();
 				this.stop();
 			}

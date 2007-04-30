@@ -11,7 +11,7 @@ package greenPong;
  */
 public class Brain extends Thread {
 
-	Box contenedor;
+	Box container;
 
 	Bar userBar, computerBar;
 
@@ -19,64 +19,64 @@ public class Brain extends Thread {
 	
 	// Constantes y atributos pa movimiento vertical
 
-	final static boolean ARRIBA = true;
+	final static boolean UP = true;
 
-	final static boolean ABAJO = false;
+	final static boolean DOWN = false;
 
-	boolean direccion = ABAJO;
+	boolean direction = DOWN;
 	
 	// Constantes y atributos pa movimiento horizontal
 	
-	final static boolean DERECHA = true;
+	final static boolean RIGHT = true;
 
-	final static boolean IZQUIERDA = false;
+	final static boolean LEFT = false;
 	
-	boolean movHorizontal = IZQUIERDA;
+	boolean movHorizontal = LEFT;
 	
 	// Atributos para el movimiento de la bola
 	
-	int angulo = 45;
+	int angle = 45;
 
 	int tempo = 0;
 	
 	// Otros
 	
-	int XXX = 0;
+	boolean firstRun = true;
 	
-	int der = Box.ANCHO - 15;
-	GameWindow cj; //Caja cone ljuego
-	boolean perdio = false;
+	int der = Box.WIDTH - 15;
+	GameWindow gameWindow; //Caja cone ljuego
+	boolean lost = false;
 	
 	String[] args;
-	int velocidad = 1; // Pixeles del movimiento de la computerBar y la bola, por run
+	int speed = 1; // Pixeles del movimiento de la computerBar y la bola, por run
 						//Si no es 1 da errores en los cálculos y no rebota la bola
 
 	public Brain(String[] args1) {
 		super();
 		args = args1;
-		iniciarValores();
+		initializeValues();
 	}
 
 	public void run() {
 		userBar.setLocation(0, userBar.getFinalYPosition());
 		userBar.centerInX();
-		while (perdio == false) {
+		while (lost == false) {
 			try {
 				sleep(Main.brainTime);
 			} catch (InterruptedException e) {}
 			
-			if (XXX!=0) {
-				evaluarNormas();
-				moverBola(angulo);
-				moverBarraPC();
+			if (firstRun!=true) {
+				evaluateGameRules();
+				moveBall(angle);
+				moveComputerBar();
 			}
 			else
 			{
 				try {
 					sleep(1500);
 				} catch (InterruptedException e) {}
-				moverBola(angulo);
-				XXX = 1;
+				moveBall(angle);
+				firstRun = false;
 			}
 		}
 
@@ -86,16 +86,16 @@ public class Brain extends Thread {
 	 * Este metodo evalua normas del juego o cosas que se tienen que cumplir.
 	 * Si no se cumplen genera algo. Usa otro metodos.
 	 */
-	public void evaluarNormas() {
+	public void evaluateGameRules() {
 		
 		// EVALUAR MOVIMIENTO HORIZONTAL
 		
 		if (movHorizontal && gameBall.rightExtreme()==der){
-			reboteHorizontal();
+			horizontalBounce();
 		}
 		
 		if (!movHorizontal && gameBall.leftExtreme()==10){
-			reboteHorizontal();
+			horizontalBounce();
 		}
 		
 		// EVALUAR MOVIMIENTO VERTICAL
@@ -104,7 +104,7 @@ public class Brain extends Thread {
 		int br = gameBall.rightExtreme();
 		int bc = gameBall.getH();
 		
-		if (direccion) {
+		if (direction) {
 			
 			if (gameBall.getTopY() == computerBar.getKc()) {
 				
@@ -113,27 +113,27 @@ public class Brain extends Thread {
 				int cc = computerBar.getCenterInX();
 
 				if ((bl >= cl && bl <= cr) || (br >= cl && br <= cr)) {
-					rebound();
-					if( (bl>(int)(1.5*(cl-Ball.ANCHO)) && br<(int)(1.5*(cl+Ball.ANCHO))) || (bl>(int)(1.5*(cr-Ball.ANCHO)) && br<(int)(1.5*(cr+Ball.ANCHO))) ) {
-						if(angulo==64)
-							angulo = 45;
+					bounce();
+					if( (bl>(int)(1.5*(cl-Ball.WIDTH)) && br<(int)(1.5*(cl+Ball.WIDTH))) || (bl>(int)(1.5*(cr-Ball.WIDTH)) && br<(int)(1.5*(cr+Ball.WIDTH))) ) {
+						if(angle==64)
+							angle = 45;
 						else
-							angulo = 26;
-					} else if( bc>=(cc-Ball.ANCHO) && bc<=(cc+Ball.ANCHO)){
-						angulo = 64;
+							angle = 26;
+					} else if( bc>=(cc-Ball.WIDTH) && bc<=(cc+Ball.WIDTH)){
+						angle = 64;
 					}
 					else {
-						angulo = 45;
+						angle = 45;
 					}
 				}
 			}
 			else if (gameBall.getTopY() > computerBar.getKc())
 			{
-				perdioSubiendo();
+				lostGoingUp();
 			}
 		}
 		
-		if (!direccion) {
+		if (!direction) {
 					
 			if ( gameBall.getBottomY() == userBar.getBarY() ) {
 			
@@ -142,23 +142,23 @@ public class Brain extends Thread {
 				int uc = userBar.getCenterInX();
 				
 				if ((bl >= ul && bl <= ur ) || (br >= ul && br <= ur)) {
-					rebound();
-					if( (bl>(ul-Ball.ANCHO) && br<(ul+Ball.ANCHO)) || (bl>(ur-Ball.ANCHO) && br<(ur+Ball.ANCHO)) ) {
-						if(angulo==64)
-							angulo = 45;
+					bounce();
+					if( (bl>(ul-Ball.WIDTH) && br<(ul+Ball.WIDTH)) || (bl>(ur-Ball.WIDTH) && br<(ur+Ball.WIDTH)) ) {
+						if(angle==64)
+							angle = 45;
 						else
-							angulo = 26;
-					} else if( bc>=(uc-Ball.ANCHO) && bc<=(uc+Ball.ANCHO)){
-						angulo = 64;
+							angle = 26;
+					} else if( bc>=(uc-Ball.WIDTH) && bc<=(uc+Ball.WIDTH)){
+						angle = 64;
 					}
 					else {
-						angulo = 45;
+						angle = 45;
 					}
 				}	
 			}
 			else if ( gameBall.getBottomY() < userBar.getBarY() )
 			{
-				perdioBajando();
+				lostGoingDown();
 			}
 		}
 	}
@@ -168,31 +168,31 @@ public class Brain extends Thread {
 	 * @param angulo Angulo que puede ser 26, 45 o 64 para manejar el rebote de la bola
 	 */
 	
-	public void moverBola(int angulo)
+	public void moveBall(int angulo)
 	{
 		// PA ANGULO DE "26"
 		if (angulo==26) {
 			if (tempo%2!=0) {
 				
-				if (direccion) {
-					gameBall.moveUp(velocidad);
-				} else if (!direccion){
-					gameBall.moveDown(velocidad);
+				if (direction) {
+					gameBall.moveUp(speed);
+				} else if (!direction){
+					gameBall.moveDown(speed);
 				}
 			
 				if (movHorizontal) {				
 					if((gameBall.rightExtreme()+1)<der) {
-						gameBall.moveRight(velocidad);
-						gameBall.moveRight(velocidad);
+						gameBall.moveRight(speed);
+						gameBall.moveRight(speed);
 					} else {
-						gameBall.moveRight(velocidad);
+						gameBall.moveRight(speed);
 					}
 				} else if (!movHorizontal) {
 					if((gameBall.leftExtreme()-1)>10) {
-						gameBall.moveLeft(velocidad);
-						gameBall.moveLeft(velocidad);
+						gameBall.moveLeft(speed);
+						gameBall.moveLeft(speed);
 					} else {
-						gameBall.moveLeft(velocidad);
+						gameBall.moveLeft(speed);
 					}
 				}
 				
@@ -200,11 +200,11 @@ public class Brain extends Thread {
 				
 				if (movHorizontal) {				
 					if((gameBall.rightExtreme()+1)<der) {
-						gameBall.moveRight(velocidad);
+						gameBall.moveRight(speed);
 					}
 				} else if (!movHorizontal) {
 					if((gameBall.leftExtreme()-1)>10) {
-						gameBall.moveLeft(velocidad);
+						gameBall.moveLeft(speed);
 					}
 				}
 				
@@ -216,32 +216,32 @@ public class Brain extends Thread {
 		if (angulo==64) {
 			if (tempo%2!=0) {
 				
-				if (direccion) {
-					gameBall.moveUp(velocidad);
-				} else if (!direccion){
-					gameBall.moveDown(velocidad);
+				if (direction) {
+					gameBall.moveUp(speed);
+				} else if (!direction){
+					gameBall.moveDown(speed);
 				}
 			
 				if( (gameBall.getTopY()+1)<=computerBar.getKc() && (gameBall.getBottomY()-1)>=userBar.getBarY() ) {
-					if (direccion) {
-						gameBall.moveUp(velocidad);
+					if (direction) {
+						gameBall.moveUp(speed);
 					} else {
-						gameBall.moveDown(velocidad);
+						gameBall.moveDown(speed);
 					}
 				}
 				if (movHorizontal) {
-					gameBall.moveRight(velocidad);
+					gameBall.moveRight(speed);
 				} else {
-					gameBall.moveLeft(velocidad);
+					gameBall.moveLeft(speed);
 				}
 				
 			} else {
 				
 				if( (gameBall.getTopY()+1)<=computerBar.getKc() && (gameBall.getBottomY()-1)>=userBar.getBarY() ) {
-					if (direccion) {
-						gameBall.moveUp(velocidad);
+					if (direction) {
+						gameBall.moveUp(speed);
 					} else {
-						gameBall.moveDown(velocidad);
+						gameBall.moveDown(speed);
 					}
 				}
 				
@@ -252,50 +252,50 @@ public class Brain extends Thread {
 		// PA ANGULO DE 45
 		if(angulo==45) {
 			
-			if (direccion) {
-				gameBall.moveUp(velocidad);
-			} else if (!direccion){
-				gameBall.moveDown(velocidad);
+			if (direction) {
+				gameBall.moveUp(speed);
+			} else if (!direction){
+				gameBall.moveDown(speed);
 			}
 			
 			if (movHorizontal) {
-				gameBall.moveRight(velocidad);
+				gameBall.moveRight(speed);
 			} else {
-				gameBall.moveLeft(velocidad);
+				gameBall.moveLeft(speed);
 			}
 		}
 	}
 		
-	public void moverBarraPC() {
-		if(gameBall.getLocation().y>=(int)(Box.ALTO/3)) {
+	public void moveComputerBar() {
+		if(gameBall.getLocation().y>=(int)(Box.HEIGHT/3)) {
 			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=der){
 				if(movHorizontal && computerBar.rightExtreme()<der) {
-					if(gameBall.rightExtreme()<=(int)(computerBar.leftExtreme()-Bar.ANCHO) && (computerBar.rightExtreme()+1)<der) {
-						computerBar.moveRight(2*velocidad);
+					if(gameBall.rightExtreme()<=(int)(computerBar.leftExtreme()-Bar.WIDTH) && (computerBar.rightExtreme()+1)<der) {
+						computerBar.moveRight(2*speed);
 					} else {
-						computerBar.moveRight(velocidad);
+						computerBar.moveRight(speed);
 					}
 				} else if(!movHorizontal && computerBar.leftExtreme()>10) {
-					if(gameBall.leftExtreme()>=(int)(computerBar.rightExtreme()+Bar.ANCHO) && (computerBar.leftExtreme()-1)>10) {
-						computerBar.moveLeft(2*velocidad);
+					if(gameBall.leftExtreme()>=(int)(computerBar.rightExtreme()+Bar.WIDTH) && (computerBar.leftExtreme()-1)>10) {
+						computerBar.moveLeft(2*speed);
 					} else {
-						computerBar.moveLeft(velocidad);
+						computerBar.moveLeft(speed);
 					}
 				}
 			}
-		} else if ( (gameBall.getLocation().y<(int)(Box.ALTO/3)) && (gameBall.getLocation().y>(computerBar.getKc() + Bar.ALTO)) ){
+		} else if ( (gameBall.getLocation().y<(int)(Box.HEIGHT/3)) && (gameBall.getLocation().y>(computerBar.getKc() + Bar.HEIGHT)) ){
 			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<der){
-				if(gameBall.rightExtreme()>=(int)(computerBar.leftExtreme()-Bar.ANCHO) && movHorizontal && (computerBar.leftExtreme()-1)>10 && gameBall.rightExtreme()<=computerBar.getCenterInX()) {
-					computerBar.moveLeft(2*velocidad);					
-				} else if(gameBall.leftExtreme()<=(int)(computerBar.rightExtreme()+Bar.ANCHO) && !movHorizontal && (computerBar.rightExtreme()+1)<der && gameBall.leftExtreme()>=computerBar.getCenterInX()) {
-					computerBar.moveRight(2*velocidad);
+				if(gameBall.rightExtreme()>=(int)(computerBar.leftExtreme()-Bar.WIDTH) && movHorizontal && (computerBar.leftExtreme()-1)>10 && gameBall.rightExtreme()<=computerBar.getCenterInX()) {
+					computerBar.moveLeft(2*speed);					
+				} else if(gameBall.leftExtreme()<=(int)(computerBar.rightExtreme()+Bar.WIDTH) && !movHorizontal && (computerBar.rightExtreme()+1)<der && gameBall.leftExtreme()>=computerBar.getCenterInX()) {
+					computerBar.moveRight(2*speed);
 				} else if(movHorizontal && (computerBar.rightExtreme()+1)<der) {
-					computerBar.moveRight(velocidad);
+					computerBar.moveRight(speed);
 				} else if(!movHorizontal && (computerBar.leftExtreme()-1)>10) {
-					computerBar.moveLeft(velocidad);
+					computerBar.moveLeft(speed);
 				}
 			}
-		} else if (gameBall.getLocation().y<(computerBar.getKc() + Bar.ALTO)){
+		} else if (gameBall.getLocation().y<(computerBar.getKc() + Bar.HEIGHT)){
 			if(computerBar.leftExtreme()>=10 && computerBar.rightExtreme()<=der){
 				int bl = gameBall.leftExtreme();
 				int br = gameBall.rightExtreme();
@@ -303,67 +303,67 @@ public class Brain extends Thread {
 				int cr = computerBar.rightExtreme();
 				if ( bl >= cl && br <= cr ) {
 					if (movHorizontal && cr<der)
-						computerBar.moveRight(velocidad);
+						computerBar.moveRight(speed);
 					if (!movHorizontal && cl>10)
-						computerBar.moveLeft(velocidad);
+						computerBar.moveLeft(speed);
 				} else {
 					if (movHorizontal && gameBall.leftExtreme()<computerBar.leftExtreme())
-						computerBar.moveLeft(2*velocidad);
+						computerBar.moveLeft(2*speed);
 					if (!movHorizontal && gameBall.rightExtreme()>computerBar.rightExtreme())
-						computerBar.moveRight(2*velocidad);
+						computerBar.moveRight(2*speed);
 				}
 			}
 		}
 	}
 	
-	public void rebound() {
+	public void bounce() {
 		
-		if (direccion) {
-			direccion = ABAJO;
+		if (direction) {
+			direction = DOWN;
 		} else {
-			direccion = ARRIBA;
+			direction = UP;
 		}
 		
 	}
 	
-	public void reboteHorizontal() {
+	public void horizontalBounce() {
 		
 		if (movHorizontal) {
-			movHorizontal = IZQUIERDA;
+			movHorizontal = LEFT;
 		} else {
-			movHorizontal = DERECHA;
+			movHorizontal = RIGHT;
 		}
 		
 	}
 
-	public void perdioSubiendo() {
-		cj.lifeUp();
-		perdio = true;
-		javax.swing.JOptionPane.showMessageDialog(contenedor, "Ganaste, se iniciara un nuevo juego", "Ganaste", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+	public void lostGoingUp() {
+		gameWindow.lifeUp();
+		lost = true;
+		javax.swing.JOptionPane.showMessageDialog(container, "Ganaste, se iniciara un nuevo juego", "Ganaste", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 		restart();
 	}
 	
-	public void perdioBajando() {
-		cj.lifeDown();
-		perdio = true;
-		javax.swing.JOptionPane.showMessageDialog(contenedor, "Perdiste, se iniciara un nuevo juego", "Perdiste", javax.swing.JOptionPane.ERROR_MESSAGE);
+	public void lostGoingDown() {
+		gameWindow.lifeDown();
+		lost = true;
+		javax.swing.JOptionPane.showMessageDialog(container, "Perdiste, se iniciara un nuevo juego", "Perdiste", javax.swing.JOptionPane.ERROR_MESSAGE);
 		restart();
 	}
 	
 	
 
-	public void iniciarValores(){
-		perdio = false;
-		cj = new GameWindow(args);
-		contenedor = cj.windowBox;
-		userBar = contenedor.userBar;
-		computerBar = contenedor.computerBar;
-		gameBall = contenedor.gameBall;
-		InputManager entrada = new InputManager(userBar, contenedor.nivel);
-		contenedor.addMouseMotionListener(entrada);
-		direccion = ABAJO;
-		movHorizontal = IZQUIERDA;
-		XXX = 0;
+	public void initializeValues(){
+		lost = false;
+		gameWindow = new GameWindow(args);
+		container = gameWindow.windowBox;
+		userBar = container.userBar;
+		computerBar = container.computerBar;
+		gameBall = container.gameBall;
+		InputManager entrada = new InputManager(userBar);
+		container.addMouseMotionListener(entrada);
+		direction = DOWN;
+		movHorizontal = LEFT;
+		firstRun = true;
 		
 		
 	}
@@ -373,10 +373,10 @@ public class Brain extends Thread {
 		gameBall.center();
 		computerBar.centerInX();
 		userBar.centerInX();
-		perdio = false;
-		direccion = ABAJO;
-		movHorizontal = IZQUIERDA;
-		XXX = 0;
+		lost = false;
+		direction = DOWN;
+		movHorizontal = LEFT;
+		firstRun = true;
 		this.resume();
 }
 	

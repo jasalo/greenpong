@@ -8,7 +8,7 @@ import javax.imageio.*;
 import java.io.*;
 import javax.swing.*;
 
-import tempo.InfoWindow;
+
 
 /**
  * IMPORTANTE: Todo control esta ubicado en cartesiano por esquina sup izq
@@ -22,15 +22,13 @@ import tempo.InfoWindow;
 
 public class PongGameObject extends javax.swing.JLabel {
 	
-	public static final int ANCHO = 50;
-	public static final int ALTO = 50;
-	public Box contenedor;
+	public static final int WIDTH = 50;
+	public static final int HEIGHT = 50;
+	public Box container;
 	public String url;
-	InfoWindow info;
-	
 	public PongGameObject(String urlImage, Box ncontenedor){
 		url = urlImage;
-		contenedor = ncontenedor; 
+		container = ncontenedor; 
 		try{
 			init();
 		} catch (IOException e){
@@ -39,9 +37,9 @@ public class PongGameObject extends javax.swing.JLabel {
 	}
 	
 
-	public void dimensionar(){
+	public void updateSize(){
 		java.awt.Dimension dimension = new java.awt.Dimension();
-		dimension.setSize(ANCHO, ALTO);
+		dimension.setSize(WIDTH, HEIGHT);
 	}
 	
 
@@ -78,13 +76,13 @@ public class PongGameObject extends javax.swing.JLabel {
 	
 	public void centerInX(){
 		int y = (int)getLocation().getY(); //posicion actual en y
-		int x = (int)((contenedor.getWidth() - getWidth() )/2);
+		int x = (int)((container.getWidth() - getWidth() )/2);
 		setLocation(x,y);
 	}
 	
 	public void centerInY(){
 		int x = (int)getLocation().getX(); //posicion actual en y
-		int y = (int)((contenedor.getHeight() - getHeight() )/2);
+		int y = (int)((container.getHeight() - getHeight() )/2);
 		setLocation(x,y);
 	}
 	
@@ -98,7 +96,7 @@ public class PongGameObject extends javax.swing.JLabel {
 	}
 	
 	public int getCartesianY(){
-		int r = Box.ALTO - (int)getLocation().getY();
+		int r = Box.HEIGHT - (int)getLocation().getY();
 		return r;
 	}
 	
