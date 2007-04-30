@@ -33,12 +33,13 @@ class Server {
 	private Socket socket;
 
 	public InputStream in;
-
+	private Brain brain;
 	public OutputStream out;
 	public Bar userBar;
-	public Server(/*Bar nuserBar*/) {
+	public Server(Bar nUserBar, Brain nBrain) {
 		try {
-			//userBar = nuserBar;
+			userBar = nUserBar;
+			brain = nBrain;
 			server = new ServerSocket(SERVER_PORT);
 			status = LISTENING;
 			System.out.println("Server is now active. Listening on port " + SERVER_PORT);
@@ -95,6 +96,9 @@ class Server {
 			}else if(clientRequest.startsWith("sending")){
 				status = SENDING;
 				System.out.println("Status: Sending");
+				System.out.println("Main thread will now run");
+				brain.resume();
+				
 			}
 		}else if(status==SENDING){
 			/**cODIGO PARA GESTIONAR LAS COORDENADAS RECIBIDAS ENEL JUEGO*/
@@ -138,7 +142,7 @@ class Server {
 		System.out.println("Status: Waiting");
 		
 
-		while (true) {
+		while (status != DISCONNECTED) {
 			try {
 				// leemos del canal de entrada la petici�n del cliente
 				clientRequest = reader.readLine();
@@ -158,9 +162,9 @@ class Server {
 		}
 	}
 	
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		Server server = new Server();
-	}
+	}*/
 	
 	public void informStatus(){
 		
