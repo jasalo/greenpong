@@ -8,21 +8,21 @@ import java.awt.Dimension;
 
 public class Bar extends PongGameObject {
 
-	public static final int ANCHO = 127;
+	public static final int WIDTH = 127;
 
-	public static final int ALTO = 34;
+	public static final int HEIGHT = 34;
 	private int finalYPosition;
 	
 
 	public Bar(String urlImage, Box ncontenedor) {
 		super(urlImage, ncontenedor);
 		url = urlImage;
-		contenedor = ncontenedor;
+		container = ncontenedor;
 		Dimension dim = new Dimension();
-		dim.setSize(ANCHO, ALTO);
+		dim.setSize(WIDTH, HEIGHT);
 		setPreferredSize(dim.getSize());
 		setSize( this.getPreferredSize());
-		finalYPosition = contenedor.getHeight() - 71 ;//NPI PQ, PERO ES ASI
+		finalYPosition = container.getHeight() - 71 ;//NPI PQ, PERO ES ASI
 		centerInX();
 	}
 	
@@ -51,12 +51,12 @@ public class Bar extends PongGameObject {
 	}
 	
 	public int getKc(){
-		int kc = Box.ALTO - this.getLocation().y - 25 - ALTO;
+		int kc = Box.HEIGHT - this.getLocation().y - 25 - HEIGHT;
 		return kc;
 	}
 	
 	public void setX(int x){
-		int der = Box.ANCHO - 15 - ANCHO; //5px de descuadre, por eso 15 y no 10
+		int der = Box.WIDTH - 15 - WIDTH; //5px de descuadre, por eso 15 y no 10
 		if(x>=10 && x<=der){
 			int y = getLocation().y;
 			setLocation(x, y);
@@ -66,7 +66,7 @@ public class Bar extends PongGameObject {
 	// Métodos extremos y centro
 	
 	public int rightExtreme(){
-		int rE = getCartesianX() + ANCHO;
+		int rE = getCartesianX() + WIDTH;
 		return rE;
 	}
 	
@@ -76,7 +76,7 @@ public class Bar extends PongGameObject {
 	}
 	
 	public int getCenterInX(){
-		int h = getCartesianX() + ANCHO/2;
+		int h = getCartesianX() + WIDTH/2;
 		return h;
 	}
 	
@@ -87,7 +87,7 @@ public class Bar extends PongGameObject {
 	}
 	
 	public int getBarY(){
-		int r = Box.ALTO - this.getLocation().y - 25; // 25 Es el desfase vertical raro al dibujar la ventana
+		int r = Box.HEIGHT - this.getLocation().y - 25; // 25 Es el desfase vertical raro al dibujar la ventana
 		return r;
 	}
 	

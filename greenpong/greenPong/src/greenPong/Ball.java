@@ -10,16 +10,16 @@ import java.awt.Dimension;
 
 public class Ball extends PongGameObject {
 
-	public static final int ANCHO = 28;
+	public static final int WIDTH = 28;
 
-	public static final int ALTO = 28;
+	public static final int HEIGHT = 28;
 
 	public Ball(String urlImage, Box ncontenedor) {
 		super(urlImage, ncontenedor);
 		url = urlImage;
-		contenedor = ncontenedor;
+		container = ncontenedor;
 		Dimension dim = new Dimension();
-		dim.setSize(ANCHO, ALTO);
+		dim.setSize(WIDTH, HEIGHT);
 		setPreferredSize(dim.getSize());
 		setSize( this.getPreferredSize());
 	}
@@ -47,19 +47,19 @@ public class Ball extends PongGameObject {
 	// Métodos para conocer el centro (h,k)
 	
 	public int getH(){
-		int h = this.getLocation().x + (int)(ANCHO/2);
+		int h = this.getLocation().x + (int)(WIDTH/2);
 		return h;
 	}
 	
 	public int getK(){
-		int k = getCartesianY() + (int)(ALTO/2);
+		int k = getCartesianY() + (int)(HEIGHT/2);
 		return k;
 	}
 	
 // Métodos extremos
 	
 	public int rightExtreme(){
-		int rE = getCartesianX() + ANCHO;
+		int rE = getCartesianX() + WIDTH;
 		return rE;
 	}
 	
@@ -75,12 +75,12 @@ public class Ball extends PongGameObject {
 	}
 	
 	public int getTopY(){
-		int top = Box.ALTO - this.getLocation().y - 25; // 25 Es el desfase vertical raro al dibujar la ventana
+		int top = Box.HEIGHT - this.getLocation().y - 25; // 25 Es el desfase vertical raro al dibujar la ventana
 		return top;
 	}
 	
 	public int getBottomY(){
-		int bottom = Box.ALTO - this.getLocation().y - Ball.ALTO - 25; // - 25 pa corregir el desfase raro
+		int bottom = Box.HEIGHT - this.getLocation().y - Ball.HEIGHT - 25; // - 25 pa corregir el desfase raro
 		return bottom;
 	}
 
