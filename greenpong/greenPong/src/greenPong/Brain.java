@@ -39,6 +39,8 @@ public class Brain extends Thread {
 
 	int tempo = 0;
 	
+	int tempo2 = 0;
+	
 	// Otros
 	
 	boolean firstRun = true;
@@ -64,6 +66,11 @@ public class Brain extends Thread {
 			try {
 				sleep(Main.brainTime);
 			} catch (InterruptedException e) {}
+			
+			tempo2++;
+			
+			if(tempo2%80==0)
+				gameWindow.increaseScore(5);
 			
 			if (firstRun!=true) {
 				evaluateGameRules();
