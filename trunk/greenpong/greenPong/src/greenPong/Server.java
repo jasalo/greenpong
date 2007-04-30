@@ -8,17 +8,26 @@ package greenPong;
 import java.util.*;
 import java.io.*;
 import java.net.*;
+import greenPong.Bar;
 
 //Esta clase es la que implementa el socket del servidor (ServerSocket)
 class Server {
 	final static int SERVER_PORT = 8001;
-
+	final static int CONNECTED=-1;
+	final static int DISCONNECTED=0;
+	final static int WAITING=1;
+	final static int SENDING=2;
+	static final int QUITING=3;
+	static final int LISTENING=4;
+	final static String VTS = "VTS-1.0";
 	String clientRequest;
 
 	BufferedReader reader;
 
 	PrintWriter writer;
-
+	/*public String clientIP;
+	public String clientName;*/
+	public int status = DISCONNECTED;
 	private ServerSocket server;
 
 	private Socket socket;
@@ -26,15 +35,19 @@ class Server {
 	public InputStream in;
 
 	public OutputStream out;
-
-	public Server() {
+	public Bar userBar;
+	public Server(/*Bar nuserBar*/) {
 		try {
+			//userBar = nuserBar;
 			server = new ServerSocket(SERVER_PORT);
-			System.out.println("Servidor Java Activo! \n");
+			status = LISTENING;
+			System.out.println("Server is now active. Listening on port " + SERVER_PORT);
 			System.out.println("" + server + "\n");
+			System.out.println("Status: Listening");
 			// Espera suspendido hasta que un cliente establece una conexi�n
 			socket = server.accept();
-
+			status = CONNECTED;
+			System.out.println("Status: Connected");
 			in = socket.getInputStream();
 			out = socket.getOutputStream();
 
@@ -44,10 +57,11 @@ class Server {
 			reader = new BufferedReader(new InputStreamReader(in));
 			writer = new PrintWriter(new OutputStreamWriter(out), true);
 			/** SEGUNDA PARTE */
-			iniciarServicio();
+			beginService();
 
 		} catch (IOException e) {
-			System.out.println("Excepci�n en el constructor server: " + e);
+			System.out.println("Error creting the server: " + e);
+			clientOffline();
 		}
 	}
 
@@ -56,38 +70,46 @@ class Server {
 	 * 
 	 */
 	public void manageRequest() {
-		try {
+	
 			// El protocolo de nuestro servidor solo acepta ordenes : HELP,
-			// QUIT,NAME,DATE
-			if (clientRequest.startsWith("HELP")) {
-				writer.println("�rdenes: HELP QUIT NAME DATE");
-			} else {
-				if (clientRequest.startsWith("QUIT")) {
-					System.exit(0);
-				} else {
-					if (clientRequest.startsWith("NAME")) {
-						InetAddress host;
+			// QUIT,NAME,DATE 
+			/*clientRequest.startsWith("HELP")
+			 * InetAddress host;
 						host = InetAddress.getLocalHost();
 						writer
 								.println("Nombre del host :"
 										+ host.getHostName());
-					} else if (clientRequest.startsWith("DATE")) {
-						Date miFecha = new Date();
-						writer.println("Fecha del sistema :"
-								+ miFecha.toString());
-					}
-
-					else {
-						writer.println("ERROR: Comando :'" + clientRequest
-								+ "' no reconocido, use HELP");
-					}
+			 * 
+			 */
+		if(status==WAITING){
+			if(clientRequest.startsWith("identifyas")){
+				System.out.println("The client is identifying himself");
+				String clientID = clientRequest.split(" ")[1];
+				if(clientID.equals(VTS)){
+					System.out.println("VTS-1.0 identified");
+					status = WAITING;
+					System.out.println("Status: Waiting");
+					System.out.println("Requesting client to send coordenates");
+					send("!send");
 				}
+			}else if(clientRequest.startsWith("sending")){
+				status = SENDING;
+				System.out.println("Status: Sending");
 			}
-		} catch (IOException e) {
-			System.out.println("Excepci�n en el servidor " + e);
-			System.exit(0);
-
+		}else if(status==SENDING){
+			/**cODIGO PARA GESTIONAR LAS COORDENADAS RECIBIDAS ENEL JUEGO*/
+			
+		}else if(clientRequest.startsWith("quit")){
+			System.out.println("Client is quiting");
+			try{ server.close();} catch(Exception e){ System.out.println("Error when closing server, however status has been set to disconnected.\nError: " + e); }
+			clientOffline();
+			
+		}else{
+			System.out.println("A client request has been made\nHowever the server doesn't understand it");
+			System.out.println("request: " + clientRequest);
+			send("requestError");
 		}
+
 
 	}
 
@@ -97,11 +119,24 @@ class Server {
 	 * @param msg
 	 */
 	public void send(String msg) {
+		writer.println(msg);
 
 	}
+	
+	public void clientOffline(){
+		status = DISCONNECTED;
+		/**
+		 * ACTIONS TO TAKE WHEN CLIENT IS OFFLINE
+		 */
+	}
 
-	public void iniciarServicio() {
-		writer.println("Bienvenido al Servidor: " + new Date() + "/n");
+	public void beginService() {
+		send("welcome");
+		send("identifyas greenpong");
+		send("!identify");
+		status = WAITING;
+		System.out.println("Status: Waiting");
+		
 
 		while (true) {
 			try {
@@ -109,13 +144,15 @@ class Server {
 				clientRequest = reader.readLine();
 
 				// Sacamos por pantalla la peticion del cliente
-				System.out.println("Recibido :" + clientRequest);
+				System.out.println("[CLIENT]" + clientRequest);
 				manageRequest();
 
 				//				
 			} catch (IOException e) {
-				System.out.println("Excepci�n en el servidor " + e);
-				System.exit(0);
+				System.out.println("Server error: " + e);
+				status = DISCONNECTED;
+				System.out.println("Status: Disconnected");
+				clientOffline();
 
 			}
 		}
@@ -123,5 +160,9 @@ class Server {
 	
 	public static void main(String[] args){
 		Server server = new Server();
+	}
+	
+	public void informStatus(){
+		
 	}
 }
