@@ -5,6 +5,8 @@
  */
 package greenPong;
 
+import javax.swing.JOptionPane;
+
 /**
  * @author ubuntu
  * 
@@ -25,6 +27,11 @@ public class Brain extends Thread {
 	 * The computer's bar
 	 */
 	Bar computerBar;
+	
+	/**
+	 * The server that connects to the VTS
+	 */
+	Server server;
 
 	/**
 	 * The ball in the game 
@@ -39,12 +46,12 @@ public class Brain extends Thread {
 	/**
 	 * Attribute to indicate if the ball is going up
 	 */
-	boolean ISGOINGUP = false;
+	boolean IS_GOING_UP = false;
 	
 	/**
 	 * Attribute to indicate if the ball is going to the right
 	 */
-	boolean ISGOINGRIGHT = false;
+	boolean IS_GOING_RIGHT = false;
 	
 	/**
 	 * Attribute to indicate de direction angle fo the gameBall
@@ -152,11 +159,11 @@ public class Brain extends Thread {
 	public void evaluateGameRules() {
 		
 		// EVALUATES HORIZONTAL MOEVEMENT
-		if (ISGOINGRIGHT && gameBall.rightExtreme()==rightLimit){
+		if (IS_GOING_RIGHT && gameBall.rightExtreme()==rightLimit){
 			horizontalBounce();
 		}
 		
-		if (!ISGOINGRIGHT && gameBall.leftExtreme()==leftLimit){
+		if (!IS_GOING_RIGHT && gameBall.leftExtreme()==leftLimit){
 			horizontalBounce();
 		}
 		
@@ -166,7 +173,7 @@ public class Brain extends Thread {
 		int br = gameBall.rightExtreme();
 		int bc = gameBall.getH();
 		
-		if (ISGOINGUP) {
+		if (IS_GOING_UP) {
 			
 			if (gameBall.getTopY() == computerBar.getKc()) {
 				
@@ -198,7 +205,7 @@ public class Brain extends Thread {
 			}
 		}
 		
-		if (!ISGOINGUP) {
+		if (!IS_GOING_UP) {
 					
 			if ( gameBall.getBottomY() == userBar.getBarY() ) {
 			
@@ -242,20 +249,20 @@ public class Brain extends Thread {
 		if (angulo==26) {
 			if (tempo%2!=0) {
 				
-				if (ISGOINGUP) {
+				if (IS_GOING_UP) {
 					gameBall.moveUp(speed);
-				} else if (!ISGOINGUP){
+				} else if (!IS_GOING_UP){
 					gameBall.moveDown(speed);
 				}
 			
-				if (ISGOINGRIGHT) {				
+				if (IS_GOING_RIGHT) {				
 					if((gameBall.rightExtreme()+1)<rightLimit) {
 						gameBall.moveRight(speed);
 						gameBall.moveRight(speed);
 					} else {
 						gameBall.moveRight(speed);
 					}
-				} else if (!ISGOINGRIGHT) {
+				} else if (!IS_GOING_RIGHT) {
 					if((gameBall.leftExtreme()-1)>leftLimit) {
 						gameBall.moveLeft(speed);
 						gameBall.moveLeft(speed);
@@ -266,11 +273,11 @@ public class Brain extends Thread {
 				
 			} else {
 				
-				if (ISGOINGRIGHT) {				
+				if (IS_GOING_RIGHT) {				
 					if((gameBall.rightExtreme()+1)<rightLimit) {
 						gameBall.moveRight(speed);
 					}
-				} else if (!ISGOINGRIGHT) {
+				} else if (!IS_GOING_RIGHT) {
 					if((gameBall.leftExtreme()-1)>leftLimit) {
 						gameBall.moveLeft(speed);
 					}
@@ -283,20 +290,20 @@ public class Brain extends Thread {
 		if (angulo==64) {
 			if (tempo%2!=0) {
 				
-				if (ISGOINGUP) {
+				if (IS_GOING_UP) {
 					gameBall.moveUp(speed);
-				} else if (!ISGOINGUP){
+				} else if (!IS_GOING_UP){
 					gameBall.moveDown(speed);
 				}
 			
 				if( (gameBall.getTopY()+1)<=computerBar.getKc() && (gameBall.getBottomY()-1)>=userBar.getBarY() ) {
-					if (ISGOINGUP) {
+					if (IS_GOING_UP) {
 						gameBall.moveUp(speed);
 					} else {
 						gameBall.moveDown(speed);
 					}
 				}
-				if (ISGOINGRIGHT) {
+				if (IS_GOING_RIGHT) {
 					gameBall.moveRight(speed);
 				} else {
 					gameBall.moveLeft(speed);
@@ -305,7 +312,7 @@ public class Brain extends Thread {
 			} else {
 				
 				if( (gameBall.getTopY()+1)<=computerBar.getKc() && (gameBall.getBottomY()-1)>=userBar.getBarY() ) {
-					if (ISGOINGUP) {
+					if (IS_GOING_UP) {
 						gameBall.moveUp(speed);
 					} else {
 						gameBall.moveDown(speed);
@@ -318,13 +325,13 @@ public class Brain extends Thread {
 		// 45 degree angle
 		if(angulo==45) {
 			
-			if (ISGOINGUP) {
+			if (IS_GOING_UP) {
 				gameBall.moveUp(speed);
-			} else if (!ISGOINGUP){
+			} else if (!IS_GOING_UP){
 				gameBall.moveDown(speed);
 			}
 			
-			if (ISGOINGRIGHT) {
+			if (IS_GOING_RIGHT) {
 				gameBall.moveRight(speed);
 			} else {
 				gameBall.moveLeft(speed);
@@ -338,13 +345,13 @@ public class Brain extends Thread {
 	public void moveComputerBar() {
 		if(gameBall.getLocation().y>=(int)(Box.HEIGHT/3)) {
 			if(computerBar.leftExtreme()>=leftLimit && computerBar.rightExtreme()<=rightLimit){
-				if(ISGOINGRIGHT && computerBar.rightExtreme()<rightLimit) {
+				if(IS_GOING_RIGHT && computerBar.rightExtreme()<rightLimit) {
 					if(gameBall.rightExtreme()<=(int)(computerBar.leftExtreme()-Bar.WIDTH) && (computerBar.rightExtreme()+1)<rightLimit) {
 						computerBar.moveRight(2*speed);
 					} else {
 						computerBar.moveRight(speed);
 					}
-				} else if(!ISGOINGRIGHT && computerBar.leftExtreme()>leftLimit) {
+				} else if(!IS_GOING_RIGHT && computerBar.leftExtreme()>leftLimit) {
 					if(gameBall.leftExtreme()>=(int)(computerBar.rightExtreme()+Bar.WIDTH) && (computerBar.leftExtreme()-1)>leftLimit) {
 						computerBar.moveLeft(2*speed);
 					} else {
@@ -354,13 +361,13 @@ public class Brain extends Thread {
 			}
 		} else if ( (gameBall.getLocation().y<(int)(Box.HEIGHT/3)) && (gameBall.getLocation().y>(computerBar.getKc() + Bar.HEIGHT)) ){
 			if(computerBar.leftExtreme()>=leftLimit && computerBar.rightExtreme()<rightLimit){
-				if(gameBall.rightExtreme()>=(int)(computerBar.leftExtreme()-Bar.WIDTH) && ISGOINGRIGHT && (computerBar.leftExtreme()-1)>leftLimit && gameBall.rightExtreme()<=computerBar.getCenterInX()) {
+				if(gameBall.rightExtreme()>=(int)(computerBar.leftExtreme()-Bar.WIDTH) && IS_GOING_RIGHT && (computerBar.leftExtreme()-1)>leftLimit && gameBall.rightExtreme()<=computerBar.getCenterInX()) {
 					computerBar.moveLeft(2*speed);					
-				} else if(gameBall.leftExtreme()<=(int)(computerBar.rightExtreme()+Bar.WIDTH) && !ISGOINGRIGHT && (computerBar.rightExtreme()+1)<rightLimit && gameBall.leftExtreme()>=computerBar.getCenterInX()) {
+				} else if(gameBall.leftExtreme()<=(int)(computerBar.rightExtreme()+Bar.WIDTH) && !IS_GOING_RIGHT && (computerBar.rightExtreme()+1)<rightLimit && gameBall.leftExtreme()>=computerBar.getCenterInX()) {
 					computerBar.moveRight(2*speed);
-				} else if(ISGOINGRIGHT && (computerBar.rightExtreme()+1)<rightLimit) {
+				} else if(IS_GOING_RIGHT && (computerBar.rightExtreme()+1)<rightLimit) {
 					computerBar.moveRight(speed);
-				} else if(!ISGOINGRIGHT && (computerBar.leftExtreme()-1)>leftLimit) {
+				} else if(!IS_GOING_RIGHT && (computerBar.leftExtreme()-1)>leftLimit) {
 					computerBar.moveLeft(speed);
 				}
 			}
@@ -371,14 +378,14 @@ public class Brain extends Thread {
 				int cl = computerBar.leftExtreme();
 				int cr = computerBar.rightExtreme();
 				if ( bl >= cl && br <= cr ) {
-					if (ISGOINGRIGHT && cr<rightLimit)
+					if (IS_GOING_RIGHT && cr<rightLimit)
 						computerBar.moveRight(speed);
-					if (!ISGOINGRIGHT && cl>leftLimit)
+					if (!IS_GOING_RIGHT && cl>leftLimit)
 						computerBar.moveLeft(speed);
 				} else {
-					if (ISGOINGRIGHT && gameBall.leftExtreme()<computerBar.leftExtreme())
+					if (IS_GOING_RIGHT && gameBall.leftExtreme()<computerBar.leftExtreme())
 						computerBar.moveLeft(2*speed);
-					if (!ISGOINGRIGHT && gameBall.rightExtreme()>computerBar.rightExtreme())
+					if (!IS_GOING_RIGHT && gameBall.rightExtreme()>computerBar.rightExtreme())
 						computerBar.moveRight(2*speed);
 				}
 			}
@@ -390,10 +397,10 @@ public class Brain extends Thread {
 	 */	
 	public void bounce() {
 		
-		if (ISGOINGUP) {
-			ISGOINGUP = false;
+		if (IS_GOING_UP) {
+			IS_GOING_UP = false;
 		} else {
-			ISGOINGUP = true;
+			IS_GOING_UP = true;
 		}
 	}
 	
@@ -402,10 +409,10 @@ public class Brain extends Thread {
 	 */	
 	public void horizontalBounce() {
 		
-		if (ISGOINGRIGHT) {
-			ISGOINGRIGHT = false;
+		if (IS_GOING_RIGHT) {
+			IS_GOING_RIGHT = false;
 		} else {
-			ISGOINGRIGHT = true;
+			IS_GOING_RIGHT = true;
 		}
 		
 	}
@@ -433,23 +440,34 @@ public class Brain extends Thread {
 		userBar = container.userBar;
 		computerBar = container.computerBar;
 		gameBall = container.gameBall;
-		InputManager entrada = new InputManager(userBar);
-		container.addMouseMotionListener(entrada);
-		ISGOINGUP = false;
-		ISGOINGRIGHT = false;
+		
+				
+		IS_GOING_UP = false;
+		IS_GOING_RIGHT = false;
 		firstRun = true;
+		/**This block of code defines whether the game will be controlled by a VTS
+		 * or by a Mouse
+		 */
+		int runWithVTS = JOptionPane.showConfirmDialog(new javax.swing.JLabel(),"You can play this game with your mouse or using a VTS-1.0.\nDo you like to play with a VTS? Press no to use your mouse.", "Game mode selection", JOptionPane.YES_NO_OPTION);
+		if(runWithVTS == JOptionPane.YES_OPTION){
+			this.interrupt();
+			server = new Server(userBar, this);
+		}else{
+			InputManager entrada = new InputManager(userBar);
+			container.addMouseMotionListener(entrada);
+		}
 		
 		
 	}
 	
 	public void restart(){
-		this.interrupt() ;
+		this.interrupt();
 		gameBall.center();
 		computerBar.centerInX();
 		userBar.centerInX();
 		lost = false;
-		ISGOINGUP = false;
-		ISGOINGRIGHT = false;
+		IS_GOING_UP = false;
+		IS_GOING_RIGHT = false;
 		firstRun = true;
 		this.resume();
 }
