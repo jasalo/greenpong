@@ -25,8 +25,6 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 	int lastXInRange=0;
 	
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void mouseMoved(MouseEvent e) {
@@ -45,11 +43,11 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 		}*/
 		
 		if(isInBoardSpace(x1)){
-			userBar.setX(x1);
-			lastXInRange = x1;
-		}else{
-			moveMouse(lastXInRange,(int)Box.HEIGHT/2 );
-		}
+			moveUserBar(x1);
+			//lastXInRange = x1;
+		}/*else{
+			//moveMouse(lastXInRange,(int)Box.HEIGHT/2 );
+		}*/
 		
 		previousX = x1;
 		previousY = y1;
@@ -57,6 +55,23 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 		
 		
 		
+	}
+	
+	public void moveUserBar(int mouseX) {
+		int lL = Brain.leftLimit;
+		int rL = Brain.rightLimit;
+		if(mouseX>=userBar.getBarX() && userBar.getBarX()<=(rL-Bar.WIDTH)) {
+			if(mouseX>=(userBar.getBarX()+2*Bar.WIDTH))
+				userBar.moveRight(10);
+			else
+				userBar.moveRight(5);
+		} else if(mouseX<userBar.getBarX() && userBar.getBarX()>=lL){
+			if(mouseX<(userBar.getBarX()-2*Bar.WIDTH))
+				userBar.moveLeft(10);
+			else
+				userBar.moveLeft(5);
+		}
+		//userBar.setX(x1);
 	}
 	
 	private boolean isInBoardSpace(int xyz){
@@ -81,7 +96,6 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 			robot = new java.awt.Robot();
 			robot.mouseMove(x,y);
 		} catch (java.awt.AWTException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
