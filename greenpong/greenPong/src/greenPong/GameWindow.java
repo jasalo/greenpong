@@ -63,8 +63,8 @@ public class GameWindow extends javax.swing.JFrame {
 		pts.setFont(new Font("Arial", Font.BOLD, 19));
 		scorePanel.add(pts);
 		/*TEMPORAL*/
-		lives.setText("x58");
-		score.setText("54874");
+		lives.setText("x3");
+		score.setText("0");
 		lives.setFont(new Font("Arial", Font.BOLD, 22));
 		score.setFont(new Font("Arial", Font.BOLD, 22));
 	}
