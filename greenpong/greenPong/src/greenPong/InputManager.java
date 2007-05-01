@@ -25,6 +25,7 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 	int lastXInRange=0;
 	
 	public void mouseDragged(MouseEvent e) {
+		moveMouse(Box.WIDTH/2, Box.HEIGHT/2);
 	}
 
 	public void mouseMoved(MouseEvent e) {
@@ -61,15 +62,15 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 		int lL = Brain.leftLimit;
 		int rL = Brain.rightLimit;
 		if(mouseX>=userBar.getBarX() && userBar.getBarX()<=(rL-Bar.WIDTH)) {
-			if(mouseX>=(userBar.getBarX()+2*Bar.WIDTH))
-				userBar.moveRight(10);
+			if(mouseX>=(userBar.getBarX()+Bar.WIDTH))
+				userBar.moveRight(15);
 			else
-				userBar.moveRight(5);
+				userBar.moveRight(8);
 		} else if(mouseX<userBar.getBarX() && userBar.getBarX()>=lL){
-			if(mouseX<(userBar.getBarX()-2*Bar.WIDTH))
-				userBar.moveLeft(10);
+			if(mouseX<=(userBar.getBarX()-Bar.WIDTH))
+				userBar.moveLeft(15);
 			else
-				userBar.moveLeft(5);
+				userBar.moveLeft(8);
 		}
 		//userBar.setX(x1);
 	}
