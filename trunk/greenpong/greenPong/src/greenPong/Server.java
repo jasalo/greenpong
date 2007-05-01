@@ -20,6 +20,7 @@ class Server {
 	static final int QUITING=3;
 	static final int LISTENING=4;
 	final static String VTS = "VTS-1.0";
+	String oldDirection;
 	String clientRequest;
 
 	BufferedReader reader;
@@ -83,6 +84,7 @@ class Server {
 			 * 
 			 */
 		if(status==WAITING){
+			
 			if(clientRequest.startsWith("identifyas")){
 				System.out.println("The client is identifying himself");
 				String clientID = clientRequest.split(" ")[1];
@@ -94,6 +96,7 @@ class Server {
 					send("!send");
 				}
 			}else if(clientRequest.startsWith("sending")){
+				send("listening");
 				status = SENDING;
 				System.out.println("Status: Sending");
 				System.out.println("Main thread will now run");
@@ -101,7 +104,14 @@ class Server {
 				
 			}
 		}else if(status==SENDING){
+			
 			/**cODIGO PARA GESTIONAR LAS COORDENADAS RECIBIDAS ENEL JUEGO*/
+			if(clientRequest.length()!=0) {
+				int x = Integer.parseInt(clientRequest);
+				moveUserBar(x);
+			} else {
+				moveUserBar(0);
+			}
 			
 		}else if(clientRequest.startsWith("quit")){
 			System.out.println("Client is quiting");
@@ -115,6 +125,39 @@ class Server {
 		}
 
 
+	}
+	
+	/**
+	 * Metodo para gestionar movimiento de la barra
+	 * @param xPos Posición en X recibida del cliente
+	 */
+	public void moveUserBar(int xPos) {
+		
+		int lL = Brain.leftLimit;
+		int rL = Brain.rightLimit;
+		if(xPos==0) {
+			if (oldDirection.equals("left") && userBar.getBarX()>=lL) {
+				userBar.moveLeft(8);
+				System.out.println("Se movió a la izquierda usando antigua posición");
+			} else if (oldDirection.equals("right") && userBar.getBarX()<=(rL-Bar.WIDTH)) {
+				userBar.moveRight(15);
+				System.out.println("Se movió a la derecha usando antigua posición");
+			}
+			System.out.println("Se ingresó una posición 0");
+		} else if(xPos>=userBar.getBarX() && userBar.getBarX()<=(rL-Bar.WIDTH)) {
+			oldDirection = "right";
+			if(xPos>=(userBar.getBarX()+Bar.WIDTH))
+				userBar.moveRight(15);
+			else
+				userBar.moveRight(8);
+		} else if(xPos<userBar.getBarX() && userBar.getBarX()>=lL){
+			oldDirection = "left";
+			if(xPos<=(userBar.getBarX()-Bar.WIDTH))
+				userBar.moveLeft(15);
+			else
+				userBar.moveLeft(8);
+		}
+		System.out.println("Se movio la userBar");
 	}
 
 	/**
@@ -135,7 +178,6 @@ class Server {
 	}
 
 	public void beginService() {
-		send("welcome");
 		send("identifyas greenpong");
 		send("!identify");
 		status = WAITING;
