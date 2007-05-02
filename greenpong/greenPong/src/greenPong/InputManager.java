@@ -43,10 +43,12 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 			moveMouse(10,(int)Box.ALTO/2 );
 		}*/
 		
-		if(isInBoardSpace(x1)){
-			moveUserBar(x1);
+		//if(isInBoardSpace(x1)){
+			//moveUserBar(x1);
+		if(isInBoardSpace(x1))
+			userBar.setX(x1);
 			//lastXInRange = x1;
-		}/*else{
+		/*}else{
 			//moveMouse(lastXInRange,(int)Box.HEIGHT/2 );
 		}*/
 		
@@ -63,16 +65,15 @@ public class InputManager implements java.awt.event.MouseMotionListener{
 		int rL = Brain.rightLimit;
 		if(mouseX>=userBar.getBarX() && userBar.getBarX()<=(rL-Bar.WIDTH)) {
 			if(mouseX>=(userBar.getBarX()+Bar.WIDTH))
-				userBar.moveRight(15);
+				userBar.moveRight(30);
 			else
-				userBar.moveRight(8);
+				userBar.moveRight(15);
 		} else if(mouseX<userBar.getBarX() && userBar.getBarX()>=lL){
 			if(mouseX<=(userBar.getBarX()-Bar.WIDTH))
-				userBar.moveLeft(15);
+				userBar.moveLeft(30);
 			else
-				userBar.moveLeft(8);
+				userBar.moveLeft(15);
 		}
-		//userBar.setX(x1);
 	}
 	
 	private boolean isInBoardSpace(int xyz){
