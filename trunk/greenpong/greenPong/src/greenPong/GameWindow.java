@@ -127,7 +127,10 @@ public class GameWindow extends javax.swing.JFrame {
 		
 		int numeroVidas = Integer.parseInt(vidasActuales);
 		numeroVidas--;
-		lives.setText("x" + numeroVidas);
+		if(numeroVidas==-1)
+			lives.setText("x3");
+		else
+			lives.setText("x" + numeroVidas);
 	}
 	
 	public void increaseScore(int increasement){
