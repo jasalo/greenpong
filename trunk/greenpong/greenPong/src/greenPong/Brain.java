@@ -57,7 +57,7 @@ public class Brain extends Thread {
 	 * Attribute to indicate de direction angle fo the gameBall
 	 */
 
-	int angle = 45;
+	int angle = 26;
 	
 	/**
 	 * Attribute to manage the simulation for the movement of the gameBall in an indicated angle
@@ -133,8 +133,8 @@ public class Brain extends Thread {
 			
 			tempo2++;
 			
-			if(tempo2%80==0)
-				gameWindow.increaseScore(5);
+			if(tempo2%3==0)
+				gameWindow.increaseScore(1);
 			
 			if (firstRun!=true) {
 				evaluateGameRules();
@@ -144,7 +144,7 @@ public class Brain extends Thread {
 			else
 			{
 				try {
-					sleep(1500);
+					sleep(2500);
 				} catch (InterruptedException e) {}
 				moveBall(angle);
 				firstRun = false;
@@ -448,14 +448,14 @@ public class Brain extends Thread {
 		/**This block of code defines whether the game will be controlled by a VTS
 		 * or by a Mouse
 		 */
-		int runWithVTS = JOptionPane.showConfirmDialog(new javax.swing.JLabel(),"You can play this game with your mouse or using a VTS-1.0.\nDo you like to play with a VTS? Press no to use your mouse.", "Game mode selection", JOptionPane.YES_NO_OPTION);
+		/*int runWithVTS = JOptionPane.showConfirmDialog(new javax.swing.JLabel(),"You can play this game with your mouse or using a VTS-1.0.\nDo you like to play with a VTS? Press no to use your mouse.", "Game mode selection", JOptionPane.YES_NO_OPTION);
 		if(runWithVTS == JOptionPane.YES_OPTION){
 			this.interrupt();
 			server = new Server(userBar, this);
-		}else{
+		}else{*/
 			InputManager entrada = new InputManager(userBar);
 			container.addMouseMotionListener(entrada);
-		}
+		//}
 		
 		
 	}
