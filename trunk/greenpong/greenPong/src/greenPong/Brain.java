@@ -141,7 +141,7 @@ public class Brain extends Thread {
 			
 			tempo2++;
 			
-			if(tempo2%3==0)
+			if(tempo2%10==0)
 				gameWindow.increaseScore(1);
 			
 			if (firstRun!=true) {
@@ -427,15 +427,25 @@ public class Brain extends Thread {
 
 	public void won() {
 		gameWindow.lifeUp();
+		gameWindow.won();
+		gameWindow.increaseScore(500);
 		lost = true;
-		javax.swing.JOptionPane.showMessageDialog(container, "Ganaste, se iniciara un nuevo juego", "Ganaste", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+		try {
+			sleep(5000);
+		} catch (InterruptedException e) {}
+		gameWindow.cleanStatus();
 		restart();
 	}
 	
 	public void lost() {
+		gameWindow.lost();
 		gameWindow.lifeDown();
+		gameWindow.increaseScore(-100);
 		lost = true;
-		javax.swing.JOptionPane.showMessageDialog(container, "Perdiste, se iniciara un nuevo juego", "Perdiste", javax.swing.JOptionPane.ERROR_MESSAGE);
+		try {
+			sleep(5000);
+		} catch (InterruptedException e) {}
+		gameWindow.cleanStatus();
 		restart();
 	}
 	
