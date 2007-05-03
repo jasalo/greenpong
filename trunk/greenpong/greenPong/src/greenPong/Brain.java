@@ -426,8 +426,14 @@ public class Brain extends Thread {
 	}
 
 	public void won() {
-		gameWindow.lifeUp();
 		gameWindow.won();
+		while(gameBall.getBottomY()>0) {
+			try {
+				sleep(brainTime);
+			} catch (InterruptedException e) {}
+			moveBall(angle);
+		}
+		gameWindow.lifeUp();
 		gameWindow.increaseScore(500);
 		lost = true;
 		try {
@@ -439,6 +445,12 @@ public class Brain extends Thread {
 	
 	public void lost() {
 		gameWindow.lost();
+		while(gameBall.getLocation().y<Box.HEIGHT) {
+			try {
+				sleep(brainTime);
+			} catch (InterruptedException e) {}
+			moveBall(angle);
+		}		
 		gameWindow.lifeDown();
 		gameWindow.increaseScore(-100);
 		lost = true;
@@ -455,11 +467,10 @@ public class Brain extends Thread {
 		lost = false;
 		gameWindow = new GameWindow(args);
 		container = gameWindow.windowBox;
+		gameBall = container.gameBall;
 		userBar = container.userBar;
 		computerBar = container.computerBar;
-		gameBall = container.gameBall;
 		
-				
 		IS_GOING_UP = false;
 		IS_GOING_RIGHT = false;
 		firstRun = true;
