@@ -153,11 +153,11 @@ public class GameWindow extends javax.swing.JFrame {
 		int numeroVidas = Integer.parseInt(vidasActuales);
 		numeroVidas--;
 		if(numeroVidas==-1){
-			lives.setText("x3");
 			status.setForeground(new Color(0, 30, 60));
 			status.setText("GAME OVER!");
-			JOptionPane.showMessageDialog(this, "Has perdido todas tus vidas, gracias por jugar [greenPong]", "GAME OVER", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Has perdido todas tus vidas, gracias por jugar [greenPong]\nTu puntaje fue de: " + getScore() + " puntos", "GAME OVER", JOptionPane.ERROR_MESSAGE);
 			cleanStatus();
+			lives.setText("x3");
 		} else {
 			lives.setText("x" + numeroVidas);
 		}
