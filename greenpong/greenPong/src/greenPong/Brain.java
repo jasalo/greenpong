@@ -112,7 +112,7 @@ public class Brain extends Thread {
 	public Brain(String[] args1) {
 		super();
 		args = args1;
-		brainTime = Integer.parseInt(args[3]);
+		brainTime = Integer.parseInt(args[4]);
 		initializeValues();
 		GPSplash splash = new GPSplash(this, args1[2]);
 		splash.start();
