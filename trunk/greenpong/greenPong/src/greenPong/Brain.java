@@ -427,7 +427,7 @@ public class Brain extends Thread {
 
 	public void won() {
 		gameWindow.won();
-		while(gameBall.getBottomY()>0) {
+		while(gameBall.getLocation().y+Ball.HEIGHT>0) {
 			try {
 				sleep(brainTime);
 			} catch (InterruptedException e) {}
