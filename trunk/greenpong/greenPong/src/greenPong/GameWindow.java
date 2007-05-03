@@ -72,8 +72,8 @@ public class GameWindow extends javax.swing.JFrame {
 		lives.setFont(new Font("Arial", Font.BOLD, 22));
 		score.setFont(new Font("Arial", Font.BOLD, 22));
 		
-		lives.setForeground(Color.BLUE);
-		score.setForeground(Color.GRAY);
+		lives.setForeground(new Color(0, 0, 0));
+		score.setForeground(new Color(0, 0, 0));
 	}
 	
 	
@@ -116,16 +116,16 @@ public class GameWindow extends javax.swing.JFrame {
 	/** METODOS PARA CONTROLAR LAS VIDAS Y EL PUNTAJE **/
 	
 	public void won() {
-		status.setForeground(new Color(0, 150, 0));
-		status.setText("GANASTE!");
+		status.setForeground(new Color(0, 0, 0));
+		status.setText("Ganaste!");
 	}
 	
 	public void lost() {
 		if ((getScore()-1)==-1)
 			status.setText("");
 		else {
-			status.setForeground(Color.RED);
-			status.setText("PERDISTE!");
+			status.setForeground(new Color(0, 0, 0));
+			status.setText("Perdiste!");
 		}
 	}
 	
@@ -153,7 +153,7 @@ public class GameWindow extends javax.swing.JFrame {
 		int numeroVidas = Integer.parseInt(vidasActuales);
 		numeroVidas--;
 		if(numeroVidas==-1){
-			status.setForeground(new Color(0, 30, 60));
+			status.setForeground(new Color(0, 0, 0));
 			status.setText("GAME OVER!");
 			JOptionPane.showMessageDialog(this, "Has perdido todas tus vidas, gracias por jugar [greenPong]\nTu puntaje fue de: " + getScore() + " puntos", "GAME OVER", JOptionPane.ERROR_MESSAGE);
 			cleanStatus();
