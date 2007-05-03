@@ -6,13 +6,15 @@
 package greenPong;
 
 import javax.swing.JOptionPane;
-
+import java.awt.Cursor;
 /**
  * @author ubuntu
  * 
  */
 public class Brain extends Thread {
-
+	
+	public int brainTime = 1;
+	
 	/**
 	 * The container of the game where objects are shown
 	 */
@@ -110,7 +112,13 @@ public class Brain extends Thread {
 	public Brain(String[] args1) {
 		super();
 		args = args1;
+		brainTime = Integer.parseInt(args[3]);
 		initializeValues();
+		GPSplash splash = new GPSplash(this, args1[2]);
+		splash.start();
+		java.awt.Image cursorImage = java.awt.Toolkit.getDefaultToolkit().getImage(args[3]);
+		Cursor blankCursor = java.awt.Toolkit.getDefaultToolkit().createCustomCursor(cursorImage, new java.awt.Point( 0, 0), "" );
+		container.setCursor(blankCursor);
 	}
 
 	// ----------------------
@@ -128,7 +136,7 @@ public class Brain extends Thread {
 		userBar.centerInX();
 		while (lost == false) {
 			try {
-				sleep(Main.brainTime);
+				sleep(brainTime);
 			} catch (InterruptedException e) {}
 			
 			tempo2++;
@@ -472,6 +480,8 @@ public class Brain extends Thread {
 		this.resume();
 }
 	
-	
+	public static void main(String[] args1) {
+		Brain app = new Brain(args1);
+	}
 
 }
